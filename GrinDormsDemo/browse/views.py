@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 
 from .models import Building, Floor, Room
@@ -12,7 +12,7 @@ def home(request):
 
 def floors(request, building_name):
     #get the associated building
-    building = Building.objects.get(name = building_name)
+    building = get_object_or_404(Building, name = building_name)
 
     #get the floors for this building
     floor_list = Floor.objects.filter(building = building)
@@ -24,10 +24,10 @@ def floors(request, building_name):
 
 def rooms(request, building_name, floor_number):
     #get the associated building
-    building = Building.objects.get(name = building_name)
+    building = get_object_or_404(Building, name = building_name)
 
     #get the associated floor
-    floor = Floor.objects.get(number = floor_number)
+    floor = get_object_or_404(Floor, number = floor_number)
 
     #get the associated rooms
     room_list = Room.objects.filter(building = building, floor = floor)
