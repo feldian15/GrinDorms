@@ -18,7 +18,7 @@ Performing system checks...
 System check identified no issues (0 silenced).
 February 13, 2025 - 19:14:45
 Django version 5.1.6, using settings 'grindormsdemo.settings'
-**Starting development server at http://\*\*\*.\*.\*.\*:\*\*\*\*/**
+Starting development server at http://000.0.0.0:0000/
 Quit the server with CONTROL-C.
 ```
 
