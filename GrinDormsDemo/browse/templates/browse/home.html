@@ -1,0 +1,10 @@
+<h1>Available buildings</h1>
+{% if building_list %}
+    <ul>
+    {% for building in building_list %}
+        <li><a href="/browse/{{ building.name }}/">{{ building.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+<p>No buildings are available</p>
+{% endif %}

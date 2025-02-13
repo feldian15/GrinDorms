@@ -1,7 +1,42 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from .models import Building, Floor, Room
+
 # Create your views here.
 
 def home(request):
-    return HttpResponse("This is the home screen view")
+    building_list = Building.objects.order_by("name")
+    context = {"building_list": building_list}
+    return render(request, "browse/home.html", context)
+
+def floors(request, building_name):
+    #get the associated building
+    building = Building.objects.get(name = building_name)
+
+    #get the floors for this building
+    floor_list = Floor.objects.filter(building = building)
+
+    context = {"building_name": building.name,
+               "floor_list": floor_list}
+    
+    return render(request, "browse/floors.html", context)
+
+def rooms(request, building_name, floor_number):
+    #get the associated building
+    building = Building.objects.get(name = building_name)
+
+    #get the associated floor
+    floor = Floor.objects.get(number = floor_number)
+
+    #get the associated rooms
+    room_list = Room.objects.filter(building = building, floor = floor)
+
+    context = {"building_name": building.name,
+               "floor_number": floor.number,
+               "room_list": room_list}
+
+    return render(request, "browse/rooms.html", context)
+
+def room_details(request, building_name, floor_number, room_number):
+    return HttpResponse("This is the view of the details of room %d on floor %d of %s Hall" % (room_number, floor_number, building_name))

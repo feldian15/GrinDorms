@@ -1,0 +1,10 @@
+<h1>Available floors in {{ building_name }} Hall</h1>
+{% if floor_list %}
+    <ul>
+    {% for floor in floor_list %}
+        <li><a href="/browse/{{ building_name }}/{{ floor.number }}/">Floor {{ floor.number }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+<p>No floors are available</p>
+{% endif %}
