@@ -9,8 +9,6 @@
 
 **Mac:** Researched Django and found an online tutorial. 
 
-**Ian:**  
-
 **Tim:**  
 
 **Rene:**  
