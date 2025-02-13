@@ -1,7 +1,7 @@
 # Milestone 2 Report
 
 ## Work completed by each team member
-**Ian:** Set up GitHub and Trello Board and messed around with Django tutorial. 
+**Ian:** Set up GitHub and Trello Board and messed around with Django tutorial. Wrote the README. 
 
 **Ella:** Created Written-Reports folder and wrote the Milestone 2 report. Emailed Mo Pelzel to inquire about web hosting options through Grinnell and requested for him to set up a Cloud environment to host the project.  
 
