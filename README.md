@@ -12,7 +12,7 @@ GrinDorms is an online platform designed to help Grinnell College students brows
 
 ## Trello Issue Board
 We use Trello to track development tasks and manage product progress. You can view open issues, completed tasks, and sprint planning at:
-[Trello Board](https://trello.com/b/fiZwfAwq/grindorms)
+[GrinDorms Trello Board](https://trello.com/b/fiZwfAwq/grindorms)
 
 ## Contents
 ### GrinDormsDemo
