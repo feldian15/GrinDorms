@@ -1,11 +1,18 @@
 # GrinDorms
 Repository for GrinDorms CSC 324 project
 
+### Prerequisites
+To run this project locally, ensure you have:
+- **Python 3** installed
+- **Django** installed ('pip install django')
+- **Git** installed (for managing version control)
+
 ## Project Description
-GrinDorms is an online platform that stores data related to Grinnell College dorm rooms for students to browse and contribute to.
+GrinDorms is an online platform designed to help Grinnell College students browse and contribute dorm room information. Students can search for specific dorms, upload room details, add photos, leave reviews, and compare different rooms based on various attributes (e.g., location, floor). The platform aims to provide a centralized resource for students making housing decisions. 
 
 ## Trello Issue Board
-The issue log can be found at https://trello.com/b/fiZwfAwq/grindorms
+We use Trello to track development tasks and manage product progress. You can view open issues, completed tasks, and sprint planning at:
+[Trello Board](https://trello.com/b/fiZwfAwq/grindorms)
 
 ## Contents
 ### GrinDormsDemo
