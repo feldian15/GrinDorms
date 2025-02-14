@@ -9,7 +9,7 @@
 
 **Mac:** Researched Django and found an online tutorial. 
 
-**Tim:**  
+**Tim:** Create the frontend folder and write readme.md and app.py  
 
 **Rene:**  
 
