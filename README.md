@@ -33,7 +33,7 @@ Starting development server at http://000.0.0.0:0000/
 Quit the server with CONTROL-C.
 ```
 
-Copy the server link and add `browse/` at the end to get to the homepage
+Copy the server link and add `home/` at the end to get to the homepage
 
 ### Written-Reports
 The directory titled Written-Reports contains any written reports for class submission
