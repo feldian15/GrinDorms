@@ -7,7 +7,7 @@
 
 **Nitin:** Led the team in selecting optimal technologies (databases, programming languages, etc.).  
 
-**Mac:** Researched Django and found an online tutorial.
+**Mac:** Researched Django and found and completed an online tutorial.
 
 **Tim:** Created the frontend folder, wrote readme.md, and developed a test program (app.py) using NiceGUI.
 
