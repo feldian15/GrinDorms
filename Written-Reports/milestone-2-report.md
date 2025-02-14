@@ -11,7 +11,7 @@
 
 **Tim:** Created the frontend folder and wrote readme.md and a test program app.py using nicegui 
 
-**Rene:**  
+**Rene:** Expanded upon the READNE.md for further clarity and aesthetics.  
 
 
 ## Important decisions
