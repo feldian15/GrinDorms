@@ -1,17 +1,17 @@
 # Milestone 2 Report
 
 ## Work completed by each team member
-**Ian:** Set up GitHub and Trello Board and messed around with Django tutorial. Wrote the README. 
+**Ian:** Set up GitHub and Trello Board, explored Django tutorials, and wrote the initial README. 
 
-**Ella:** Created Written-Reports folder and wrote the Milestone 2 report. Emailed Mo Pelzel to inquire about web hosting options through Grinnell and requested for him to set up a Cloud environment to host the project.  
+**Ella:** Created the Written-Reports folder, wrote the Milestone 2 report, and contacted Mo Pelzel regarding web hosting options.
 
-**Nitin:** Guided group in deciding which technologies (databases, programming languages, etc) are optimal.   
+**Nitin:** Led the team in selecting optimal technologies (databases, programming languages, etc.).  
 
-**Mac:** Researched Django and found an online tutorial. 
+**Mac:** Researched Django and found an online tutorial.
 
-**Tim:** Created the frontend folder and wrote readme.md and a test program app.py using nicegui 
+**Tim:** Created the frontend folder, wrote readme.md, and developed a test program (app.py) using NiceGUI.
 
-**Rene:** Expanded upon the README.md for further clarity and aesthetics.  
+**Rene:** Enhanced README's for clarity and improved aesthetics. 
 
 
 ## Important decisions
