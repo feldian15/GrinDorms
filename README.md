@@ -39,4 +39,4 @@ Copy the server link and add `browse/` at the end to get to the homepage
 The directory titled Written-Reports contains any written reports for class submission
 
 ### djangotutorial
-The directory djangotutorial contains a basic walkthrough of django using python
+This directory contains a basic Django walkthrough using Python. It includes fundamental concepts and example code to help new developers familiarize themselves with Django.
