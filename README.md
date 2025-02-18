@@ -36,7 +36,7 @@ Quit the server with CONTROL-C.
 Copy the server link and add `home/` at the end to get to the homepage
 
 ### Written-Reports
-The directory titled Written-Reports contains any written reports for class submission
+The directory titled Written-Reports contains any written reports for class submission, including sprint reports and sprint review reports. 
 
 ### djangotutorial
 This directory contains a basic Django walkthrough using Python. It includes fundamental concepts and example code to help new developers familiarize themselves with Django.
