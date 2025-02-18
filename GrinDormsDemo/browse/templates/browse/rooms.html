@@ -1,8 +1,21 @@
-<h1>Available rooms on floor {{ floor_number }} of {{ building_name }} Hall</h1>
+<header><a href="/home/">Home</a></header>
+<header><a href="/browse/">browse</a> / <a href="/browse/{{ building_name }}">{{ building_name }}</a> / 
+    <a href="/browse/{{ building_name }}/{{ floor_num }}">
+        {% if floor_num == 0 %}
+            Pit
+        {% else %}
+            Floor {{ floor_num }}
+        {% endif %}</a></header>
+<h1>Available rooms 
+        {% if floor_num == 0 %}
+            in Pit
+        {% else %}
+            on Floor {{ floor_num }}
+        {% endif %} of {{ building_name }} Hall</h1>
 {% if room_list %}
     <ul>
     {% for room in room_list %}
-        <li><a href="/browse/{{ building_name }}/{{ floor_number }}/{{ room.number }}">Room {{ room.number }}</a></li>
+        <li><a href="/browse/{{ building_name }}/{{ floor_num }}/{{ room.number }}">Room {{ room.number }}</a></li>
     {% endfor %}
     </ul>
 {% else %}

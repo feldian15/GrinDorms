@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 
-from .models import Building, Floor, Room
+from .models import Building, Room
 
 # Create your views here.
 
@@ -13,30 +13,34 @@ def home(request):
 def floors(request, building_name):
     #get the associated building
     building = get_object_or_404(Building, name = building_name)
-
-    #get the floors for this building
-    floor_list = Floor.objects.filter(building = building)
-
-    context = {"building_name": building.name,
-               "floor_list": floor_list}
     
+    num_floors = building.num_floors
+    has_pit = building.has_pit
+
+    #if the building has a pit, remove one of the floors
+    if(has_pit):
+        floor_list = range(0, num_floors)
+    else:
+        floor_list = range(1, num_floors + 1)
+
+    context = {"floor_list": floor_list,
+               "building_name": building.name}
+
     return render(request, "browse/floors.html", context)
 
-def rooms(request, building_name, floor_number):
+def rooms(request, building_name, floor_num):
     #get the associated building
     building = get_object_or_404(Building, name = building_name)
 
-    #get the associated floor
-    floor = get_object_or_404(Floor, number = floor_number)
+    room_list = Room.objects.filter(floor = floor_num, building = building)
 
-    #get the associated rooms
-    room_list = Room.objects.filter(building = building, floor = floor)
-
-    context = {"building_name": building.name,
-               "floor_number": floor.number,
+    context = {"floor_num": floor_num,
+               "building_name": building.name,
                "room_list": room_list}
 
     return render(request, "browse/rooms.html", context)
 
-def room_details(request, building_name, floor_number, room_number):
-    return HttpResponse("This is the view of the details of room %d on floor %d of %s Hall" % (room_number, floor_number, building_name))
+
+
+def room_details(request, building_name, floor_num, room_number):
+    return HttpResponse("This is the view of the details of room %d on floor %d of %s Hall" % (room_number, floor_num, building_name))
