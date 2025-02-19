@@ -21,6 +21,6 @@
 ### other changes your team decided to make from your own thoughts and ideas from the testing session
 - When linking an unreviewed room to a review page, we will ideally have the dorm room information propogated already.
 ### other things you added to your prototype, not necessarily based on the testing session
-- We will add an option for users to see all of their reviews and delete any they may have made a mistake on or do not wish to share anymore.
+- We will add an option for users to see all of their reviews and delete any they may have made a mistake on or do not wish to share anymore. We also will add a dorm and floor information panel on each respective screen to better highlight details of each.
 ### Include one or more photos of your revised prototype where the difference between the original and revised version can be plainly seen
 [ADD PHOTOS OF REVIEWS WITH FLAG AND NAVIGATION BREADCRUMBS]
