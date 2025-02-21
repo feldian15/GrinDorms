@@ -33,6 +33,11 @@
 ### Include one or more photos of your revised prototype where the difference between the original and revised version can be plainly seen
 [ADD PHOTOS OF REVIEWS WITH FLAG AND NAVIGATION BREADCRUMBS]
 
+Before Flags:
+![image](https://github.com/user-attachments/assets/8ed23479-dbf0-404b-a6d0-e693a2617885)
+
+After Flags:
+![image](https://github.com/user-attachments/assets/e2ce8f25-6128-4b3d-8fef-04629a9d918d)
 
 ## Test 2 (Professor)
 ### Who you tested it with.
@@ -55,7 +60,7 @@
 ### Notes on how to revise your testing procedure for the next user
 - we have created standardized review questions to ask users after each test.
 ### Describe changes to your prototype
-- there will be a page that allow the user to confrim after they click the delete button.
+- there will be a page that allow the user to confirm after they click the delete button.
 ### other changes your team decided to make from your own thoughts and ideas from the testing session
 - Add a save button when editing past reviews, add a popup that says "are you sure" after clicking delete on a past review.
 - Add a popup to allows users to explain why they have flagged/reported a review. 
@@ -63,3 +68,13 @@
 - We added a page to look at all past reviews, that the user gets naviagated to once they post a new review. 
 ### Include one or more photos of your revised prototype where the difference between the original and revised version can be plainly seen
 [ADD PHOTOS]
+
+Before option to view your reviews:
+![IMG_2465](https://github.com/user-attachments/assets/8a8feb82-cb8e-40d1-bc19-4c86a55ccd1b)
+
+After adding page to view your reviews:
+![IMG_2464](https://github.com/user-attachments/assets/ebc666bc-d8fb-45f8-9bb4-3834b6f50c19)
+![IMG_2466](https://github.com/user-attachments/assets/54dd9e38-4fc5-4322-a164-329f56440d06)
+
+
+
