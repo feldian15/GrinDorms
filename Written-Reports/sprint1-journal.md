@@ -87,4 +87,42 @@ After adding page to view your reviews:
 ![IMG_2466](https://github.com/user-attachments/assets/54dd9e38-4fc5-4322-a164-329f56440d06)
 
 
+## Test 3 (Kailee)
+- We tested this with Kailee, a fourth-year Grinnell College student who is a real stakeholder in our website.
+- We tested with Kailee because we were interested in exploring the use case for room poster, and were interested in learning about whether fourth-year students would be interested in reviewing rooms on our website even if they are graduating and will not use the website to browse room reviews.
+### Date and time of the test session**
+
+### A narrative describing the test.
+
+### What roles did each team member play during the test?
+- : Facilitator
+- : Computer
+- : Note taker
+### Which user stories were activated?
+- Room Poster
+### Additional notes describing the session, e.g. observations of the test user's behavior.
+- 
+### The feedback you got from the tester
+- 
+### Notes on how to revise your testing procedure for the next user
+- 
+### Describe changes to your prototype
+- 
+### other changes your team decided to make from your own thoughts and ideas from the testing session
+- 
+### other things you added to your prototype, not necessarily based on the testing session
+-
+### 3 major questions that you asked the test user for feedback on, and the test user's responses.
+
+### Spontaneous feedback from the test user, and questions you came up with on the spot
+
+### Include one or more photos of your revised prototype where the difference between the original and revised version can be plainly seen
+
+
+## Test 4 (Name)
+
+
+## Test 5 (Name)
+
+
 
