@@ -1,21 +1,26 @@
 # Sprint 1 Journal
-## Part 1: Revise requirements based on feedback (TODO)
-- Summarize the feedback from your reviews.
-- Describe the changes, if any, that you are making to your requirements, user personas, user stories, use cases, and prototype based on these reviews.
-Describe your rationale in deciding what changes to make (or not make) based on the reviews.
+## Part 1: Revise requirements based on proposal review feedback
+- We utilized the review feedback as we were creating the requirements document, so we did not make any later changes based on the feedback.
+- Based on the feedback, we thought it was important to provide an option for users to edit/remove their posts due to privacy concerns in order to make our product more ethical. This fits into the Room Poster user story and the features users might want. 
 
 ## Part 3: Paper Prototype (TODO)
-- One or more photos of your prototype
-- You might also want to include photos of your team working on the prototype! (optional)
-- Enumerate three use cases that the prototype models
+- Three use cases for our prototype are:
+1. Finding information about a specific dorm room on campus. (Alternative flow: room has not yet been reviewed)
+3. Finding information about a specific dorm building on campus
+4. Posting a new room review / editing/removing past reviews. (Alternative flow: missing response fields)
+
+### One or more photos of your prototype
+
+### Photos of your team working on the prototype
+
 
 ### Review questions: (Ask these to stakeholders)
 - What aspects of the interface were intuitive to use? What aspects were not? Why? What would make them easier to use?
 - How likely are you/would you have been to use this product for room draw? What is the primary purpose you would use it for?
 - How likely is it that you would post a review? How likely would you be to browse the rooms?
 - What type of information would you like to see about the dorms? The floors? And the rooms?
-- Were any elements of the interface distracting or confusing? Why or why not?
-- Would you feel comfortable posting pictures of your furnished room?
+- Which elements of the interface, if any, were distracting or confusing? Why or why not?
+- How comfortable would you feel posting pictures of your furnished room?
 
 ## Test 1 (Classmate)
 ### Who you tested it with.
