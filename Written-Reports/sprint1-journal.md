@@ -49,10 +49,12 @@
 [ADD PHOTOS OF REVIEWS WITH FLAG AND NAVIGATION BREADCRUMBS]
 
 Before Flags:
-![image](https://github.com/user-attachments/assets/8ed23479-dbf0-404b-a6d0-e693a2617885)
+
+<img src="https://github.com/user-attachments/assets/8ed23479-dbf0-404b-a6d0-e693a2617885" width="400">
 
 After Flags:
-![image](https://github.com/user-attachments/assets/e2ce8f25-6128-4b3d-8fef-04629a9d918d)
+
+<img src="https://github.com/user-attachments/assets/e2ce8f25-6128-4b3d-8fef-04629a9d918d" width="400">
 
 ## Test 2 (Professor)
 ### Who you tested it with.
@@ -85,11 +87,13 @@ After Flags:
 [ADD PHOTOS]
 
 Before option to view your reviews:
-![IMG_2465](https://github.com/user-attachments/assets/8a8feb82-cb8e-40d1-bc19-4c86a55ccd1b)
+
+<img src="https://github.com/user-attachments/assets/8a8feb82-cb8e-40d1-bc19-4c86a55ccd1b" width="400">
 
 After adding page to view your reviews:
-![IMG_2464](https://github.com/user-attachments/assets/ebc666bc-d8fb-45f8-9bb4-3834b6f50c19)
-![IMG_2466](https://github.com/user-attachments/assets/54dd9e38-4fc5-4322-a164-329f56440d06)
+
+<img src="https://github.com/user-attachments/assets/8a8feb82-cb8e-40d1-bc19-4c86a55ccd1b" width="400">
+<img src="https://github.com/user-attachments/assets/54dd9e38-4fc5-4322-a164-329f56440d06" width="400">
 
 
 ## Test 3 (Kailee)
