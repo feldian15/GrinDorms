@@ -1,4 +1,14 @@
 # Sprint 1 Journal
+## Part 1: Revise requirements based on feedback (TODO)
+- Summarize the feedback from your reviews.
+- Describe the changes, if any, that you are making to your requirements, user personas, user stories, use cases, and prototype based on these reviews.
+Describe your rationale in deciding what changes to make (or not make) based on the reviews.
+
+## Part 3: Paper Prototype (TODO)
+- One or more photos of your prototype
+- You might also want to include photos of your team working on the prototype! (optional)
+- Enumerate three use cases that the prototype models
+
 ### Review questions: (Ask these to stakeholders)
 - What aspects of the interface were intuitive to use? What aspects were not? Why? What would make them easier to use?
 - How likely are you/would you have been to use this product for room draw? What is the primary purpose you would use it for?
