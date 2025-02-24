@@ -121,7 +121,12 @@ After adding page to view your reviews:
 
 ### Spontaneous feedback from the test user, and questions you came up with on the spot
 
+### Summarize the changes to your requirements after each test and describe why you made each change
+
+### Summarize the changes to your prototype after each test and describe why you made each change
+
 ### Include one or more photos of your revised prototype where the difference between the original and revised version can be plainly seen
+
 
 
 ## Test 4 (Name)
