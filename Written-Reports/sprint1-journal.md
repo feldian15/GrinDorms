@@ -93,7 +93,7 @@ After adding page to view your reviews:
 
 
 ## Test 3 (Kailee)
-- We tested this with Kailee, a fourth-year Grinnell College student who is a real stakeholder in our website.
+- We tested this with Kailee, a fourth-year Grinnell College student who is a real stakeholder in our website. She is a naive user, as she did not know about our project before our test with her. 
 - We tested with Kailee because we were interested in exploring the use case for room poster, and were interested in learning about whether fourth-year students would be interested in reviewing rooms on our website even if they are graduating and will not use the website to browse room reviews.
 ### Date and time of the test session**
 
