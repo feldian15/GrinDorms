@@ -19,6 +19,7 @@
 - How likely are you/would you have been to use this product for room draw? What is the primary purpose you would use it for?
 - How likely is it that you would post a review? How likely would you be to browse the rooms?
 - What type of information would you like to see about the dorms? The floors? And the rooms?
+ - number of bathrooms, kitchen size/pictures, information about surrounding roooms
 - Which elements of the interface, if any, were distracting or confusing? Why or why not?
 - How comfortable would you feel posting pictures of your furnished room?
 
@@ -100,25 +101,26 @@ After adding page to view your reviews:
 - We tested this with Kailee, a fourth-year Grinnell College student who is a real stakeholder in our website. She is a naive user, as she did not know about our project before our test with her. 
 - We tested with Kailee because we were interested in exploring the use case for room poster, and were interested in learning about whether fourth-year students would be interested in reviewing rooms on our website even if they are graduating and will not use the website to browse room reviews.
 ### Date and time of the test session**
-
+- Tuesday February 25 at 5:01
 ### A narrative describing the test.
-
+- Kailee was instructed first to act like a student who was exploring the website for the first time. She began by browsing rooms and then posted a review of her current room.
 ### What roles did each team member play during the test?
-- : Facilitator
-- : Computer
-- : Note taker
+- : Facilitator: Ella
+- : Computer: Tim
+- : Note taker: Ian
 ### Which user stories were activated?
 - Room Poster
+- Room reviewer
 ### Additional notes describing the session, e.g. observations of the test user's behavior.
-- 
+- The session went pretty smooth, but she bypassed a lot of the preliminary information about the buildings and floors and just wanted to get to the room information.
 ### The feedback you got from the tester
-- 
+- She questioned whether the pictures should be related to the reviews they came with or whether they should be in separate panes. She also inquired about filtering rooms and sorting based on highest rating. She also noted the shifting placement of the home button and its small size relative to the information on the page.
 ### Notes on how to revise your testing procedure for the next user
-- 
+- We will ask the next user how they feel about the setup of the room details page and whether they like the setup of the panes.
 ### Describe changes to your prototype
-- 
+- Made a larger home button, potentially will try grouping the reviews with their related pictures after the following review
 ### other changes your team decided to make from your own thoughts and ideas from the testing session
-- 
+- We mi
 ### other things you added to your prototype, not necessarily based on the testing session
 -
 ### 3 major questions that you asked the test user for feedback on, and the test user's responses.
