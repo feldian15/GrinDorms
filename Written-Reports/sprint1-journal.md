@@ -110,7 +110,7 @@ After adding page to view your reviews:
 - : Note taker: Ian
 ### Which user stories were activated?
 - Room Poster
-- Room reviewer
+- Room Seeker
 ### Additional notes describing the session, e.g. observations of the test user's behavior.
 - The session went pretty smooth, but she bypassed a lot of the preliminary information about the buildings and floors and just wanted to get to the room information.
 ### The feedback you got from the tester
@@ -135,7 +135,42 @@ After adding page to view your reviews:
 
 
 
-## Test 4 (Name)
+## Test 4 (Jacob)
+- We tested this with Jacob, a first-year Grinnell College student who is a real stakeholder in our website. He is a naive user, as he did not know about our project before our test with him. 
+- We tested with Jacob because we were interested in the perspective of a first-year student and learning what functionality he would like in the website.
+### Date and time of the test session**
+- Tuesday February 25 at 5:30
+### A narrative describing the test.
+- Jacob was instructed to browse dorm rooms. 
+### What roles did each team member play during the test?
+- Facilitator: Mac
+- Computer: Nitin
+- Note taker: Ella
+### Which user stories were activated?
+- Room Poster
+- Room reviewer
+### Additional notes describing the session, e.g. observations of the test user's behavior.
+- User was first interested in exploring the dorms, and then went back and explore the review room option. 
+### The feedback you got from the tester
+- He would use it to both post rooms and review rooms. He would be less likely to use the website if he had to post a review before seeing other reviews. He prefers having the images and comments in separate sections, instead of separating them per review. Wants to know about the size of the room (from photos) and other general information.
+- He would like to get info about what a standard single/double/triple is based on the hall building.
+### Notes on how to revise your testing procedure for the next user
+- 
+### Describe changes to your prototype
+- Change the search page.
+### other changes your team decided to make from your own thoughts and ideas from the testing session
+- Make the dorm building info bigger on the page so users notice it, and don't directly click on the floor to find rooms. 
+### other things you added to your prototype, not necessarily based on the testing session
+- 
+### 3 major questions that you asked the test user for feedback on, and the test user's responses.
+
+### Spontaneous feedback from the test user, and questions you came up with on the spot
+
+### Summarize the changes to your requirements after each test and describe why you made each change
+
+### Summarize the changes to your prototype after each test and describe why you made each change
+
+### Include one or more photos of your revised prototype where the difference between the original and revised version can be plainly seen
 
 
 ## Test 5 (Name)
