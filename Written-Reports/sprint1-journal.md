@@ -173,22 +173,26 @@ After adding page to view your reviews:
 ### Include one or more photos of your revised prototype where the difference between the original and revised version can be plainly seen
 
 
-## Test 5 (Name)
-- 
+## Test 5 (Devon)
+- We tested this with Devon, a first-year Grinnell College student who is a real stakeholder in our website. He is a naive user, as he did not know about our project before our test with him. 
+- Such as with Jacob, we tested with Devon because we were interested in the perspective of a first-year student and learning what functionality he would like in the website.
 ### Date and time of the test session**
 - Tuesday February 25 at 6:00
 ### A narrative describing the test.
-- 
+-  Devon was given the opportunity to navigate the website on his own.
 ### What roles did each team member play during the test?
-- Facilitator: 
-- Computer: 
-- Note taker: 
+- Facilitator: Ian
+- Computer: Nitin
+- Note taker: Rene
 ### Which user stories were activated?
-- 
+- Room reviewer
+- Room seeker
 ### Additional notes describing the session, e.g. observations of the test user's behavior.
-- 
+- Followed the prompts as expected. Very smooth test.
+- Clicked on the room location on the floor plan itself to view its information. Not on the list of rooms.
 ### The feedback you got from the tester
-- 
+- Easy navigation
+- Straight-forward
 ### Notes on how to revise your testing procedure for the next user
 - 
 ### Describe changes to your prototype
@@ -200,7 +204,7 @@ After adding page to view your reviews:
 ### 3 major questions that you asked the test user for feedback on, and the test user's responses.
 
 ### Spontaneous feedback from the test user, and questions you came up with on the spot
-
+- Room vs. the Hall information. If user prioritizes room information only, then could potentially remove additional steps of going through region, dorm, floor, to the room itself. (search bar)
 ### Summarize the changes to your requirements after each test and describe why you made each change
 
 ### Summarize the changes to your prototype after each test and describe why you made each change
