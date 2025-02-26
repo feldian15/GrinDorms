@@ -3,16 +3,22 @@
 - We utilized the review feedback as we were creating the requirements document, so we did not make any later changes based on the feedback.
 - Based on the feedback, we thought it was important to provide an option for users to edit/remove their posts due to privacy concerns in order to make our product more ethical. This fits into the Room Poster user story and the features users might want. 
 
-## Part 3: Paper Prototype (TODO)
+## Part 3: Paper Prototype
 - Three use cases for our prototype are:
 1. Finding information about a specific dorm room on campus. (Alternative flow: room has not yet been reviewed)
 3. Finding information about a specific dorm building on campus
 4. Posting a new room review / editing/removing past reviews. (Alternative flow: missing response fields)
 
-### One or more photos of your prototype
+### Initial Prototype
+<img src="https://github.com/user-attachments/assets/3310dedf-f529-4047-b65d-601c3bcd3194" width="400">
+<img src= "https://github.com/user-attachments/assets/0b426650-74ec-434b-955c-bc20b68f975c" width="400">
+<img src="https://github.com/user-attachments/assets/d7433214-cf2f-46df-9fd0-690078f94582" width="400">
+<img src="https://github.com/user-attachments/assets/138bec76-bb99-4cc7-90d6-a19bfff31d87" width="400">
+<img src="https://github.com/user-attachments/assets/9d924a51-b677-488f-9094-e087a51e4c64" width="400">
+<img src="https://github.com/user-attachments/assets/6e8ef30b-fd13-48fe-a940-f02464783a7d"  width="400">
 
-### Photos of your team working on the prototype
-
+### Team working on the prototype
+<img src="https://github.com/user-attachments/assets/9388c2b8-98d0-4949-8e9b-ccd807a28c34" width="400">
 
 ### Review questions: (Ask these to stakeholders)
 - What aspects of the interface were intuitive to use? What aspects were not? Why? What would make them easier to use?
@@ -230,6 +236,19 @@ After moving review button:
 
 <img src="https://github.com/user-attachments/assets/b7f0ac2e-b651-45f9-876d-333e73bbf220" width="400">
 <img src="https://github.com/user-attachments/assets/d91e0f80-553e-4c8f-9f72-17185446426b" width="400">
+
+# CIDER Lab (TODO)
+Critique
+What assumptions about users were identified during the critique stage?
+Imagine
+Which assumption(s) did you choose to expand on for this phase?
+How might that assumption exclude users?
+Design
+What are your ideas for redesigning your product based on critique?
+Update Requirements Document as needed
+
+If any changes to your requirements came up as a result of performing the CIDER technique, update your requirements document accordingly.
+
 
 
 
