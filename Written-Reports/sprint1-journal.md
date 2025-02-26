@@ -41,11 +41,11 @@
 ### Notes on how to revise your testing procedure for the next user
 - We should slow down some and give a better description of the use case we are testing. Budhil was prone to go outside the use case because we had not made his goal clear.
 ### Describe changes to your prototype
-- We will add a flag option on the user reviews to allow users to flag any content they feel should be reviewed by admin.
+- We added a flag option on the user reviews to allow users to flag any content (false/inappropriate) they feel should be reviewed by admin.
 ### other changes your team decided to make from your own thoughts and ideas from the testing session
-- When linking an unreviewed room to a review page, we will ideally have the dorm room information propogated already.
+- When a room does not have any reviews yet, it provides a link to post a review for the room. When they are naviated to post the review, we will ideally have the dorm room information (cluster, building, floor, room number) propogated already.
 ### other things you added to your prototype, not necessarily based on the testing session
-- We will add an option for users to see all of their reviews and delete any they may have made a mistake on or do not wish to share anymore. We also will add a dorm and floor information panel on each respective screen to better highlight details of each.
+- We added an option for users to see all of their reviews and delete any they may have made a mistake on or do not wish to share anymore. We also added a dorm and floor information panel on each respective screen to better highlight details of each.
 ### Include one or more photos of your revised prototype where the difference between the original and revised version can be plainly seen
 [ADD PHOTOS OF REVIEWS WITH FLAG AND NAVIGATION BREADCRUMBS]
 
@@ -57,11 +57,14 @@ After Flags:
 
 <img src="https://github.com/user-attachments/assets/e2ce8f25-6128-4b3d-8fef-04629a9d918d" width="400">
 
+Before General Dorm Info:
+
+After General Dorm Info:
+
 ## Test 2 (Professor)
 ### Who you tested it with.
 - Leah
 ### A narrative describing the test.
- - a professor who is seeking to review the grinnell student's dorm and explore the grinDorm website.
  - A user seeking to post a review, look at their past reviews, and explore dorm rooms. 
 ### What roles did each team member play during the test?
 - Mac: Facilitator
@@ -70,15 +73,15 @@ After Flags:
 ### Which user stories were activated?
 - Room Poster
 - Post-room draw user
-- Accessibility checker:
+- Accessibility checker
 ### Additional notes describing the session, e.g. observations of the test user's behavior.
 -  Leah enagaged with the prototype as we expected.
 ### The feedback you got from the tester
-- adding a box that let the user confirm after they press the delete button for their reviews
+- Leah suggested that we should add a popup for the user to confirm that they would like to delete a review they have posted.
 ### Notes on how to revise your testing procedure for the next user
-- we have created standardized review questions to ask users after each test.
+- We have created standardized review questions to ask users after each test.
 ### Describe changes to your prototype
-- there will be a page that allow the user to confirm after they click the delete button.
+- We added a popup that asks the user to confirm that they would like to delete a review.
 ### other changes your team decided to make from your own thoughts and ideas from the testing session
 - Add a save button when editing past reviews, add a popup that says "are you sure" after clicking delete on a past review.
 - Add a popup to allows users to explain why they have flagged/reported a review. 
@@ -96,50 +99,58 @@ After adding page to view your reviews:
 <img src="https://github.com/user-attachments/assets/8a8feb82-cb8e-40d1-bc19-4c86a55ccd1b" width="400">
 <img src="https://github.com/user-attachments/assets/54dd9e38-4fc5-4322-a164-329f56440d06" width="400">
 
+After popup to confirm deletion of a review:
+
 
 ## Test 3 (Kailee)
-- We tested this with Kailee, a fourth-year Grinnell College student who is a real stakeholder in our website. She is a naive user, as she did not know about our project before our test with her. 
-- We tested with Kailee because we were interested in exploring the use case for room poster, and were interested in learning about whether fourth-year students would be interested in reviewing rooms on our website even if they are graduating and will not use the website to browse room reviews.
-### Date and time of the test session**
-- Tuesday February 25 at 5:01
+- We tested with Kailee, a fourth-year Grinnell College student who is a real stakeholder in our website. She is a naive user, as she did not know about our project before our test with her. 
+- We were interested in exploring the use case for room poster, and were interested in learning about whether fourth-year students would be interested in reviewing rooms on our website even if they are graduating and will not participate in room selection again.
+### Date and time of the test session
+- Tuesday February 25 at 5:01pm
 ### A narrative describing the test.
 - Kailee was instructed first to act like a student who was exploring the website for the first time. She began by browsing rooms and then posted a review of her current room.
 ### What roles did each team member play during the test?
-- : Facilitator: Ella
-- : Computer: Tim
-- : Note taker: Ian
+- Facilitator: Ella
+- Computer: Tim
+- Note taker: Ian
 ### Which user stories were activated?
 - Room Poster
 - Room Seeker
 ### Additional notes describing the session, e.g. observations of the test user's behavior.
-- The session went pretty smooth, but she bypassed a lot of the preliminary information about the buildings and floors and just wanted to get to the room information.
+- The session went pretty smoothly, but she bypassed a lot of the preliminary information about the buildings and floors and just wanted to get to the room information. Despite being a fourth year and not participating in room selection again, she was curious to explore the dorm room reviews.
+- She did not seem to notice or be interested in the general information we included about the dorm building.
 ### The feedback you got from the tester
-- She questioned whether the pictures should be related to the reviews they came with or whether they should be in separate panes. She also inquired about filtering rooms and sorting based on highest rating. She also noted the shifting placement of the home button and its small size relative to the information on the page.
-### Notes on how to revise your testing procedure for the next user
-- We will ask the next user how they feel about the setup of the room details page and whether they like the setup of the panes.
+- She questioned whether the pictures should be related to the reviews they came with or whether they should be in separate panes. She also inquired about filtering rooms and sorting based on highest rating, and comparing rooms in all of the dorms in one page. She also noted the shifting placement of the home button and its small size relative to the information on the page.
 ### Describe changes to your prototype
-- Made a larger home button, potentially will try grouping the reviews with their related pictures after the following review
+- We decided not to change the position of the home button in the prototype due to lack of space on each page, but made a note of it for our actual website.
+- We will ask the next user how they feel about the setup of the room details page and whether they like the setup of the panes (all comments grouped and all images grouped) or if they would like to see images paired with their respetive reviews.
 ### other changes your team decided to make from your own thoughts and ideas from the testing session
-- We mi
+- We discussed the pros/cons of changing our searching process to be more fluid. 
 ### other things you added to your prototype, not necessarily based on the testing session
--
+- n/a
 ### 3 major questions that you asked the test user for feedback on, and the test user's responses.
+*Q: How likely are you/would you have been to use this product for room draw? What is the primary purpose you would use it for? 
 
-### Spontaneous feedback from the test user, and questions you came up with on the spot
+ A: She would be likely to post a room review even though she is graduating. She would think it would be fun to browse reviews as well, even though she will not use that information to select a room. 
 
-### Summarize the changes to your requirements after each test and describe why you made each change
+*Q: Which elements of the interface, if any, were distracting or confusing? Why or why not? 
 
-### Summarize the changes to your prototype after each test and describe why you made each change
+ A: The home button should be larger on every page, and should have a standard placement on the top left. 
 
-### Include one or more photos of your revised prototype where the difference between the original and revised version can be plainly seen
+*Q: How comfortable would you feel posting pictures of your furnished room? 
 
+ A: She would feel self conscious if someone who knew where she lived was able to trace the review back to her, but would not feel unsafe when posting reviews. 
+
+### Changes to requirements 
+
+### Photos of revised prototype
 
 
 ## Test 4 (Jacob)
 - We tested this with Jacob, a first-year Grinnell College student who is a real stakeholder in our website. He is a naive user, as he did not know about our project before our test with him. 
-- We tested with Jacob because we were interested in the perspective of a first-year student and learning what functionality he would like in the website.
-### Date and time of the test session**
-- Tuesday February 25 at 5:30
+- We tested with Jacob because we were interested in the perspective of a first-year student and learning what functionality he would like in the website. He has not participated in the room selection process before. 
+### Date and time of the test session
+- Tuesday February 25 at 5:30pm
 ### A narrative describing the test.
 - Jacob was instructed to browse dorm rooms. 
 ### What roles did each team member play during the test?
@@ -148,36 +159,32 @@ After adding page to view your reviews:
 - Note taker: Ella
 ### Which user stories were activated?
 - Room Poster
-- Room reviewer
+- Room Reviewer
 ### Additional notes describing the session, e.g. observations of the test user's behavior.
-- User was first interested in exploring the dorms, and then went back and explore the review room option. 
+- User was first interested in exploring the dorms, and then went back and explore the review room option. It was initially unclear to him as to what the button to see your past reviews did and why one would need that functionality.
+- He did not seem to notice or be interested in the general information we included about the dorm building.
 ### The feedback you got from the tester
-- He would use it to both post rooms and review rooms. He would be less likely to use the website if he had to post a review before seeing other reviews. He prefers having the images and comments in separate sections, instead of separating them per review. Wants to know about the size of the room (from photos) and other general information.
-- He would like to get info about what a standard single/double/triple is based on the hall building.
-### Notes on how to revise your testing procedure for the next user
-- 
+- He would use the website to both post rooms and review rooms. He would be less likely to use the website if he had to post a review before being able to see other reviews.  The information he would be most interested to learn is the size of the room (by seeing photos) and other general information like how many bathrooms are on a floor.
+- He would also like functionality to easily compare rooms in different halls in order get information about what a standard single/double/triple is based on the hall building.
 ### Describe changes to your prototype
-- Change the search page.
+- We sketched a whiteboard prototype for the search page illustrating an alternative way to filter rooms to ask future testers if they would prefer that to our current functionality.
 ### other changes your team decided to make from your own thoughts and ideas from the testing session
-- Make the dorm building info bigger on the page so users notice it, and don't directly click on the floor to find rooms. 
-### other things you added to your prototype, not necessarily based on the testing session
-- 
+- Make the dorm building info bigger on the page so users notice it, and don't immediately click on the floor to find rooms. 
+
 ### 3 major questions that you asked the test user for feedback on, and the test user's responses.
 
 ### Spontaneous feedback from the test user, and questions you came up with on the spot
-
+- We asked him about display of information on each room review, and he prefers having the images and comments in separate sections instead of linking images to their respective comments. This differs from Kailee's opinions.
 ### Summarize the changes to your requirements after each test and describe why you made each change
 
-### Summarize the changes to your prototype after each test and describe why you made each change
-
 ### Include one or more photos of your revised prototype where the difference between the original and revised version can be plainly seen
-
+Sketch of alternative search functionality: 
 
 ## Test 5 (Devon)
-- We tested this with Devon, a first-year Grinnell College student who is a real stakeholder in our website. He is a naive user, as he did not know about our project before our test with him. 
-- Such as with Jacob, we tested with Devon because we were interested in the perspective of a first-year student and learning what functionality he would like in the website.
-### Date and time of the test session**
-- Tuesday February 25 at 6:00
+- We tested this with Devon, a Grinnell College student on the football team who is a real stakeholder in our website. He is a naive user, as he did not know about our project before our test with him. 
+- Such as with Jacob, we tested with Devon because we were interested in the perspective of a student-athlete and learning what functionality he would like in the website.
+### Date and time of the test session
+- Tuesday February 25 at 6:15
 ### A narrative describing the test.
 -  Devon was given the opportunity to navigate the website on his own.
 ### What roles did each team member play during the test?
@@ -188,13 +195,13 @@ After adding page to view your reviews:
 - Room reviewer
 - Room seeker
 ### Additional notes describing the session, e.g. observations of the test user's behavior.
-- Followed the prompts as expected. Very smooth test.
-- Clicked on the room location on the floor plan itself to view its information. Not on the list of rooms.
+- He followed the prompts as expected. 
+- He clicked on the room location on the floor plan image to view its information instead of the room number in the list of rooms. He corrected this action when Nitin initially did not change the screen.
+- He did not seem to care about the general dorm information provided, and just cared about room information. 
 ### The feedback you got from the tester
-- Easy navigation
-- Straight-forward
-### Notes on how to revise your testing procedure for the next user
-- 
+- At first, he told us he liked the design and it was straighforward and easy to use. When we asked him if he would prefer the alternative filtering option we had drawn on the whiteboard, he told us he would prefer that option. He said that he does not have a specific dorm building or floor preference, and would rather compare the rooms themselves regardless of their location. He did say that this option wouldn't be as helpful if there were not enough reviews on the website, and he would be unlikely to use the website if thre was a noticable lack of rooms that had been reviewed.
+- Room vs. the Hall information. If user prioritizes room information only, then could potentially remove additional steps of going through region, dorm, floor, to the room itself. (search bar)
+
 ### Describe changes to your prototype
 - 
 ### other changes your team decided to make from your own thoughts and ideas from the testing session
@@ -203,14 +210,9 @@ After adding page to view your reviews:
 -
 ### 3 major questions that you asked the test user for feedback on, and the test user's responses.
 
-### Spontaneous feedback from the test user, and questions you came up with on the spot
-- Room vs. the Hall information. If user prioritizes room information only, then could potentially remove additional steps of going through region, dorm, floor, to the room itself. (search bar)
-### Summarize the changes to your requirements after each test and describe why you made each change
-
-### Summarize the changes to your prototype after each test and describe why you made each change
+### Changes to your requirements
 
 ### Include one or more photos of your revised prototype where the difference between the original and revised version can be plainly seen
-
 
 
 # Storyboard Image:
