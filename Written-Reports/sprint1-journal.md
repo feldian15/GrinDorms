@@ -57,9 +57,13 @@ After Flags:
 
 <img src="https://github.com/user-attachments/assets/e2ce8f25-6128-4b3d-8fef-04629a9d918d" width="400">
 
-Before General Dorm Info:
+Before General Dorm Info: 
 
-After General Dorm Info:
+<img src="https://github.com/user-attachments/assets/b9fdf828-c3a5-4170-9b50-c67943cc3604" width="400">
+
+After General Dorm Info:  
+
+<img src="https://github.com/user-attachments/assets/86355814-297d-4c32-9937-44f6194d7936" width="400">
 
 ## Test 2 (Professor)
 ### Who you tested it with.
@@ -94,13 +98,14 @@ Before option to view your reviews:
 
 <img src="https://github.com/user-attachments/assets/8a8feb82-cb8e-40d1-bc19-4c86a55ccd1b" width="400">
 
-After adding page to view your reviews:
+After adding page to view your reviews: 
 
-<img src="https://github.com/user-attachments/assets/8a8feb82-cb8e-40d1-bc19-4c86a55ccd1b" width="400">
+<img src="https://github.com/user-attachments/assets/8ad15121-be0f-404d-bb69-bc1323967101" width="400">
 <img src="https://github.com/user-attachments/assets/54dd9e38-4fc5-4322-a164-329f56440d06" width="400">
 
-After popup to confirm deletion of a review:
+After popup to confirm deletion of a review: 
 
+<img src="https://github.com/user-attachments/assets/8e3bd318-845f-4521-af78-b02245903f1f" width="400">
 
 ## Test 3 (Kailee)
 - We tested with Kailee, a fourth-year Grinnell College student who is a real stakeholder in our website. She is a naive user, as she did not know about our project before our test with her. 
@@ -161,7 +166,7 @@ After popup to confirm deletion of a review:
 - Room Poster
 - Room Reviewer
 ### Additional notes describing the session, e.g. observations of the test user's behavior.
-- User was first interested in exploring the dorms, and then went back and explore the review room option. It was initially unclear to him as to what the button to see your past reviews did and why one would need that functionality.
+- User was first interested in exploring the dorms, and then went back and explore the review room option.
 - He did not seem to notice or be interested in the general information we included about the dorm building.
 ### The feedback you got from the tester
 - He would use the website to both post rooms and review rooms. He would be less likely to use the website if he had to post a review before being able to see other reviews.  The information he would be most interested to learn is the size of the room (by seeing photos) and other general information like how many bathrooms are on a floor.
@@ -177,8 +182,10 @@ After popup to confirm deletion of a review:
 - We asked him about display of information on each room review, and he prefers having the images and comments in separate sections instead of linking images to their respective comments. This differs from Kailee's opinions.
 ### Summarize the changes to your requirements after each test and describe why you made each change
 
-### Include one or more photos of your revised prototype where the difference between the original and revised version can be plainly seen
+### Photos of revised prototype
 Sketch of alternative search functionality: 
+
+<img src="https://github.com/user-attachments/assets/1f85af95-a519-425d-a7a3-800b6b0be54d" width="400">
 
 ## Test 5 (Devon)
 - We tested this with Devon, a Grinnell College student on the football team who is a real stakeholder in our website. He is a naive user, as he did not know about our project before our test with him. 
@@ -197,23 +204,27 @@ Sketch of alternative search functionality:
 ### Additional notes describing the session, e.g. observations of the test user's behavior.
 - He followed the prompts as expected. 
 - He clicked on the room location on the floor plan image to view its information instead of the room number in the list of rooms. He corrected this action when Nitin initially did not change the screen.
-- He did not seem to care about the general dorm information provided, and just cared about room information. 
+- He did not seem to care about the general dorm information provided, and just cared about room information.
+- It was initially unclear to him as to what the button to see your past reviews did and why one would need that functionality.
 ### The feedback you got from the tester
 - At first, he told us he liked the design and it was straighforward and easy to use. When we asked him if he would prefer the alternative filtering option we had drawn on the whiteboard, he told us he would prefer that option. He said that he does not have a specific dorm building or floor preference, and would rather compare the rooms themselves regardless of their location. He did say that this option wouldn't be as helpful if there were not enough reviews on the website, and he would be unlikely to use the website if thre was a noticable lack of rooms that had been reviewed.
 - Room vs. the Hall information. If user prioritizes room information only, then could potentially remove additional steps of going through region, dorm, floor, to the room itself. (search bar)
 
 ### Describe changes to your prototype
-- 
-### other changes your team decided to make from your own thoughts and ideas from the testing session
-- 
-### other things you added to your prototype, not necessarily based on the testing session
--
+- We changed the location and text on the button to view your past reviews in order to help users understand/distinguish that this option is related to their personal reivews and is viewable only to them.
+
 ### 3 major questions that you asked the test user for feedback on, and the test user's responses.
 
 ### Changes to your requirements
 
-### Include one or more photos of your revised prototype where the difference between the original and revised version can be plainly seen
+### Photos of your revised prototype
+Before moving review button: 
 
+<img src="https://github.com/user-attachments/assets/8ad15121-be0f-404d-bb69-bc1323967101" width="400">
+
+After moving review button: 
+
+<img src="https://github.com/user-attachments/assets/abc56792-7d5c-43c5-9bde-ec89b64a1fd7" width="400">
 
 # Storyboard Image:
 
