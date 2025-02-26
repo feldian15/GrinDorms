@@ -222,13 +222,23 @@ Sketch of alternative search functionality:
 - He did not seem to care about the general dorm information provided, and just cared about room information.
 - It was initially unclear to him as to what the button to see your past reviews did and why one would need that functionality.
 ### The feedback you got from the tester
-- At first, he told us he liked the design and it was straighforward and easy to use. When we asked him if he would prefer the alternative filtering option we had drawn on the whiteboard, he told us he would prefer that option. He said that he does not have a specific dorm building or floor preference, and would rather compare the rooms themselves regardless of their location. He did say that this option wouldn't be as helpful if there were not enough reviews on the website, and he would be unlikely to use the website if thre was a noticable lack of rooms that had been reviewed.
-- Room vs. the Hall information. If user prioritizes room information only, then could potentially remove additional steps of going through region, dorm, floor, to the room itself. (search bar)
-
+- His initial feedback was that he liked the design and it was straighforward and easy to use.
+- Idea of Room vs. the Hall information. If user prioritizes room information only, then could potentially remove additional steps of going through region, dorm, floor, to the room itself. (search bar)
 ### Describe changes to your prototype
 - We changed the location and text on the button to view your past reviews in order to help users understand/distinguish that this option is related to their personal reivews and is viewable only to them.
 
 ### 3 major questions that you asked the test user for feedback on, and the test user's responses.
+Q: We asked him if he would prefer the alternative filtering option we had drawn on the whiteboard.
+
+ A: He told us he would prefer that option. He said that he does not have a specific dorm building or floor preference, and would rather compare the rooms themselves regardless of their location. 
+ 
+ Q: We asked him if seeing a star rating is important to his decision on rooms. 
+ 
+ A: He said that this new filtering option wouldn't be as helpful if there were not enough reviews on the website, and he would be unlikely to use the website if thre was a noticable lack of rooms that had been reviewed.
+
+Q: How likely are you/would you have been to use this product for room draw? What is the primary purpose you would use it for?
+
+A: He would like to use it to find the best room possible, and he would also be willing to post a review. 
 
 ### Changes to your requirements
 
