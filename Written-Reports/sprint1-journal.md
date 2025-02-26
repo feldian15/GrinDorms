@@ -52,8 +52,6 @@
 ### other things you added to your prototype, not necessarily based on the testing session
 - We added an option for users to see all of their reviews and delete any they may have made a mistake on or do not wish to share anymore. We also added a dorm and floor information panel on each respective screen to better highlight details of each.
 ### Include one or more photos of your revised prototype where the difference between the original and revised version can be plainly seen
-[ADD PHOTOS OF REVIEWS WITH FLAG AND NAVIGATION BREADCRUMBS]
-
 Before Flags:
 
 <img src="https://github.com/user-attachments/assets/8ed23479-dbf0-404b-a6d0-e693a2617885" width="400">
