@@ -152,10 +152,10 @@ After popup to confirm deletion of a review:
  A: She would feel self conscious if someone who knew where she lived was able to trace the review back to her, but would not feel unsafe when posting reviews. 
 
 ### Changes to requirements 
-- Included a filtering and sorting function as a stretch goal
+- Included a filtering and sorting function as a stretch goal.
 
 ### Photos of revised prototype
-
+n/a
 
 ## Test 4 (Jacob)
 - We tested this with Jacob, a first-year Grinnell College student who is a real stakeholder in our website. He is a naive user, as he did not know about our project before our test with him. 
@@ -183,11 +183,22 @@ After popup to confirm deletion of a review:
 - Make the dorm building info bigger on the page so users notice it, and don't immediately click on the floor to find rooms. 
 
 ### 3 major questions that you asked the test user for feedback on, and the test user's responses.
+Q: How likely are you/would you have been to use this product for room draw? What is the primary purpose you would use it for?
+
+ A: He would be very likely to use it for room draw, even though he does not know a lot about the room draw process as a first year student. His primary purpose would be to use it for looking at rooms, but he said he would also be willing to post room reviews. 
+ 
+Q: What type of information would you like to see about the dorms? The floors? And the rooms?
+
+  A: He is most interested in finding the biggest rooms possible, and does not care about the room location (on campus, on floor level, etc). He would most like to see images of rooms when comparing them. 
+
+Q: Which elements of the interface, if any, were distracting or confusing? Why or why not?
+
+ A: He would like a way to more easily compare all the rooms in different halls instead of only being able to look at rooms on the same floor of a given building. 
 
 ### Spontaneous feedback from the test user, and questions you came up with on the spot
 - We asked him about display of information on each room review, and he prefers having the images and comments in separate sections instead of linking images to their respective comments. This differs from Kailee's opinions.
 ### Summarize the changes to your requirements after each test and describe why you made each change
-
+- We added a use case of a student looking to find the best room, who does not care about the location of the room. They would need an easier filtering option to compare rooms instead of looking at each building individually.
 ### Photos of revised prototype
 Sketch of alternative search functionality: 
 
