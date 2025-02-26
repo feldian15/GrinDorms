@@ -25,7 +25,6 @@
 - How likely are you/would you have been to use this product for room draw? What is the primary purpose you would use it for?
 - How likely is it that you would post a review? How likely would you be to browse the rooms?
 - What type of information would you like to see about the dorms? The floors? And the rooms?
- - number of bathrooms, kitchen size/pictures, information about surrounding roooms
 - Which elements of the interface, if any, were distracting or confusing? Why or why not?
 - How comfortable would you feel posting pictures of your furnished room?
 
@@ -153,6 +152,7 @@ After popup to confirm deletion of a review:
  A: She would feel self conscious if someone who knew where she lived was able to trace the review back to her, but would not feel unsafe when posting reviews. 
 
 ### Changes to requirements 
+- Included a filtering and sorting function as a stretch goal
 
 ### Photos of revised prototype
 
