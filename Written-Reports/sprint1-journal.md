@@ -95,8 +95,6 @@ After General Dorm Info:
 ### other things you added to your prototype, not necessarily based on the testing session
 - We added a page to look at all past reviews, that the user gets naviagated to once they post a new review. 
 ### Include one or more photos of your revised prototype where the difference between the original and revised version can be plainly seen
-[ADD PHOTOS]
-
 Before option to view your reviews:
 
 <img src="https://github.com/user-attachments/assets/8a8feb82-cb8e-40d1-bc19-4c86a55ccd1b" width="400">
@@ -241,7 +239,7 @@ Q: How likely are you/would you have been to use this product for room draw? Wha
 A: He would like to use it to find the best room possible, and he would also be willing to post a review. 
 
 ### Changes to your requirements
-
+- Altered the filtering capabilities: (added to major features) Add custom sorting and filtering functionality for users to query the room database instead of the flow where users need to click on building, floor, and room. 
 ### Photos of your revised prototype
 Before moving review button: 
 
@@ -256,17 +254,19 @@ After moving review button:
 <img src="https://github.com/user-attachments/assets/b7f0ac2e-b651-45f9-876d-333e73bbf220" width="400">
 <img src="https://github.com/user-attachments/assets/d91e0f80-553e-4c8f-9f72-17185446426b" width="400">
 
-# CIDER Lab (TODO)
-Critique
-What assumptions about users were identified during the critique stage?
-Imagine
-Which assumption(s) did you choose to expand on for this phase?
-How might that assumption exclude users?
-Design
-What are your ideas for redesigning your product based on critique?
-Update Requirements Document as needed
+# CIDER Lab
+### Critique
+- We assumed that users would already have a building preference on campus or would already have a room assigned to them.
+- We assumed that users are not visually imparied.
+- We assumed that users can read and understand English.
 
-If any changes to your requirements came up as a result of performing the CIDER technique, update your requirements document accordingly.
+### Imagine
+- Some users do not care about where they are on campus, they just care about getting the best room possible. The assumption that users would already have a building preference on campus or would already have a room assigned to them prevents them from easily comparing rooms in different buildings and finding the best room for them. It excludes users who have a hard time processing a lot of different information and remembering information about rooms across different buildings.
+  
+### Design
+- We would like to change our filtering process to allow users to easily compare rooms without worrying about the details of where they are located on campus and the information about the dorm buildings they are in. We will separate the process to search for general dorm info and search for different room reveiws on different pages of the website to meet the needs of all users (those who want dorm location info and those who do not care about that).
+
+We have updated the requirements document to reflect these changes. 
 
 
 
