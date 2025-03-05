@@ -1,0 +1,26 @@
+<label for="buildings">Choose a building</label>
+
+<select name="buildings" id="buildings">
+    {% if building_list %}
+        {% for building in building_list %}
+            <option value="{{ building.name }}">{{ building.name }}</option>
+        {% endfor %}
+    {% else %}
+        <option value="none">No buildings to display</option> 
+    {% endif %}
+</select>
+
+<br><br>
+
+<label for="rooms">Choose a room</label>
+
+<select name="rooms" id="rooms">
+    {% if room_list %}
+        {% for room in room_list %}
+            <option value="{{ room.number }}">{{ room.number }}</option>
+        {% endfor %}
+    {% else %}
+        <option value="none">No rooms to display</option> 
+    {% endif %}
+</select>
+

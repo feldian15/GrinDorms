@@ -40,7 +40,19 @@ def rooms(request, building_name, floor_num):
 
     return render(request, "browse/rooms.html", context)
 
+def rooms_updated(request, args):
+    # Parse out all of the filter arguments
+    region_list = ["NORTH", "EAST", "SOUTH"]
+    building_list = Building.objects.all()
+    floor_list = ["PIT", "1", "2", "3", "4"]
+    room_list = Room.objects.all()
 
+    context = {"region_list": region_list,
+               "building_list": building_list,
+               "floor_list": floor_list,
+               "room_list": room_list}
+
+    return render(request, "browse/rooms_updated.html", context)
 
 def room_details(request, building_name, floor_num, room_number):
     return HttpResponse("This is the view of the details of room %d on floor %d of %s Hall" % (room_number, floor_num, building_name))
