@@ -14,12 +14,8 @@
 - process description: complete a risk assessment, develop epics, create a timeline, and make a documentation plan
 - Continuous integration plan: We will add a developer guidelines page detailing our testing library and how to contribute to the source code
 - test automation and CI setup: We will setup the test suite
+- Additional work for this sprint: **Link Django to Postgres database and get our project incorporated on reclaim cloud**
 # Assignment: What will each team member do this sprint?
 
 # Issue Tracker: How can your instructor view the results of your sprint planning using your issue tracker?
-Make sure that issues within your issue tracker are well formed. A well formed issue is:
-Well defined: includes a meaningful title and a description outlining the details of the issue
-Scoped: has an estimate of the time or effort needed to complete
-Verifiable: has a clear, unambiguous description of how to know when it is done
-Indecomposable: can't be broken down into smaller parts that could stand on their own
-Make sure that issues for this sprint can easily be seen in your issue tracker even after the end of the sprint.
+Issues added to Trello board: https://trello.com/b/fiZwfAwq/grindorms
