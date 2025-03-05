@@ -16,6 +16,11 @@
 - test automation and CI setup: We will setup the test suite
 - Additional work for this sprint: **Link Django to Postgres database and get our project incorporated on reclaim cloud**
 # Assignment: What will each team member do this sprint?
-
+As a group, we will collaborate on system design and architecture. 
+Nitin: Add database schema and explanation to living document (requirements doc)
+Ella: Risk assessments
+Ian: Epics, Product Roadmaps
+Rene: System Design + architecture
+Tim, Mac: Documentation plan, Continuous Integration plan
 # Issue Tracker: How can your instructor view the results of your sprint planning using your issue tracker?
 Issues added to Trello board: https://trello.com/b/fiZwfAwq/grindorms
