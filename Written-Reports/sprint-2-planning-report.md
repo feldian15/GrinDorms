@@ -1,11 +1,11 @@
-# Capacity: How much work can your team do this sprint? (More, less, or the same as last sprint.) Consider each team member's availability and how accurate your time estimates were for last week's tasks.
-- We collectively agree that we can accomplish more in this sprint.
+# Capacity: How much work can your team do this sprint? 
+- We collectively agree that we can accomplish more in this sprint. Than the last sprint, and people are willing to put in some work over spring break. 
 
-# Write the estimates using some unit of time or effort (e.g. hours or beans). If the unit is not a common measure of time, include a description of what the unit means.
+# Write the estimates using some unit of time or effort
 - Each person will put in a maximum of 12 hours of work over the next two weeks, plus potentially some additional time during spring break.
 
-# Goals: Name the outcomes you plan to complete this sprint. Consider your backlog and the parameters of this week's milestone.
-- System architecture and design, database architecture, process description, continuous integration plan, test automation and CI setup.
+# Goals: Name the outcomes you plan to complete this sprint. 
+- System architecture and design, database architecture, process description, continuous integration plan, test automation and CI setup. Also starting our project implementation (database/reclaim cloud integration).
 
 # Task breakdown: For the work you plan to do this sprint, summarize the component parts. (Ok to just refer to your issue tracker.)
 - System architecture: Layer diagram
