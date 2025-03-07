@@ -1,3 +1,3 @@
 function get_filter_options() {
-   document.getElementById("message").innerHTML = "Building selected!"
+   document.getElementById("message").innerHTML = "Is this working";
 }

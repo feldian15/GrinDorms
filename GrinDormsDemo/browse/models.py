@@ -35,3 +35,7 @@ class Room(models.Model):
     def __str__(self):
         br = "%s %d" % (self.building.name, self.number)
         return br
+    
+    @property
+    def floor_display(self):
+        return "PIT" if self.floor == 0 else str(self.floor)
