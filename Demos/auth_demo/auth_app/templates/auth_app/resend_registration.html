@@ -1,0 +1,15 @@
+<html>
+
+    <h1> Resend Registration Email</h1>
+
+    <form method="POST" autocomplete="off">
+
+        {% csrf_token %}
+
+        {{resendregistration.as_p}}
+
+        <input type="submit" value="Resend email"/>
+
+    </form>
+
+</html>
