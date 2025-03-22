@@ -2,7 +2,7 @@ from django.db import models
 from browse.models import Room
 
 # Create your models here.
-MAXLEN = 200
+MAXLEN = 500
 
 class Review(models.Model):
     RATING_OPTIONS = [
@@ -18,4 +18,11 @@ class Review(models.Model):
     comments = models.CharField(max_length=MAXLEN)
 
     def __str__(self):
-        return self.room + "review"
+        return "%s Hall room %d review" % (self.room.building.name, self.room.number)
+    
+class Image(models.Model):
+    review = models.ForeignKey(Review, related_name="images", on_delete=models.CASCADE)
+    data = models.ImageField()
+
+    def __str__(self):
+        return self.review.room + "review image"

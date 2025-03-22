@@ -34,7 +34,7 @@ def rooms(request):
                "floor_list": floor_list,
                "room_list": room_list}
 
-    return render(request, "browse/rooms_updated.html", context)
+    return render(request, "browse/rooms.html", context)
 
 def room_details(request, building_name, floor_num, room_number):
     return HttpResponse("This is the view of the details of room %d on floor %d of %s Hall" % (room_number, floor_num, building_name))
