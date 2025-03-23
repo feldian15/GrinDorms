@@ -5,7 +5,6 @@ from django.db.models import F
 
 from .models import Review
 from browse.models import Room, Building
-from home.views import home
 
 # Create your views here.
 
@@ -65,4 +64,14 @@ def upload(request, building_name, room_number):
 
     new_review.save()
 
-    return HttpResponseRedirect(reverse("home:home"))
+    return HttpResponseRedirect(reverse("review:review_added"))
+
+def review_added(request):
+    return render(request, "review/review_added.html", {})
+
+def my_reviews(request):
+    review_list = Review.objects.filter(display=True)
+
+    context = {"review_list": review_list}
+
+    return render(request, "review/my_reviews.html", context)

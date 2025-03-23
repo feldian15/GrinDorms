@@ -1,11 +1,5 @@
 <h1>Welcome to GrinDorms</h1>
 <h2>Use the following links to navigate the site:</h2>
-{% if link_list %}
-<ul>
-    {% for link in link_list %}
-        <li><a href="/{{ link }}/">{{ link }} rooms</a></li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>No options available</p>
-{% endif %}
+<h3><a href="/browse/">Browse for rooms</a></h3>
+<h3><a href="/review/">Review a room</a></h3>
+<h3><a href="{% url 'review:my_reviews' %}">View your reviews</a></h3>

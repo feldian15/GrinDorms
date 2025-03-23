@@ -1,0 +1,18 @@
+<a href="/home/">Back to Home</a>
+<h1>All Reviews</h1>
+
+{% if review_list %}
+    {% for review in review_list %}
+        <fieldset>
+            <legend><h3>Review for {{ review.room.building.name }} {{ review.room.number }}</h3></legend>
+            <h5>Rating: {{ review.rating }} stars</h5>
+            <fieldset>
+                <legend><strong>Comments</strong></legend>
+                {{ review.comments }}
+            </fieldset>
+        </fieldset>
+        <br>
+    {% endfor %}
+{% else %}
+    <h3>No reviews to display</h3>
+{% endif %}

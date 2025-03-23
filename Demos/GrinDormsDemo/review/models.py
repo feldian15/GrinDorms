@@ -16,6 +16,7 @@ class Review(models.Model):
     room = models.ForeignKey(Room, related_name="reviews", on_delete=models.CASCADE)
     rating = models.IntegerField(choices=RATING_OPTIONS, default = 3)
     comments = models.CharField(max_length=MAXLEN)
+    display = models.BooleanField(default = True)
 
     def __str__(self):
         return "%s Hall room %d review" % (self.room.building.name, self.room.number)
