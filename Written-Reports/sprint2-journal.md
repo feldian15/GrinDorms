@@ -9,4 +9,26 @@
 
 
 ### Epics:
+##### Epic 1: User Authentication
+- Description: This epic will allow users to create an account with a Grinnell Email, register the account, and log in with an existing account. Once logged in, this epic will keep track of the active account session, for use in other features of the app. There will also be an option to recover an account.
+- Dependencies: No requirements, except that there must be some information that is hidden behind the login wall.
+- Effort: Likely 2 person weeks to have a functional product
+- Subtasks: User database configuration Creating a user view to log in, blocking the site from access without a login, email verification, password recovery, normal login, and active user session information
 
+  ##### Epic 2: Browse Functionality
+  - Description: This epic will allow users to browse the database of rooms and examine the most current information. Users must be able to filter, sort and examine the rooms in the database.
+  - Dependencies: Must have a database configured and populated with basic room information.
+  - Effort: Likely 3-4 person weeks.
+  - Subtasks: Room Database configuration, user filtering ability, user sorting ability, room-specific detail page creation
+
+##### Epic 3: Review Functionality
+- Description: This epic will allow users to post reviews of the specific rooms they have lived in and upload pictures.
+- Dependencies: Must have epic 2: browse functionality semi completed to allow for viewing of the reviews and linking of reviews to rooms, as well as database updates. Also must have epic 1 completed to associate reviews with users.
+- Effort: Likely 3-4 person weeks
+- Subtasks: Review Database configuration, image database configuration, stepthrough building, floor, room sorting options, input field setup, backend handling of user input and database updating, success messaging or failure safeguards
+
+##### Epic 4: User Review Editing Capability
+- Description: This epic will allow users to view their existing reviews and delete or edit them.
+- Dependencies: Epic 3 must be completed in its entirety to ensure any updates are populated in the database and displayed accordingly. Epic 1 must be completed to track which user is currently in the session.
+- Effort: Likely 1-2 person weeks
+- Subtasks: User review page creation, user tracking, editing interface creation, population of existing review information in the editing interface, deletion functionality, success messaging and failure safeguards, updating of database accordingly. 
