@@ -1,0 +1,37 @@
+<a href="/home/">Back to Home</a>
+<br>
+<a href="/browse/">Back to Browse</a>
+<h1>{{ room.building.name }} {{ room.number }}</h1>
+
+<fieldset>
+    <legend><h2>Details</h2></legend>
+    Average Rating: {% if avg_rating %} {{ avg_rating }} {% else %} No reviews yet {% endif %}
+    <br>
+    Building: {{ room.building.name }} Hall
+    <br>
+    Campus Region: {{ room.building.region }}
+    <br>
+    Floor in building: {% if room.floor %} {{ room.floor }} {% else %} Pit {% endif %}
+</fieldset>
+
+<br><br>
+
+
+<fieldset>
+<legend><h2>Reviews</h2></legend>
+{% if review_list %}
+    {% for review in review_list %}
+        <fieldset>
+            <h5>Rating: {{ review.rating }} stars</h5>
+            <fieldset>
+                <legend><strong>Comments</strong></legend>
+                {{ review.comments }}
+            </fieldset>
+        </fieldset>
+        <br>
+    {% endfor %}
+{% else %}
+    <h3>No reviews to display</h3>
+    <a href="/review?building={{room.building.name}}&floor={{room.floor}}&room={{room.number}}">Be the first</a>
+{% endif %}
+</fieldset>

@@ -3,6 +3,7 @@ from django.http import HttpResponse, JsonResponse
 import re
 
 from .models import Building, Room
+from review.models import Review
 
 # Create your views here.
 
@@ -36,40 +37,20 @@ def rooms(request):
 
     return render(request, "browse/rooms.html", context)
 
-def room_details(request, building_name, floor_num, room_number):
-    return HttpResponse("This is the view of the details of room %d on floor %d of %s Hall" % (room_number, floor_num, building_name))
+def room_details(request, building_name, room_number):
+    room = Room.objects.get(building__name=building_name, number=room_number)
+    review_list = Review.objects.filter(room=room)
 
-# def home(request):
-#     building_list = Building.objects.order_by("name")
-#     context = {"building_list": building_list}
-#     return render(request, "browse/home.html", context)
+    avg_rating = 0
+    num_reviews = len(review_list)
+    if num_reviews > 0:
+        for review in review_list:
+            avg_rating += review.rating
+        
+        avg_rating = avg_rating / num_reviews
 
-# def floors(request, building_name):
-#     #get the associated building
-#     building = get_object_or_404(Building, name = building_name)
+    context = {"room": room,
+               "review_list": review_list,
+               "avg_rating": avg_rating}
     
-#     num_floors = building.num_floors
-#     has_pit = building.has_pit
-
-#     #if the building has a pit, remove one of the floors
-#     if(has_pit):
-#         floor_list = range(0, num_floors)
-#     else:
-#         floor_list = range(1, num_floors + 1)
-
-#     context = {"floor_list": floor_list,
-#                "building_name": building.name}
-
-#     return render(request, "browse/floors.html", context)
-
-# def rooms(request, building_name, floor_num):
-#     #get the associated building
-#     building = get_object_or_404(Building, name = building_name)
-
-#     room_list = Room.objects.filter(floor = floor_num, building = building)
-
-#     context = {"floor_num": floor_num,
-#                "building_name": building.name,
-#                "room_list": room_list}
-
-#     return render(request, "browse/rooms.html", context)
+    return render(request, "browse/room_details.html", context)

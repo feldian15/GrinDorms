@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from django.db.models import F
 
-from .models import Review
+from .models import Review, Image
 from browse.models import Room, Building
 
 # Create your views here.
@@ -63,6 +63,11 @@ def upload(request, building_name, room_number):
     new_review.comments = review_text
 
     new_review.save()
+
+    # This is where we need to save the image to the database
+    # new_image = Image()
+    # new_image.review = new_review
+    # new_image.data = ????????????
 
     return HttpResponseRedirect(reverse("review:review_added"))
 
