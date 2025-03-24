@@ -15,7 +15,7 @@ We use Trello to track development tasks and manage product progress. You can vi
 [GrinDorms Trello Board](https://trello.com/b/fiZwfAwq/grindorms)
 
 ## Coding Guidelines
-[Django Coding Style Guidelines](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/)
+We adhere to HackSoftware's Django's coding style guidelines, following the clear rules for writing templates, views, models, and test cases, ensuring maintainable and clean code throughout the project. HackSoftware's documentation expands upon [Django's official style guidelines](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style), but we feel that Hacksoftware's guidelines are better suited for our goals and understanding: [HackSoftware's Django Coding Style Guidelines](https://github.com/HackSoftware/Django-Styleguide?tab=readme-ov-file#overview)
 
 ## Contents
 ### GrinDormsDemo
