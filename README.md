@@ -15,6 +15,7 @@ We use Trello to track development tasks and manage product progress. You can vi
 [GrinDorms Trello Board](https://trello.com/b/fiZwfAwq/grindorms)
 
 ## Coding Guidelines
+We adhere to Django's coding style guidelines, following the clear rules for writing templates, views, models, and test cases, ensuring maintainable and clean code throughout the project. 
 [Django Coding Style Guidelines](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/)
 
 ## Contents
