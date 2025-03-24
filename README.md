@@ -14,6 +14,9 @@ GrinDorms is an online platform designed to help Grinnell College students brows
 We use Trello to track development tasks and manage product progress. You can view open issues, completed tasks, and sprint planning at:
 [GrinDorms Trello Board](https://trello.com/b/fiZwfAwq/grindorms)
 
+## Coding Guidelines
+[Django Coding Style Guidelines](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/)
+
 ## Contents
 ### GrinDormsDemo
 The directory titled GrinDormsDemo is a localhost site that contains a simple play-around for how a UI might work for our project. To use the demo, navigate to the folder in a terminal, and use the following command line prompt: (Assuming python has been installed on the device)
