@@ -50,10 +50,9 @@ def review(request):
 
 def my_reviews(request):
     review_list = Review.objects.filter(display=True)
-    image_list = Image.objects.all()
+    review_list = review_list.prefetch_related("images")
 
-    context = {"review_list": review_list,
-               "image_list": image_list}
+    context = {"review_list": review_list}
 
     return render(request, "review/my_reviews.html", context)
 
@@ -75,11 +74,14 @@ def add(request, building_name, room_number):
 
     room.calc_avg_rating()
 
-    new_image = Image()
-    new_image.review = new_review
-    new_image.data = request.FILES.get("image")
+    image_data = request.FILES.getlist("image")
 
-    new_image.save()
+    for image in image_data:
+        new_image = Image()
+        new_image.review = new_review
+        new_image.data = image
+
+        new_image.save()
 
     return HttpResponseRedirect(reverse("review:review_added"))
 

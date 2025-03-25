@@ -3,7 +3,7 @@ from django.http import HttpResponse, JsonResponse
 import re
 
 from .models import Building, Room
-from review.models import Review
+from review.models import Review, Image
 
 # Create your views here.
 
@@ -47,8 +47,10 @@ def rooms(request):
 def room_details(request, building_name, room_number):
     room = Room.objects.get(building__name=building_name, number=room_number)
     review_list = Review.objects.filter(room=room)
+    image_list = Image.objects.filter(review__room=room)
 
     context = {"room": room,
-               "review_list": review_list}
+               "review_list": review_list,
+               "image_list": image_list}
     
     return render(request, "browse/room_details.html", context)

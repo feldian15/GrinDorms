@@ -11,13 +11,13 @@
                 {{ review.comments }}
             </fieldset>
             <br>
-            
-            {% for image in image_list %}
-                {% if image.review == review %}
+            {% if review.images.all %}
+                {% for image in review.images.all %}
                     <img src="{{ image.data.url }}" alt="Review Image" width="200">
-                {% endif %}
-            {% endfor %}
-
+                {% endfor %}
+            {% else %}
+                <p>No images to display</p>
+            {% endif %}
             <br>
             <form action="{% url 'review:remove' %}" method="post">
                 {% csrf_token %}

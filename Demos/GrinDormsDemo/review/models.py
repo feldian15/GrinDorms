@@ -26,4 +26,4 @@ class Image(models.Model):
     data = models.ImageField(upload_to='review_images/', blank=True, null=True)
 
     def __str__(self):
-        return str(self.review.room.number) + "review image"
+        return self.review.room.building.name + " " + str(self.review.room.number) + " review image"
