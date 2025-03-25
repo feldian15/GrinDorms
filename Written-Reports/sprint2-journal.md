@@ -15,11 +15,11 @@
 - Effort: Likely 2 person weeks to have a functional product
 - Subtasks: User database configuration Creating a user view to log in, blocking the site from access without a login, email verification, password recovery, normal login, and active user session information
 
-  ##### Epic 2: Browse Functionality
-  - Description: This epic will allow users to browse the database of rooms and examine the most current information. Users must be able to filter, sort and examine the rooms in the database.
-  - Dependencies: Must have a database configured and populated with basic room information.
-  - Effort: Likely 3-4 person weeks.
-  - Subtasks: Room Database configuration, user filtering ability, user sorting ability, room-specific detail page creation
+##### Epic 2: Browse Functionality
+- Description: This epic will allow users to browse the database of rooms and examine the most current information. Users must be able to filter, sort and examine the rooms in the database.
+- Dependencies: Must have a database configured and populated with basic room information.
+- Effort: Likely 3-4 person weeks.
+- Subtasks: Room Database configuration, user filtering ability, user sorting ability, room-specific detail page creation
 
 ##### Epic 3: Review Functionality
 - Description: This epic will allow users to post reviews of the specific rooms they have lived in and upload pictures.
@@ -31,4 +31,39 @@
 - Description: This epic will allow users to view their existing reviews and delete or edit them.
 - Dependencies: Epic 3 must be completed in its entirety to ensure any updates are populated in the database and displayed accordingly. Epic 1 must be completed to track which user is currently in the session.
 - Effort: Likely 1-2 person weeks
-- Subtasks: User review page creation, user tracking, editing interface creation, population of existing review information in the editing interface, deletion functionality, success messaging and failure safeguards, updating of database accordingly. 
+- Subtasks: User review page creation, user tracking, editing interface creation, population of existing review information in the editing interface, deletion functionality, success messaging and failure safeguards, updating of database accordingly.
+
+##### Epic 5: PostgreSQL and Reclaim Integration
+- Description: This epic will link the app to a postgres database and host it on reclaim cloud, rather than having a simple local host site.
+- Dependencies: All prior epics must be completed
+- Effort: Likely 1-2 person weeks
+- subtasks: Integrate postgres with django app, host app on reclaim
+
+### Product Roadmap
+##### Epic 1
+- Start date: March 13
+- Approximate completion: March 28
+- Flexible completion date: April 4
+
+##### Epic 2
+- Start date: March 6
+- Approximate completion: April 4
+- Flexible completion: April 8
+
+##### Epic 3
+- Start date: March 13
+- Approximate completion: April 4
+- Flexible completion: April 8
+
+##### Epic 4
+- Start date: March 24
+- Approximate completion: April 4
+- Flexible completion: April 18
+
+##### Epic 5
+- Start date: March 28
+- Approximate completion: April 11
+- Flexible completion: End of semester
+
+
+
