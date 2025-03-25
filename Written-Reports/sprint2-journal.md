@@ -1,4 +1,12 @@
 # Process Description
+
+### Software Architechure
+We will outline two decisions made during this sprint and describe out process in selecting our chosen option.
+1) We chose to use Reclaim Cloud
+  - We considered using Amazon Web Services (AWS) and a Content Delivery Network, but due to cost and the fact that the college provides hosting through Reclaim, we decided to use the tools provided and work around the limitations of the hosting platform
+2) We chose to use Postgres
+  - We considered multiple options, for one, a no-SQL database called Couchbase, the default builtin Django SQLite, and lastly Postgres. We ended up using Postgres due to industry norms, ease of finding information on using it, flexibility, and database speed.
+
 ### Risk Assessment:
 1. One of the main risks of successfully completing our project is not figuring out how to correctly host our website on the reclaim cloud environment that Grinnell set up for us.
 - There is a medium likelihood that this will occur, as the person who set up the environment is unable to help up with specific implementation details and there is not a lot of information on how to host via reclaim cloud, vs other cloud hosting services like AWS. The impact if this happens is pretty high, as we will not be able to make our website publicly available. We have tried to navigate the reclaim cloud platform and have found it confusing and unintuitive so far, and we do not have a plan to integrate our project into the cloud environment. If another group is going this route to host a website, we would like to contact them and try to collaborate and learn together. If we are unable to figure out how to host on this platform, we need to identify another free way for us to make our website publicly available.
