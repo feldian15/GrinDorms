@@ -10,6 +10,20 @@
                 <legend><strong>Comments</strong></legend>
                 {{ review.comments }}
             </fieldset>
+            <br>
+            
+            {% for image in image_list %}
+                {% if image.review == review %}
+                    <img src="{{ image.data.url }}" alt="Review Image" width="200">
+                {% endif %}
+            {% endfor %}
+
+            <br>
+            <form action="{% url 'review:remove' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="review_id" value="{{ review.id }}">
+                <button type="submit">Delete this review</button>
+            </form>
         </fieldset>
         <br>
     {% endfor %}

@@ -23,7 +23,7 @@ class Review(models.Model):
     
 class Image(models.Model):
     review = models.ForeignKey(Review, related_name="images", on_delete=models.CASCADE)
-    data = models.ImageField()
+    data = models.ImageField(upload_to='review_images/', blank=True, null=True)
 
     def __str__(self):
-        return self.review.room + "review image"
+        return str(self.review.room.number) + "review image"

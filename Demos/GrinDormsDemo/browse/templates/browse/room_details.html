@@ -5,7 +5,7 @@
 
 <fieldset>
     <legend><h2>Details</h2></legend>
-    Average Rating: {% if avg_rating %} {{ avg_rating }} {% else %} No reviews yet {% endif %}
+    Average Rating: {% if room.avg_rating %} {{ room.avg_rating }} {% else %} No reviews yet {% endif %}
     <br>
     Building: {{ room.building.name }} Hall
     <br>

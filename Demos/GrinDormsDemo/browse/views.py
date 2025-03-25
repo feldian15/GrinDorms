@@ -11,6 +11,8 @@ def rooms(request):
     selected_regions = request.GET.getlist('region')
     selected_buildings = request.GET.getlist('building')
     selected_floors = request.GET.getlist('floor')
+    sort = request.GET.get('sort')
+
     selected_floors_filter = ["0" if item == "PIT" else item for item in selected_floors]
 
     if selected_regions:
@@ -21,6 +23,10 @@ def rooms(request):
         room_list = Room.objects.filter(floor__in=selected_floors_filter)
     if not (selected_regions or selected_buildings or selected_floors):
         room_list = Room.objects.all()
+    if sort == "asc":
+        room_list = room_list.order_by('avg_rating')
+    if sort == "desc":
+        room_list = room_list.order_by('-avg_rating')
 
         
     region_list = ["NORTH", "EAST", "SOUTH"]
@@ -33,7 +39,8 @@ def rooms(request):
                "building_list": building_list,
                "selected_floors": selected_floors,
                "floor_list": floor_list,
-               "room_list": room_list}
+               "room_list": room_list,
+               "sort": sort}
 
     return render(request, "browse/rooms.html", context)
 
@@ -41,16 +48,7 @@ def room_details(request, building_name, room_number):
     room = Room.objects.get(building__name=building_name, number=room_number)
     review_list = Review.objects.filter(room=room)
 
-    avg_rating = 0
-    num_reviews = len(review_list)
-    if num_reviews > 0:
-        for review in review_list:
-            avg_rating += review.rating
-        
-        avg_rating = avg_rating / num_reviews
-
     context = {"room": room,
-               "review_list": review_list,
-               "avg_rating": avg_rating}
+               "review_list": review_list}
     
     return render(request, "browse/room_details.html", context)

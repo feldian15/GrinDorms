@@ -50,7 +50,7 @@
 </form>
 
 <fieldset id="review" style={% if selected_room %} "display:block" {% else %} "display:none" {% endif %}>
-<form action="{% url 'review:upload' building_name=selected_building room_number=selected_room%}" method="post">
+<form action="{% url 'review:add' building_name=selected_building room_number=selected_room %}" method="post" enctype="multipart/form-data">
 {% csrf_token %} 
         <h2>You are reviewing room {{ selected_room }} of {{ selected_building }} Hall</h2>
         <h3>Rating</h3>
@@ -63,7 +63,7 @@
         <h3>Review</h3>
         <input name="review_text" id="review_text" type="text" required>
         <h3>Pictures</h3>
-        <input name="pic" id="pic" type="file">
+        <input name="image" id="image" type="file">
         <br>
         <button type="submit">Submit</button>
 </form>

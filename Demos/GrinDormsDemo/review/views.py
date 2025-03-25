@@ -48,7 +48,16 @@ def review(request):
             
     return render(request, "review/review.html", context)
 
-def upload(request, building_name, room_number):
+def my_reviews(request):
+    review_list = Review.objects.filter(display=True)
+    image_list = Image.objects.all()
+
+    context = {"review_list": review_list,
+               "image_list": image_list}
+
+    return render(request, "review/my_reviews.html", context)
+
+def add(request, building_name, room_number):
     stars = 0
     if request.POST.get("stars"):
         stars = int(request.POST.get("stars"))
@@ -64,19 +73,33 @@ def upload(request, building_name, room_number):
 
     new_review.save()
 
-    # This is where we need to save the image to the database
-    # new_image = Image()
-    # new_image.review = new_review
-    # new_image.data = ????????????
+    room.calc_avg_rating()
+
+    new_image = Image()
+    new_image.review = new_review
+    new_image.data = request.FILES.get("image")
+
+    new_image.save()
 
     return HttpResponseRedirect(reverse("review:review_added"))
+
+def remove(request):
+    review_id = request.POST.get("review_id")
+
+    review = Review.objects.get(id=review_id)
+
+    room = review.room
+
+    # Make sure to delete urls from the media folder
+
+    review.delete()
+
+    room.calc_avg_rating()
+
+    return HttpResponseRedirect(reverse("review:review_removed"))
 
 def review_added(request):
     return render(request, "review/review_added.html", {})
 
-def my_reviews(request):
-    review_list = Review.objects.filter(display=True)
-
-    context = {"review_list": review_list}
-
-    return render(request, "review/my_reviews.html", context)
+def review_removed(request):
+    return render(request, "review/review_removed.html", {})
