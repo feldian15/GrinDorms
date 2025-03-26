@@ -17,6 +17,12 @@ We will outline two decisions made during this sprint and describe out process i
 
 
 ### Epics:
+##### Epic 0: Database population
+- Description: This epic will populate the room and building databases with all existing rooms and buildings on campus. Full completion is necessary for full functionality, but this does not need to be completed for testing purposes.
+- Dependencies: None
+- Effort: Likely 1-2 person weeks
+- Subtasks: Inputing all building information, inputing all room information
+
 ##### Epic 1: User Authentication
 - Description: This epic will allow users to create an account with a Grinnell Email, register the account, and log in with an existing account. Once logged in, this epic will keep track of the active account session, for use in other features of the app. There will also be an option to recover an account.
 - Dependencies: No requirements, except that there must be some information that is hidden behind the login wall.
@@ -48,6 +54,11 @@ We will outline two decisions made during this sprint and describe out process i
 - subtasks: Integrate postgres with django app, host app on reclaim
 
 ### Product Roadmap
+##### Epic 0
+- Start Date: March 28
+- Approximate completion: April 9
+- Flexible completion: End of semester
+
 ##### Epic 1
 - Start date: March 13
 - Approximate completion: March 28
