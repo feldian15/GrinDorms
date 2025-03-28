@@ -40,6 +40,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'auth_app.apps.AuthAppConfig',
     'review.apps.ReviewConfig',
     'home.apps.HomeConfig',
     'browse.apps.BrowseConfig',
