@@ -85,4 +85,8 @@ We will outline two decisions made during this sprint and describe out process i
 - Flexible completion: End of semester
 
 
+# CI Plan
+- Test Library: We will be using Django's built in test functionality. Included in every Django app is a testing protocol and test class file called tests.py. Tests are run using the `python3 manage.py test` command. This is what we will use. GitHub actions will be used to automate these tests and will run upon committing any code changes. We chose this testing protocol and CI service because they are easily set up and are mostly preconfigured for us to use. The ease of use is a major selling point.
+
+
 
