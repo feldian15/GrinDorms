@@ -10,9 +10,13 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+# Email Backend Setup
 from pathlib import Path
-import environ
+from dotenv import load_dotenv
 import os
+import environ
+
+load_dotenv()
 
 env = environ.Env()
 environ.Env.read_env()
