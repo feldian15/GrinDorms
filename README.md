@@ -14,8 +14,13 @@ GrinDorms is an online platform designed to help Grinnell College students brows
 We use Trello to track development tasks and manage product progress. You can view open issues, completed tasks, and sprint planning at:
 [GrinDorms Trello Board](https://trello.com/b/fiZwfAwq/grindorms)
 
-## Coding Guidelines
+## Developer Notes:
+
+### Coding Guidelines
 We adhere to HackSoftware's Django's coding style guidelines, following the clear rules for writing templates, views, models, and test cases, ensuring maintainable and clean code throughout the project. HackSoftware's documentation expands upon [Django's official style guidelines](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style), but we feel that Hacksoftware's guidelines are better suited for our goals and understanding: [HackSoftware's Django Coding Style Guidelines](https://github.com/HackSoftware/Django-Styleguide?tab=readme-ov-file#overview)
+
+### Testing protocol
+To add a new test to the project, use the tests.py file contained in any of the django project apps. Create a testing class that inherits the TestCase class, and create testing functions with names that start with "test_". Then, run `python3 manage.py test` in the project directory, and the tests will run automatically. Additionally, any commit to the GitHub will automatically run the tests in GitHub actions. Currently, only tests in the GrinDormsDemo app will be run automatically. For an example test, look in Demos/GrinDormsDemo/browse/tests.py.
 
 ## Contents
 ### GrinDormsDemo
