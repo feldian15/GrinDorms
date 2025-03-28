@@ -9,8 +9,8 @@ class RoomModelTests(TestCase):
         test_building = Building(name="TESTBLD", num_floors=3, has_pit=True)
         test_building.save()
 
-        test_room_1 = Room(building=test_building, number=1000)
-        test_room_2 = Room(building=test_building, number=1000)
+        test_room_1 = Room(building=test_building, number=1111)
+        test_room_2 = Room(building=test_building, number=1111)
 
         test_room_1.save()
 
