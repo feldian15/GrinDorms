@@ -1,17 +1,6 @@
 name: Server Health Check
 
 on:
-  workflow_dispatch:
-    inputs:
-      enable_schedule:
-        description: 'Enable scheduled health checks?'
-        required: true
-        default: 'true'
-        type: choice
-        options:
-          - 'true'
-          - 'false'
-
   schedule:
     - cron: "*/10 * * * *"  # Runs every 10 minutes
 
@@ -19,13 +8,6 @@ jobs:
   check-toggle:
     runs-on: ubuntu-latest
     steps:
-      - name: Check Schedule Toggle
-        run: |
-          if [ "${{ github.event.inputs.enable_schedule }}" == "false" ]; then
-            echo "Scheduled health check is disabled. Exiting."
-            exit 0
-          fi
-
       - name: Check Server Status
         run: |
           URL=""  # Change to our server URL
