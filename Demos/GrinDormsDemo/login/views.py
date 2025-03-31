@@ -17,11 +17,11 @@ from django.contrib.auth.models import User
 
 def homepage(request):
 
-    # return render(request, 'auth_app/index.html')
+    # return render(request, 'login/index.html')
 
     messages_to_display = messages.get_messages(request)
 
-    return render(request, 'auth_app/index.html', {"messages": messages_to_display})
+    return render(request, 'login/index.html', {"messages": messages_to_display})
 
 
 def register(request):
@@ -39,7 +39,7 @@ def register(request):
 
             current_site = get_current_site(request)
             mail_subject = "Activate your GrinDorms account"
-            message = render_to_string("auth_app/account_activation_email.html",{ 
+            message = render_to_string("login/account_activation_email.html",{ 
                 "user":user,
                 "domain": current_site.domain,
                 "uid": urlsafe_base64_encode(force_bytes(user.pk)),
@@ -53,7 +53,7 @@ def register(request):
             # messages.success(request, "Please check your email to complete the registration process. It might be in your spam folder.")
             return redirect("registration-submitted")
 
-    return render(request, 'auth_app/register.html', {"registerform":form})
+    return render(request, 'login/register.html', {"registerform":form})
 
 def my_login(request):
 
@@ -81,13 +81,13 @@ def my_login(request):
     
     context = {'loginform':form}
 
-    return render(request, 'auth_app/my-login.html', context=context)
+    return render(request, 'login/my-login.html', context=context)
 
 
 @login_required(login_url="my-login")
 def dashboard(request):
 
-    return render(request, 'auth_app/dashboard.html')
+    return render(request, 'login/dashboard.html')
 
 
 def user_logout(request):
@@ -139,7 +139,7 @@ def resend_registration(request):
                     else:
                         current_site = get_current_site(request)
                         mail_subject = "Activate your GrinDorms account"
-                        message = render_to_string("auth_app/account_activation_email.html",{ 
+                        message = render_to_string("login/account_activation_email.html",{ 
                             "user":user,
                             "domain": current_site.domain,
                             "uid": urlsafe_base64_encode(force_bytes(user.pk)),
@@ -156,11 +156,11 @@ def resend_registration(request):
             except User.DoesNotExist:
                 raise ValidationError("No account with this email was found.")
 
-    return render(request, 'auth_app/resend_registration.html', {"resendregistration":form})
+    return render(request, 'login/resend_registration.html', {"resendregistration":form})
 
 
 def registration_submitted(request):
-    return render(request, 'auth_app/registration_submitted.html')
+    return render(request, 'login/registration_submitted.html')
 
 
             
