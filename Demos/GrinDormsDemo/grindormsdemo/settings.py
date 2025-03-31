@@ -40,7 +40,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'auth_app.apps.AuthAppConfig',
+    'login.apps.LoginConfig',
     'review.apps.ReviewConfig',
     'home.apps.HomeConfig',
     'browse.apps.BrowseConfig',
@@ -154,3 +154,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+
+# Email Backend Setup
+mail = os.environ.get("MAIL")
+mail_pass = os.environ.get("PASSWORD")
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = mail
+EMAIL_HOST_PASSWORD = mail_pass
+DEFAULT_FROM_EMAIL = mail
+
+LOGIN_REDIRECT_URL = "/"

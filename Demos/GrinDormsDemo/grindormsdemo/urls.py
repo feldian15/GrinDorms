@@ -25,7 +25,7 @@ urlpatterns = [
     path("browse/", include("browse.urls")),
     path("review/", include("review.urls")),
     path("home/", include("home.urls")),
-    path('', include('auth_app.urls'))
+    path('', include('login.urls'))
 ]
 
 urlpatterns += staticfiles_urlpatterns()
