@@ -14,8 +14,10 @@
         fetch(new_url)
     }
 </script> -->
+{% load static %}
 
-<a href="/home/">Back to Home</a>
+<link rel="stylesheet" href="{% static 'browse/rooms.css' %}">
+<a href="/home/"> Home </a>
 <h1>Browse Rooms</h1>
 
 <fieldset>

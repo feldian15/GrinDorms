@@ -3,37 +3,58 @@ name: Deployment Workflow
 on:
   workflow_dispatch:  # Trigger the workflow manually via the GitHub Actions UI
 
+permissions:
+  contents: write  # Needed for merging
+
 jobs:
-  deploy:
+  run-tests:
+    uses: ./.github/workflows/test-workflow.yml  # Runs your test workflow first
+    secrets: inherit
+
+  squash-merge:
     runs-on: ubuntu-latest
+    needs: run-tests  # Ensures tests pass before merging
     steps:
-      - name: Checkout main branch
-        uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v4
         with:
-          ref: main
+          fetch-depth: 0  # Fetch full history
 
       - name: Configure Git
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Create deployment branch
+      - name: Check if Deploy Branch Exists
+        id: check_branch
         run: |
-          DEPLOY_BRANCH="deploy:$(date +'%Y-%m-%d')"
-          echo "Creating branch $DEPLOY_BRANCH"
-          git checkout -b "$DEPLOY_BRANCH"
-          git push origin "$DEPLOY_BRANCH"
+          if git ls-remote --exit-code --heads origin deploy; then
+            echo "branch_exists=true" >> $GITHUB_ENV
+          else
+            echo "branch_exists=false" >> $GITHUB_ENV
+          fi
 
-      - name: Run tests
-        id: tests
+      - name: Create Deploy Branch if Missing
+        if: env.branch_exists == 'false'
         run: |
-          echo "Running tests..."
-          # Replace the line below with your actual test command (e.g., npm test, pytest, etc.)
-          exit 0
+          git checkout -b deploy
+          git push origin deploy
 
-      - name: Update deploy:active branch if tests pass
-        if: ${{ success() }}
+      - name: Fetch Deploy Branch
+        if: env.branch_exists == 'true'
+        run: git fetch origin deploy
+
+      - name: Generate Commit Message
+        id: commit_message
         run: |
-          echo "Tests passed. Updating deploy:active branch to match main."
-          git checkout main
-          git push origin main:deploy:active --force
+          LAST_COMMIT_MSG=$(git log -1 --pretty=%B main)
+          echo "commit_msg=$LAST_COMMIT_MSG" >> $GITHUB_ENV
+
+      - name: Merge Main into Deploy with Squash
+        run: |
+          git checkout deploy
+          git merge --squash main
+          git commit -m "Squash merged main into deploy"
+
+      - name: Push Changes to Deploy
+        run: git push origin deploy
