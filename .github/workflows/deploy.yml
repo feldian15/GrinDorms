@@ -1,0 +1,39 @@
+name: Deployment Workflow
+
+on:
+  workflow_dispatch:  # Trigger the workflow manually via the GitHub Actions UI
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Create deployment branch
+        run: |
+          DEPLOY_BRANCH="deploy:$(date +'%Y-%m-%d')"
+          echo "Creating branch $DEPLOY_BRANCH"
+          git checkout -b "$DEPLOY_BRANCH"
+          git push origin "$DEPLOY_BRANCH"
+
+      - name: Run tests
+        id: tests
+        run: |
+          echo "Running tests..."
+          # Replace the line below with your actual test command (e.g., npm test, pytest, etc.)
+          exit 0
+
+      - name: Update deploy:active branch if tests pass
+        if: ${{ success() }}
+        run: |
+          echo "Tests passed. Updating deploy:active branch to match main."
+          git checkout main
+          git push origin main:deploy:active --force

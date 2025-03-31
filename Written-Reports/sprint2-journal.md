@@ -88,5 +88,13 @@ We will outline two decisions made during this sprint and describe out process i
 # CI Plan
 - Test Library: We will be using Django's built in test functionality. Included in every Django app is a testing protocol and test class file called tests.py. Tests are run using the `python3 manage.py test` command. This is what we will use. GitHub actions will be used to automate these tests and will run upon committing any code changes. We chose this testing protocol and CI service because they are easily set up and are mostly preconfigured for us to use. The ease of use is a major selling point.
 
+### Test Example
+<img width="792" alt="Screenshot 2025-03-28 at 3 32 14 PM" src="https://github.com/user-attachments/assets/222b862d-2a2f-431e-b391-213409532194" />
+Above is an example test in the Demos/GrinDormsDemo/browse/tests.py file.
+
+<img width="1365" alt="Screenshot 2025-03-28 at 3 33 13 PM" src="https://github.com/user-attachments/assets/4d6ff2e0-93fc-43fa-99d8-8544974498b5" />
+This is a message noting the successful completion of the test after committing to the GitHub.
+
+
 
 
