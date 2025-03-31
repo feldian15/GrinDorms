@@ -29,10 +29,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-0_c8uf3ol*!h0^=uro%ievu#su%m#w+e8+qcmvyo(bcm*!uuxu'
+SECRET_KEY = f'{os.getenv("SECRET_KEY")}'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = f'{os.getenv("DEBUG")}'
 
 ALLOWED_HOSTS = []
 
@@ -86,23 +86,24 @@ WSGI_APPLICATION = 'grindormsdemo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if(f'{os.getenv("ENVTYPE")}' == "DEVELOPER"):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'grindorms', 
-#         'USER': 'postgres',
-#         'PASSWORD': 'admin',
-#         'HOST': '127.0.0.1', 
-#         'PORT': '5432',
-#     }
-# }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'grindorms', 
+            'USER': f'{os.getenv("PG_USER")}',
+            'PASSWORD': f'{os.getenv("PG_PWD")}',
+            'HOST': f'{os.getenv("PG_HOST")}', 
+            'PORT': f'{os.getenv("PG_PORT")}',
+        }
+    }
 
 
 # Password validation
