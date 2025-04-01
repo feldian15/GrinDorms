@@ -34,7 +34,12 @@ SECRET_KEY = f'{os.getenv("SECRET_KEY")}'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = f'{os.getenv("DEBUG")}'
 
-ALLOWED_HOSTS = []
+# RECLAIM HAS THE FOLLOWING OPEN PORTS:
+# 80, 8080, 8686, 8443, 4848, 4949, 7979
+# USING THE PUBLIC IP ALLOWS FOR ALL PORTS TO BE USED.
+PORT=os.environ.get('PORT', 8080)
+
+ALLOWED_HOSTS = ['csc-234.us.reclaim.cloud', '135.148.74.19', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -86,7 +91,7 @@ WSGI_APPLICATION = 'grindormsdemo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-if(f'{os.getenv("ENVTYPE")}' == "DEVELOPER"):
+if(f'{os.getenv("ENVTYPE", "error")}' == "DEVELOPER"):
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
