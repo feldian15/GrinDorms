@@ -11,3 +11,4 @@
 - Ella and Tim: Authentication app and authentication testing, review browse and review code
 - Nitin: Deployment to reclaim cloud and postgres integration
 - Ian: Adapt code from demo to dev environment, review authentication code
+- Everyone: Generating building and room information from floors plans
