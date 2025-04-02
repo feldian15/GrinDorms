@@ -1,84 +1,107 @@
-<!-- {% load static %}
-<script src="{% static 'browse/update_rooms.js' %}"></script> -->
-
-<!-- <script>
-    function get_filter_options(item) {
-        const url = document.URL
-        let new_url = url.slice(0, -1)
-        if (new_url.slice(-4) == "none") {
-            new_url = new_url.slice(0, -4)
-        }
-        new_url = new_url + item + "&"
-        document.getElementById("message").innerText = new_url;
-        
-        fetch(new_url)
-    }
-</script> -->
 {% load static %}
 
+<!-- Optional JavaScript for future use -->
+<!-- 
+<script src="{% static 'browse/update_rooms.js' %}"></script>
+<script>
+    function get_filter_options(item) {
+        const url = document.URL;
+        let new_url = url.slice(0, -1);
+        if (new_url.slice(-4) === "none") {
+            new_url = new_url.slice(0, -4);
+        }
+        new_url = new_url + item + "&";
+        document.getElementById("message").innerText = new_url;
+        fetch(new_url);
+    }
+</script>
+-->
+
+<!-- Styles -->
 <link rel="stylesheet" href="{% static 'browse/rooms_home.css' %}">
-<a href="/home/"> Home </a>
+
+<!-- Navigation -->
+<a href="/home/">Home</a>
 <h1>Browse Rooms</h1>
 
+<!-- Filter Section -->
 <fieldset>
     <legend><h3>Filter</h3></legend>
+
+    <!-- Regions -->
     <label class="filter-section-title">Regions</label>
     <form id="filters" action="{% url 'browse:rooms' %}" method="get">
-    {% if region_list %}
-        {% for region in region_list %}
-            <label><input type="checkbox" name="region" value="{{ region }}" {% if region in selected_regions %} checked {% endif %}>{{ region }}</label>
-            
-        {% endfor %}
-    {% else %}
-        <p value="none">No regions to display</p>
-    {% endif %}
+        {% if region_list %}
+            {% for region in region_list %}
+                <label>
+                    <input type="checkbox" name="region" value="{{ region }}" {% if region in selected_regions %}checked{% endif %}>
+                    {{ region }}
+                </label>
+            {% endfor %}
+        {% else %}
+            <p value="none">No regions to display</p>
+        {% endif %}
 
-    <br><br>
-    <label class="filter-section-title">Buildings</label>
-    <br>
-    {% if building_list %}
-        {% for building in building_list %}
-            <label><input type="checkbox" name="building" value="{{ building.name }}" {% if building.name in selected_buildings %} checked {% endif %}>{{ building.name }}</label>
-            
-        {% endfor %}
-    {% else %}
-        <p value="none">No buildings to display</p>
-    {% endif %}
+        <br><br>
 
-    <br><br>
-    <label class="filter-section-title">Floors</label>
-    <br>
-    {% if floor_list %}
-        {% for floor in floor_list %}
-            <label><input type="checkbox" name="floor" value="{{ floor }}" {% if floor in selected_floors %} checked {% endif %}>{{ floor }}</label>
-            
-        {% endfor %}
-    {% else %}
-        <p value="none">No floors to display</p>
-    {% endif %}
-    <br><br>
+        <!-- Buildings -->
+        <label class="filter-section-title">Buildings</label>
+        {% if building_list %}
+            {% for building in building_list %}
+                <label>
+                    <input type="checkbox" name="building" value="{{ building.name }}" {% if building.name in selected_buildings %}checked{% endif %}>
+                    {{ building.name }}
+                </label>
+            {% endfor %}
+        {% else %}
+            <p value="none">No buildings to display</p>
+        {% endif %}
 
-    <label class="filter-section-title">Sort by Rating</label><br>
-    <select name="sort">
+        <br><br>
+
+        <!-- Floors -->
+        <label class="filter-section-title">Floors</label>
+        {% if floor_list %}
+            {% for floor in floor_list %}
+                <label>
+                    <input type="checkbox" name="floor" value="{{ floor }}" {% if floor in selected_floors %}checked{% endif %}>
+                    {{ floor }}
+                </label>
+            {% endfor %}
+        {% else %}
+            <p value="none">No floors to display</p>
+        {% endif %}
+
+        <br><br>
+
+        <!-- Sorting -->
+        <label class="filter-section-title">Sort by Rating</label>
+        <select name="sort">
             <option value="" {% if sort == "" %}selected{% endif %}>Default</option>
             <option value="desc" {% if sort == "desc" %}selected{% endif %}>Rating: High to Low</option>
             <option value="asc" {% if sort == "asc" %}selected{% endif %}>Rating: Low to High</option>
         </select>
 
         <br><br>
-    <button type="submit">Apply Filters</button>
+
+        <!-- Submit -->
+        <button type="submit">Apply Filters</button>
     </form>
 </fieldset>
 
+<!-- Available Rooms Section -->
 <h2>Available Rooms</h2>
 
 {% if room_list %}
     <ul>
-    {% for room in room_list %}
-        <li><a href="/browse/{{ room.building.name }}/{{ room.number }}">{{ room.building.name }} {{ room.number }}</a>: {{ room.avg_rating }} stars</li>
-    {% endfor %}
+        {% for room in room_list %}
+            <li>
+                <a href="/browse/{{ room.building.name }}/{{ room.number }}">
+                    {{ room.building.name }} {{ room.number }}
+                </a>: {{ room.avg_rating }} stars
+            </li>
+        {% endfor %}
     </ul>
 {% else %}
-<p class="no-results">No rooms are available</p>
+    <p class="no-results">No rooms are available for the selected filter options</p>
 {% endif %}
-
