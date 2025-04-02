@@ -22,7 +22,7 @@
 
 <fieldset>
     <legend><h3>Filter</h3></legend>
-    <label>Regions</label>
+    <label class="filter-section-title">Regions</label>
     <form id="filters" action="{% url 'browse:rooms' %}" method="get">
     {% if region_list %}
         {% for region in region_list %}
@@ -34,7 +34,7 @@
     {% endif %}
 
     <br><br>
-    <label>Buildings</label>
+    <label class="filter-section-title">Buildings</label>
     <br>
     {% if building_list %}
         {% for building in building_list %}
@@ -46,7 +46,7 @@
     {% endif %}
 
     <br><br>
-    <label>Floors</label>
+    <label class="filter-section-title">Floors</label>
     <br>
     {% if floor_list %}
         {% for floor in floor_list %}
@@ -58,7 +58,7 @@
     {% endif %}
     <br><br>
 
-    <label>Sort by Rating</label><br>
+    <label class="filter-section-title">Sort by Rating</label><br>
     <select name="sort">
             <option value="" {% if sort == "" %}selected{% endif %}>Default</option>
             <option value="desc" {% if sort == "desc" %}selected{% endif %}>Rating: High to Low</option>
@@ -79,6 +79,6 @@
     {% endfor %}
     </ul>
 {% else %}
-<p>No rooms are available</p>
+<p class="no-results">No rooms are available</p>
 {% endif %}
 
