@@ -29,7 +29,7 @@ h2 {
 
 h3 {
     font-size: 1.5em;
-    color: #221b1b;
+    color: #0f0e0e;
     margin-bottom: 0.5em;
 }
 
@@ -37,7 +37,7 @@ h3 {
 a {
     text-decoration: none;
     color: white;
-    background-color: #3498db;
+    background-color: #2b9533;
     padding: 12px 24px;
     border-radius: 8px;
     transition: background-color 0.3s ease;
@@ -62,7 +62,7 @@ fieldset {
 
 legend {
     font-weight: bold;
-    padding: 0 0px;
+    padding: 10 0px;
     font-size: 1.2em;
 }
 
