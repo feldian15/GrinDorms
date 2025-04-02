@@ -29,6 +29,40 @@ class Room(models.Model):
     internal_bathroom = models.BooleanField()
     kitchen = models.BooleanField()
     common_room = models.BooleanField()
+    avg_rating = models.FloatField(default=0.0)
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields = ['building', 'number'],
+                name = 'unique room in building'
+            )
+        ]
 
     def __str__ (self):
-        return "building.name %d" % self.number
+        return "%s %d" % (self.building.name, self.number)
+    
+    def save(self, *args, **kwargs):
+        # set the floor based on the second digit of the room number
+        temp = str(self.number)
+        self.floor = int(temp[1:2])
+        super().save(*args, **kwargs)
+
+    # method to calculate the average rating from all reviews of the room
+    def calc_avg_rating(self):
+        temp_avg_rating = 0.0
+        num_reviews = self.reviews.count()
+        # Check if the room has reviews
+        if num_reviews > 0:
+            # find the average
+            for review in self.reviews.all():
+                temp_avg_rating += review.rating
+
+            temp_avg_rating = temp_avg_rating / num_reviews
+
+            self.avg_rating = round(temp_avg_rating, 2)
+        else:
+            self.avg_rating = 0.0
+        
+        # save the new average
+        self.save()
