@@ -1,11 +1,21 @@
-<html>
-    
-    <h1> Welcome to GrinDorms! </h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-    <a href="{% url 'login:my-login'%}" > Sign-in </a>
-    
-    <br> <br>
+<head>
+    <meta charset="UTF-8">
+    <title>GrinDorms - Welcome</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+</head>
 
-    <a href="{% url 'login:register'%}" > Create an account </a>
+<body>
+
+    <h1>Welcome to GrinDorms!</h1>
+
+    <!-- Navigation Links -->
+    <a href="{% url 'login:my-login' %}">Sign In</a>
+    <a href="{% url 'login:register' %}">Create an Account</a>
+
+</body>
 
 </html>
