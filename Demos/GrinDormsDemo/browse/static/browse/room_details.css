@@ -1,0 +1,111 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    background-color: white;
+    color: #333;
+    line-height: 1.5;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Link Styles */
+a {
+    text-decoration: none;
+    color: white;
+    background-color: #2b9533;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin: 5px 0;
+}
+
+a:hover {
+    background-color: #2980b9;
+}
+
+/* Header Styles */
+h1 {
+    text-align: left;
+    font-size: 2.2em;
+    color: #0d1014;
+    margin: 20px 0;
+}
+
+h2 {
+    font-size: 2.5em;
+    color: #080707;
+    margin: 0;
+    padding: 0 10px;
+}
+
+h3 {
+    font-size: 1.4em;
+    color: #0f0e0e;
+    margin: 15px 0;
+}
+
+h5 {
+    font-size: 2em;
+    color: #0f0e0e;
+    margin: 10px 0;
+}
+
+/* Fieldset Styles */
+fieldset {
+    background-color: #f8f8f8;
+    border: 2px solid #060606;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+fieldset fieldset {
+    background-color: white;
+    border: 2px solid #2b9533;
+    margin: 15px 0;
+}
+
+legend {
+    font-weight: bold;
+    color: #0a0a0a;
+    padding: 0 10px;
+}
+
+/* Content Styles */
+img {
+    margin: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+/* Rating Styles */
+.rating {
+    font-weight: bold;
+    color: #2b9533;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+    
+    fieldset {
+        padding: 15px;
+    }
+    
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
