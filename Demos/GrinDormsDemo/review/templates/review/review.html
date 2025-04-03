@@ -1,71 +1,117 @@
-<a href="/home/">Back to Home</a>
-<h1>Review a Room</h1>
-<label for="buildings">Choose a building</label>
-<form id="buildings" action="{% url 'review:review' %}">
-<select name="building">
-    {% if building_list %}
-        {% for building in building_list %}
-            <option value="{{ building.name }}" {% if building.name == selected_building %} selected {% endif %}>{{ building.name }}</option>
-        {% endfor %}
-    {% else %}
-        <option value="none">No buildings to display</option> 
-    {% endif %}
-</select>
-<button type="submit">Next</button>
-</form>
+{% load static %}
 
-<br><br>
+<!DOCTYPE html>
+<html lang="en">
 
-<label for="floors" style={% if selected_building %} "display:block" {% else %} "display:none" {% endif %}>Choose a floor</label>
-<form id = "floors" action="{% url 'review:review' %}" style={% if selected_building %} "display:block" {% else %} "display:none" {% endif %}>
-    <input type="hidden" name="building" value="{{ selected_building }}">
-    <select name="floor">
-        {% if floor_list %}
-            {% for floor in floor_list %}
-                <option value="{{ floor }}" {% if floor == selected_floor %} selected {% endif %}>{{ floor }}</option>
-            {% endfor %}
-        {% else %}
-            <option value="none">No floors to display</option> 
-        {% endif %}
-    </select>
-<button type="submit">Next</button>
-</form>
+<head>
+    <meta charset="UTF-8">
+    <title>Review a Room</title>
+    <link rel="stylesheet" href="{% static 'css/review.css' %}">
+</head>
 
-<br><br>
+<body>
 
-<label for="rooms" style={% if selected_floor %} "display:block" {% else %} "display:none" {% endif %}>Choose a room</label>
-<form id="rooms" action="{% url 'review:review' %}" style={% if selected_floor %} "display:block" {% else %} "display:none" {% endif %}>
-    <input type="hidden" name="building" value="{{ selected_building }}">
-    <input type="hidden" name="floor" value="{{ selected_floor }}">
-    <select name="room">
-        {% if room_list %}
-            {% for room in room_list %}
-                <option value="{{ room.number }}" {% if room.number == selected_room %} selected {% endif %}>{{ room.number }}</option>
-            {% endfor %}
-        {% else %}
-            <option value="none">No rooms to display</option> 
-        {% endif %}
-    </select>
-<button type="submit">Next</button>
-</form>
+    <!-- Navigation -->
+    <a href="/home/" class="back-home">Home</a>
 
-<fieldset id="review" style={% if selected_room %} "display:block" {% else %} "display:none" {% endif %}>
-<form action="{% url 'review:add' building_name=selected_building room_number=selected_room %}" method="post" enctype="multipart/form-data">
-{% csrf_token %} 
-        <h2>You are reviewing room {{ selected_room }} of {{ selected_building }} Hall</h2>
-        <h3>Rating</h3>
-        <input type="radio" name="stars" id="one_star" value="1" required>One Star
-        <input type="radio" name="stars" id="two_stars" value="2">Two Stars
-        <input type="radio" name="stars" id="three_stars" value="3">Three Stars
-        <input type="radio" name="stars" id="four_stars" value="4">Four Stars
-        <input type="radio" name="stars" id="five_stars" value="5">Five Stars
-        <br>
-        <h3>Review</h3>
-        <textarea name="review_text" id="review_text" required></textarea>
-        <h3>Pictures</h3>
-        <input name="image" id="image" type="file" multiple>
-        <br>
-        <button type="submit">Submit</button>
-</form>
-</fieldset>
+    <h1>Review a Room</h1>
 
+    <!-- ====== Building Selection ====== -->
+    <form id="buildings" action="{% url 'review:review' %}">
+        <label for="buildings">Choose a building</label>
+        <select name="building">
+            {% if building_list %}
+                {% for building in building_list %}
+                    <option value="{{ building.name }}" {% if building.name == selected_building %}selected{% endif %}>
+                        {{ building.name }}
+                    </option>
+                {% endfor %}
+            {% else %}
+                <option value="none">No buildings to display</option>
+            {% endif %}
+        </select>
+        <button type="submit">Next</button>
+    </form>
+
+    <br><br>
+
+    <!-- ====== Floor Selection ====== -->
+    <form id="floors" action="{% url 'review:review' %}" 
+          style="{% if selected_building %}display:block{% else %}display:none{% endif %}">
+        <label for="floors">Choose a floor</label>
+        <input type="hidden" name="building" value="{{ selected_building }}">
+        <select name="floor">
+            {% if floor_list %}
+                {% for floor in floor_list %}
+                    <option value="{{ floor }}" {% if floor == selected_floor %}selected{% endif %}>
+                        {{ floor }}
+                    </option>
+                {% endfor %}
+            {% else %}
+                <option value="none">No floors to display</option>
+            {% endif %}
+        </select>
+        <button type="submit">Next</button>
+    </form>
+
+    <br><br>
+
+    <!-- ====== Room Selection ====== -->
+    <form id="rooms" action="{% url 'review:review' %}" 
+          style="{% if selected_floor %}display:block{% else %}display:none{% endif %}">
+        <label for="rooms">Choose a room</label>
+        <input type="hidden" name="building" value="{{ selected_building }}">
+        <input type="hidden" name="floor" value="{{ selected_floor }}">
+        <select name="room">
+            {% if room_list %}
+                {% for room in room_list %}
+                    <option value="{{ room.number }}" {% if room.number == selected_room %}selected{% endif %}>
+                        {{ room.number }}
+                    </option>
+                {% endfor %}
+            {% else %}
+                <option value="none">No rooms to display</option>
+            {% endif %}
+        </select>
+        <button type="submit">Next</button>
+    </form>
+
+    <br><br>
+
+    <!-- ====== Review Submission Form ====== -->
+    <fieldset id="review" style="{% if selected_room %}display:block{% else %}display:none{% endif %}">
+        <form action="{% url 'review:add' building_name=selected_building room_number=selected_room %}" 
+              method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <h2>You are reviewing room {{ selected_room }} of {{ selected_building }} Hall</h2>
+
+            <!-- Rating -->
+            <h3>Rating</h3>
+            <input type="radio" name="stars" value="1" required> One Star
+            <input type="radio" name="stars" value="2"> Two Stars
+            <input type="radio" name="stars" value="3"> Three Stars
+            <input type="radio" name="stars" value="4"> Four Stars
+            <input type="radio" name="stars" value="5"> Five Stars
+
+            <br><br>
+
+            <!-- Review Text -->
+            <h3>Review</h3>
+            <textarea name="review_text" id="review_text" required></textarea>
+
+            <br><br>
+
+            <!-- Image Upload -->
+            <h3>Pictures</h3>
+            <input type="file" name="image" id="image" multiple>
+
+            <br><br>
+
+            <!-- Submit Button -->
+            <button type="submit">Submit</button>
+        </form>
+    </fieldset>
+
+</body>
+
+</html>
