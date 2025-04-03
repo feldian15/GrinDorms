@@ -1,19 +1,33 @@
-<html>
+{% load static %}
 
-    <h1> GrinDorms Registration </h1>
+<!DOCTYPE html>
+<html lang="en">
 
-    <p style="color:red;">
-        Please use your Grinnell email when creating an account. 
+<head>
+    <meta charset="UTF-8">
+    <title>GrinDorms Registration</title>
+    <link rel="stylesheet" href="{% static 'css/register.css' %}">
+</head>
+
+<body>
+
+    <h1>Create An Account</h1>
+
+    <p class="note">
+        Please use your Grinnell email when creating an account.
     </p>
 
     <form method="POST" autocomplete="off">
-
         {% csrf_token %}
-
-        {{registerform.as_p}}
-
-        <input type="submit" value="Register"/>
-
+        {{ registerform.as_p }}
+        <input type="submit" value="Register" />
     </form>
+
+    <p class="link-note">
+        Already have an account?
+        <a href="{% url 'login:my-login' %}">Sign in here!</a>
+    </p>
+
+</body>
 
 </html>
