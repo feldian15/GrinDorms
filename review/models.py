@@ -1,4 +1,5 @@
 from django.db import models
+from browse.models import Room
 
 MAXLEN = 200
 
