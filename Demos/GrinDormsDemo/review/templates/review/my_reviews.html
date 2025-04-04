@@ -1,32 +1,93 @@
-<a href="/home/">Back to Home</a>
-<h1>All Reviews</h1>
+{% load static %}
 
-{% if review_list %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Your Reviews</title>
+    <link rel="stylesheet" href="{% static 'css/my_reviews.css' %}">
+</head>
+
+<body>
+
+    <!-- Back to Home -->
+    <a href="/home/" class="home-link">Home</a>
+
+    <h1>Your Reviews</h1>
+
+    <!-- ======= Display User Reviews ======= -->
+    {% if review_list %}
     {% for review in review_list %}
+    <fieldset>
+        <!-- Review Header -->
+        <legend>
+            <h3>Review for {{ review.room.building.name }} {{ review.room.number }}</h3>
+        </legend>
+        <h5>Rating: {{ review.rating }} star{{ review.rating|pluralize }}</h5>
+
+        <!-- Comments Section -->
         <fieldset>
-            <legend><h3>Review for {{ review.room.building.name }} {{ review.room.number }}</h3></legend>
-            <h5>Rating: {{ review.rating }} stars</h5>
-            <fieldset>
-                <legend><strong>Comments</strong></legend>
-                {{ review.comments }}
-            </fieldset>
-            <br>
-            {% if review.images.all %}
-                {% for image in review.images.all %}
-                    <img src="{{ image.data.url }}" alt="Review Image" width="200">
-                {% endfor %}
-            {% else %}
-                <p>No images to display</p>
-            {% endif %}
-            <br>
-            <form action="{% url 'review:remove' %}" method="post">
-                {% csrf_token %}
-                <input type="hidden" name="review_id" value="{{ review.id }}">
-                <button type="submit">Delete this review</button>
-            </form>
+            <legend><strong>Comments</strong></legend>
+            <p>{{ review.comments }}</p>
         </fieldset>
+
+        <!-- Images Section -->
+        {% if review.images.all %}
+        {% for image in review.images.all %}
+        <img src="{{ image.data.url }}" alt="Review Image" width="200">
+        {% endfor %}
+        {% else %}
+        <p>No images to display</p>
+        {% endif %}
+
         <br>
+
+        <!-- Delete Review Form -->
+        <form action="{% url 'review:remove_review' review.id %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="delete-btn">Delete this review</button>
+        </form>
+    </fieldset>
     {% endfor %}
-{% else %}
-    <h3>No reviews to display</h3>
-{% endif %}
+    {% else %}
+    <h3>No Reviews? <a href="{% url 'review:review' %}">Submit One Here!</a></h3>
+    {% endif %}
+
+    <!-- ======= Modal Popup for Successful Deletion ======= -->
+    {% if show_deleted_popup %}
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <p>✅ Review successfully removed!</p>
+            <button id="closeModal">Close</button>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- ======= JavaScript to Handle Modal Behavior ======= -->
+    <script>
+        window.onload = function () {
+            const modal = document.getElementById("deleteModal");
+            const closeModal = document.getElementById("closeModal");
+
+            if (modal) {
+                modal.style.display = "block";
+
+                closeModal.onclick = function () {
+                    modal.style.display = "none";
+                    window.history.replaceState({}, document.title, window.location.pathname);
+                };
+
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                        window.history.replaceState({}, document.title, window.location.pathname);
+                    }
+                };
+            }
+        };
+    </script>
+
+</body>
+
+</html>

@@ -1,12 +1,9 @@
-from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.shortcuts import render, get_object_or_404, redirect
+from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.db.models import F
 
 from .models import Review, Image
 from browse.models import Room, Building
-
-# Create your views here.
 
 def review(request):
     building_list = Building.objects.all()
@@ -35,8 +32,7 @@ def review(request):
         room_list = []
 
     selected_room = int(request.GET.get('room')) if request.GET.get('room') and request.GET.get('room') != 'none' else 0
-    
-    
+
     context = {
         "selected_building": selected_building,
         "building_list": building_list,
@@ -45,63 +41,45 @@ def review(request):
         "selected_room": selected_room,
         "room_list": room_list
     }
-            
+
     return render(request, "review/review.html", context)
 
 def my_reviews(request):
-    review_list = Review.objects.filter(display=True)
-    review_list = review_list.prefetch_related("images")
+    review_list = Review.objects.filter(display=True).prefetch_related("images")
+    deleted_flag = request.GET.get("deleted") == "true"
 
-    context = {"review_list": review_list}
+    context = {
+        "review_list": review_list,
+        "show_deleted_popup": deleted_flag
+    }
 
     return render(request, "review/my_reviews.html", context)
 
 def add(request, building_name, room_number):
-    stars = 0
-    if request.POST.get("stars"):
-        stars = int(request.POST.get("stars"))
-
+    stars = int(request.POST.get("stars", 0))
     review_text = request.POST.get("review_text")
 
     room = Room.objects.get(building__name=building_name, number=room_number)
 
-    new_review = Review()
-    new_review.room = room
-    new_review.rating = stars
-    new_review.comments = review_text
-
+    new_review = Review(room=room, rating=stars, comments=review_text)
     new_review.save()
 
     room.calc_avg_rating()
 
-    image_data = request.FILES.getlist("image")
-
-    for image in image_data:
-        new_image = Image()
-        new_image.review = new_review
-        new_image.data = image
-
+    for image in request.FILES.getlist("image"):
+        new_image = Image(review=new_review, data=image)
         new_image.save()
 
     return HttpResponseRedirect(reverse("review:review_added"))
 
-def remove(request):
-    review_id = request.POST.get("review_id")
-
-    review = Review.objects.get(id=review_id)
-
-    room = review.room
-
-    # Make sure to delete urls from the media folder
-
-    review.delete()
-
-    room.calc_avg_rating()
-
-    return HttpResponseRedirect(reverse("review:review_removed"))
-
 def review_added(request):
     return render(request, "review/review_added.html", {})
 
-def review_removed(request):
-    return render(request, "review/review_removed.html", {})
+def remove_review(request, review_id):
+    review = get_object_or_404(Review, id=review_id)
+    room = review.room
+
+    review.delete()
+    room.calc_avg_rating()
+
+    return redirect('/review/myreviews?deleted=true')
