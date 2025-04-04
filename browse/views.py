@@ -81,4 +81,17 @@ def browse(request):
 
 # View for a specific room's details and reviews
 def room_details(request, building_name, room_number):
-    return HttpResponse("This is the details page for room %d of %s Hall" % (room_number, building_name))
+    # get the room
+    room = Room.objects.get(building__name=building_name, number=room_number)
+
+    # find the associated reviews and images
+    review_list = Review.objects.filter(room=room)
+    image_list = Image.objects.filter(review__room=room)
+
+    context = {
+        "room": room,
+        "review_list": review_list,
+        "image_list": image_list
+    }
+
+    return render(request, "browse/room_details.html", context)
