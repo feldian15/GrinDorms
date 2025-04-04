@@ -17,7 +17,7 @@ echo "Commit: $commit_hash"
 echo "Timestamp: $timestamp"
 
 # Install required packages
-pip install django django-environ pillow python-dotenv
+pip install django django-environ pillow python-dotenv psycopg2
 
 # Define manage.py path (using POSIX path format)
 manage_path="ROOT/Demos/GrinDormsDemo/manage.py"
@@ -32,5 +32,5 @@ else
     python "$manage_path" migrate
 
     echo -e "\nStarting server..."
-    python "$manage_path" runserver
+    python "$manage_path" runserver csc-234.us.reclaim.cloud:8080 --noreload &
 fi
