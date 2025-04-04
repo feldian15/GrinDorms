@@ -1,24 +1,27 @@
 from django.shortcuts import render, HttpResponse
-from . models import Room, Building
+from . models import Room, Building, Regions, Directions, Sizes, Floors
 from review.models import Review, Image
 
 # Set up all the filtering lists
-REGION_LIST = ["NORTH", "SOUTH", "EAST", "OFF-CAMPUS"]
 BUILDING_LIST = Building.objects.all()
-FLOOR_LIST = list(range(0, 5))
-SIZE_LIST = list(range(1, 7))
-DIRECTION_LIST = ["NORTH", "EAST", "SOUTH", "WEST"]
+
 
 # Create your views here.
 # View for browse filtering and sorting
 def browse(request):
     # filtering criteria are region, building, floor, srd, size, 
     # direction, washers, dryers, elevator, gender specific, rating...
+    
     # get all the filters
     selected_regions = request.GET.getlist("region")
     selected_buildings = request.GET.getlist("building")
+
+    # turn requests into integers
     selected_floors = request.GET.getlist("floor")
+    selected_floors = [int(x) for x in selected_floors]
     selected_sizes = request.GET.getlist("size")
+    selected_sizes = [int(x) for x in selected_sizes]
+
     sub_free = request.GET.get("sub_free")
     elevator = request.GET.get("elevator")
     women_only = request.GET.get("women_only")
@@ -67,10 +70,10 @@ def browse(request):
         "rating": rating,
         "room_list": room_list,
         "building_list": BUILDING_LIST,
-        "floor_list": FLOOR_LIST,
-        "region_list": REGION_LIST,
-        "direction_list": DIRECTION_LIST,
-        "size_list": SIZE_LIST
+        "floor_list": Floors.choices,
+        "region_list": Regions.choices,
+        "direction_list": Directions.choices,
+        "size_list": Sizes.choices
     }
 
     # (re)render the template

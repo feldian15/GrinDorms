@@ -10,8 +10,8 @@
     <br>
     <form id="filters" action="{% url 'browse:browse' %}" method="get">
     {% if region_list %}
-        {% for region in region_list %}
-            <label><input type="checkbox" name="region" value="{{ region }}" {% if region in selected_regions %} checked {% endif %}>{{ region }}</label>
+        {% for value, label in region_list %}
+            <label><input type="checkbox" name="region" value="{{ value }}" {% if value in selected_regions %} checked {% endif %}>{{ label }}</label>
         {% endfor %}
     {% else %}
         <p value="none">No regions to display</p>
@@ -34,8 +34,8 @@
     <label>Floors</label>
     <br>
     {% if floor_list %}
-        {% for floor in floor_list %}
-            <label><input type="checkbox" name="floor" value="{{ floor }}" {% if floor in selected_floors %} checked {% endif %}>{{ floor }}</label>
+        {% for value, label in floor_list %}
+            <label><input type="checkbox" name="floor" value="{{ value }}" {% if value in selected_floors %} checked {% endif %}>{{ label }}</label>
         {% endfor %}
     {% else %}
         <p value="none">No floors to display</p>
@@ -46,8 +46,8 @@
     <label>Room Size</label>
     <br>
     {% if size_list %}
-        {% for size in size_list %}
-            <label><input type="checkbox" name="size" value="{{ size }}" {% if size in selected_sizes %} checked {% endif %}>{{ size }}</label>
+        {% for value, label in size_list %}
+            <label><input type="checkbox" name="size" value="{{ value }}" {% if value in selected_sizes %} checked {% endif %}>{{ label }}</label>
         {% endfor %}
     {% else %}
         <p value="none">No sizes to display</p>
@@ -55,25 +55,27 @@
 
     <br><br>
 
-    <label>Additional Filters</label>
-    <br>
-    <label><input type="checkbox" name="sub_free" {% if sub_free %} checked {% endif %}>Building is sub free</label>
-    <br>
-    <label><input type="checkbox" name="elevator" {% if elevator %} checked {% endif %}>Building has elevator</label>
-    <br>
-    <label><input type="checkbox" name="women_only" {% if women_only %} checked {% endif %}>Building is for women only</label>
-    <br>
-    <label><input type="checkbox" name="srd" {% if srd %} checked {% endif %}>Special Room Draw</label>
-    <br>
-    <label>Window Direction</label>
-    <br>
-    {% if direction_list %}
-        {% for direction in direction_list %}
-            <label><input type="checkbox" name="direction" value="{{ direction }}" {% if direction in selected_directions %} checked {% endif %}>{{ direction }}</label>
-        {% endfor %}
-    {% else %}
-        <p value="none">No directions to display</p>
-    {% endif %}
+    <div id="additional_filters">
+        <label>Additional Filters</label>
+        <br>
+        <label><input type="checkbox" name="sub_free" value="True" {% if sub_free %} checked {% endif %}>Building is sub free</label>
+        <br>
+        <label><input type="checkbox" name="elevator" value="True" {% if elevator %} checked {% endif %}>Building has elevator</label>
+        <br>
+        <label><input type="checkbox" name="women_only" value="True" {% if women_only %} checked {% endif %}>Building is for women only</label>
+        <br>
+        <label><input type="checkbox" name="srd" value="True" {% if srd %} checked {% endif %}>Special Room Draw</label>
+        <br>
+        <label>Window Direction</label>
+        <br>
+        {% if direction_list %}
+            {% for value, label in direction_list %}
+                <label><input type="checkbox" name="direction" value="{{ value }}" {% if value in selected_directions %} checked {% endif %}>{{ label }}</label>
+            {% endfor %}
+        {% else %}
+            <p value="none">No directions to display</p>
+        {% endif %}
+    </div>
 
     <br><br>
     
@@ -86,6 +88,7 @@
         </select>
         <br><br>
     <button type="submit">Apply Filters</button>
+    <a href="{% url 'browse:browse' %}" class="btn">Clear Filters</a>
 
 
     </form>
@@ -102,4 +105,3 @@
 {% else %}
 <p>No rooms are available</p>
 {% endif %}
-
