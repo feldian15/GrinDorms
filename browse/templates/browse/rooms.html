@@ -8,7 +8,7 @@
     <legend><h3>Filter</h3></legend>
     <label>Regions</label>
     <br>
-    <form id="filters" action="{% url 'browse:rooms' %}" method="get">
+    <form id="filters" action="{% url 'browse:browse' %}" method="get">
     {% if region_list %}
         {% for region in region_list %}
             <label><input type="checkbox" name="region" value="{{ region }}" {% if region in selected_regions %} checked {% endif %}>{{ region }}</label>
@@ -69,7 +69,7 @@
     <br>
     {% if direction_list %}
         {% for direction in direction_list %}
-            <label><input type="checkbox" name="direction" value="{{ direction }}" {% if direction in selected_direction %} checked {% endif %}>{{ direction }}</label>
+            <label><input type="checkbox" name="direction" value="{{ direction }}" {% if direction in selected_directions %} checked {% endif %}>{{ direction }}</label>
         {% endfor %}
     {% else %}
         <p value="none">No directions to display</p>
@@ -80,9 +80,9 @@
     <label>Sort by Rating</label>
     <br>
     <select name="rating">
-            <option value="" {% if sort == "" %}selected{% endif %}>Default</option>
-            <option value="desc" {% if sort == "desc" %}selected{% endif %}>Rating: High to Low</option>
-            <option value="asc" {% if sort == "asc" %}selected{% endif %}>Rating: Low to High</option>
+            <option value="" {% if rating == "" %}selected{% endif %}>Default</option>
+            <option value="desc" {% if rating == "desc" %}selected{% endif %}>Rating: High to Low</option>
+            <option value="asc" {% if rating == "asc" %}selected{% endif %}>Rating: Low to High</option>
         </select>
         <br><br>
     <button type="submit">Apply Filters</button>

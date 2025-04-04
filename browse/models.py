@@ -14,6 +14,7 @@ class Building(models.Model):
     num_dryers = models.IntegerField()
     elevator = models.BooleanField()
     gender_specific = models.BooleanField()
+    sub_free = models.BooleanField(default=False)
 
     def __str__ (self):
         return self.name()
