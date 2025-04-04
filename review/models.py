@@ -2,13 +2,17 @@ from django.db import models
 from browse.models import Room
 
 MAXLEN = 200
+class Ratings(models.IntegerChoices):
+    AWFUL = 1, 'Awful'
+    POOR = 2, 'Poor'
+    OKAY = 3, 'Okay'
+    GOOD = 4, 'Good'
+    AWESOME = 5, 'Awesome'
 
 # Create your models here.
 class Review(models.Model):
-    RATING_OPTIONS = [(1, "awful"), (2, "poor"), (3, "okay"), (4, "good"), (5, "great")]
-
     room = models.ForeignKey(Room, related_name="reviews", on_delete=models.CASCADE)
-    rating = models.IntegerField(choices=RATING_OPTIONS)
+    rating = models.IntegerField(choices=Ratings.choices, default=Ratings.OKAY)
     text = models.CharField(max_length=MAXLEN)
     display = models.BooleanField(default=True)
 

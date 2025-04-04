@@ -1,0 +1,32 @@
+<a href="/home/">Back to Home</a>
+<h1>All Reviews</h1>
+
+{% if review_list %}
+    {% for review in review_list %}
+        <fieldset>
+            <legend><h3>Review for {{ review.room.building.name }} {{ review.room.number }}</h3></legend>
+            <h5>Rating: {{ review.rating }} stars</h5>
+            <fieldset>
+                <legend><strong>Comments</strong></legend>
+                {{ review.comments }}
+            </fieldset>
+            <br>
+            {% if review.images.all %}
+                {% for image in review.images.all %}
+                    <img src="{{ image.data.url }}" alt="Review Image" width="200">
+                {% endfor %}
+            {% else %}
+                <p>No images to display</p>
+            {% endif %}
+            <br>
+            <form action="{% url 'review:remove' %}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="review_id" value="{{ review.id }}">
+                <button type="submit">Delete this review</button>
+            </form>
+        </fieldset>
+        <br>
+    {% endfor %}
+{% else %}
+    <h3>No reviews to display</h3>
+{% endif %}
