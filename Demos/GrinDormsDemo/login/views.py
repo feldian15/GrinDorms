@@ -17,8 +17,6 @@ from django.contrib.auth.models import User
 
 def homepage(request):
 
-    # return render(request, 'login/index.html')
-
     messages_to_display = messages.get_messages(request)
 
     return render(request, 'login/index.html', {"messages": messages_to_display})
@@ -51,7 +49,7 @@ def register(request):
             )
             email.send()
             # messages.success(request, "Please check your email to complete the registration process. It might be in your spam folder.")
-            return redirect("registration-submitted")
+            return redirect("login:registration-submitted")
 
     return render(request, 'login/register.html', {"registerform":form})
 
@@ -74,17 +72,17 @@ def my_login(request):
                 if user.is_active:
 
                     auth.login(request, user)
-                    return redirect("dashboard")
+                    return redirect("login:dashboard")
                 else:
                     messages.error(request, "Your account is not activated. Please check your email to activate your account.")
-                    return redirect("my-login")
+                    return redirect("login:my-login")
     
     context = {'loginform':form}
 
     return render(request, 'login/my-login.html', context=context)
 
 
-@login_required(login_url="my-login")
+@login_required(login_url="login:my-login")
 def dashboard(request):
 
     return render(request, 'login/dashboard.html')
@@ -94,7 +92,7 @@ def user_logout(request):
 
     auth.logout(request)
 
-    return redirect("")
+    return redirect("login:")
 
 
 def activate(request, uidb64, token):
@@ -112,10 +110,10 @@ def activate(request, uidb64, token):
 
         login(request, user)
 
-        return redirect(reverse("my-login"))
+        return redirect(reverse("login:my-login"))
     else:
         messages.error(request, "Activation link is invalid or expired.")
-        return redirect("")
+        return redirect("login:")
 
 
 def resend_registration(request):
@@ -151,16 +149,16 @@ def resend_registration(request):
                         )
                         email.send()
                         messages.success(request, "Please check your email to complete the registration process. It might be in your spam folder.")
-                        return redirect("registration-submitted")
+                        return render(request, "login/registration_submitted.html")
 
             except User.DoesNotExist:
                 raise ValidationError("No account with this email was found.")
 
-    return render(request, 'login/resend_registration.html', {"resendregistration":form})
+    return render(request, "login/resend_registration.html", {"resendregistration":form})
 
 
 def registration_submitted(request):
-    return render(request, 'login/registration_submitted.html')
+    return render(request, "login/registration_submitted.html")
 
 
             
