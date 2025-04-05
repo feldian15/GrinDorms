@@ -15,7 +15,7 @@ class CreateUserForm(UserCreationForm):
         fields = ["username", "email", "password1", "password2"]
     
     def clean_email(self):
-        email = self.cleaned_data.get("email")
+        email = self.cleaned_data.get("email").lower()
         if User.objects.filter(email=email).exists():
             raise ValidationError("An account with this email already exists.")
         
@@ -35,7 +35,7 @@ class ResendRegEmailForm(forms.Form):
     email = forms.EmailField(required=True)
 
     def clean_email(self):
-        email = self.cleaned_data.get("email")
+        email = self.cleaned_data.get("email").lower()
         return email
         
 
