@@ -20,8 +20,8 @@ echo "Timestamp: $timestamp"
 pip install django django-environ pillow python-dotenv psycopg2
 
 # Define manage.py path (using POSIX path format)
-manage_path="ROOT/Demos/GrinDormsDemo/manage.py"
-settings_path="ROOT/Demos/GrinDormsDemo/grindormsdemo/settings.py"
+manage_path="~/ROOT/Demos/GrinDormsDemo/manage.py"
+settings_path="~/ROOT/Demos/GrinDormsDemo/grindormsdemo/settings.py"
 
 echo -e "\nChecking settings to ensure security..."
 if grep -q "DEBUG = True" "$settings_path"; then
@@ -32,5 +32,5 @@ else
     python "$manage_path" migrate
 
     echo -e "\nStarting server..."
-    python "$manage_path" runserver csc-234.us.reclaim.cloud:8080 --noreload &
+    python "$manage_path" runserver csc-234.us.reclaim.cloud:8080 & disown # Run in background
 fi
