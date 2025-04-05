@@ -41,7 +41,7 @@
     <legend><h2>Images</h2></legend>
     {% if image_list %}
         {% for image in image_list %}
-            <img src="{{ image.data.url }}" alt="Review Image" width="200">
+            <img src="{{ image.image_url.url }}" alt="Review Image" width="200">
         {% endfor %}
     {% else %}
         <h3>No images to display</h3>

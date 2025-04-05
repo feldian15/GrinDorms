@@ -47,6 +47,12 @@ class Building(models.Model):
 
     def __str__ (self):
         return self.name
+    
+    def get_floor_list(self):
+        if self.has_pit:
+            return Floors.choices[0:self.num_floors]
+        else:
+            return Floors.choices[1:self.num_floors + 1]
 
 class Room(models.Model):
     building = models.ForeignKey(Building, related_name="rooms", on_delete=models.CASCADE)
