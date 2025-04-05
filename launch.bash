@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Define ROOT path
-ROOT="$HOME"  # Change if needed
-
 # Handle arguments
 case "$1" in
   deploy)
@@ -11,7 +8,7 @@ case "$1" in
 
   demo)
     echo "Launching demo..."
-    bash "$ROOT/Demos/GrinDormsDemo/launch.bash"
+    bash "~/ROOT/Demos/GrinDormsDemo/launch.bash"
     ;;
 
   logs)

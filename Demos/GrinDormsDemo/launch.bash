@@ -10,8 +10,6 @@ timestamp=$(date +"%Y-%m-%d %T")
 # Create log file with commit in filename
 log_file="$HOME/logs/log_cmt:$commit_hash:$(date +%Y-%m-%d).txt"
 
-script "$log_file"
-
 # Write commit and timestamp to log file
 echo "Commit: $commit_hash"
 echo "Timestamp: $timestamp"
