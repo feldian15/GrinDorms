@@ -1,14 +1,14 @@
 <a href="/home/">Back to Home</a>
 <h1>Review a Room</h1>
-<label for="buildings">Choose a building</label>
-<form id="buildings" action="{% url 'review:review' %}">
-<select name="building">
-    {% if building_list %}
-        {% for building in building_list %}
-            <option value="{{ building.name }}" {% if building.name == selected_building %} selected {% endif %}>{{ building.name }}</option>
+<label for="regions">Choose a region</label>
+<form id="regions" action="{% url 'review:review' %}">
+<select name="region">
+    {% if region_list %}
+        {% for value, label in region_list %}
+            <option value="{{ value }}" {% if value == selected_region %} selected {% endif %}>{{ label }}</option>
         {% endfor %}
     {% else %}
-        <option value="none">No buildings to display</option> 
+        <option value="">No buildings to display</option> 
     {% endif %}
 </select>
 <button type="submit">Next</button>
@@ -16,16 +16,34 @@
 
 <br><br>
 
+<label for="buildings" style={% if selected_region %} "display:block" {% else %} "display:none" {% endif %}>Choose a building</label>
+<form id="buildings" action="{% url 'review:review' %}" style={% if selected_region %} "display:block" {% else %} "display:none" {% endif %}>
+    <input type="hidden" name="region" value="{{ selected_region }}">
+    <select name="building">
+        {% if building_list %}
+            {% for building in building_list %}
+                <option value="{{ building.name }}" {% if building.name == selected_building %} selected {% endif %}>{{ building.name }}</option>
+            {% endfor %}
+        {% else %}
+            <option value="">No buildings to display</option> 
+        {% endif %}
+    </select>
+    <button type="submit">Next</button>
+</form>
+
+<br><br>
+
 <label for="floors" style={% if selected_building %} "display:block" {% else %} "display:none" {% endif %}>Choose a floor</label>
 <form id = "floors" action="{% url 'review:review' %}" style={% if selected_building %} "display:block" {% else %} "display:none" {% endif %}>
     <input type="hidden" name="building" value="{{ selected_building }}">
+    <input type="hidden" name="region" value="{{ selected_region }}">
     <select name="floor">
         {% if floor_list %}
-            {% for floor in floor_list %}
-                <option value="{{ floor }}" {% if floor == selected_floor %} selected {% endif %}>{{ floor }}</option>
+            {% for value, label in floor_list %}
+                <option value="{{ value }}" {% if value == selected_floor %} selected {% endif %}>{{ label }}</option>
             {% endfor %}
         {% else %}
-            <option value="none">No floors to display</option> 
+            <option value="">No floors to display</option> 
         {% endif %}
     </select>
 <button type="submit">Next</button>
@@ -33,9 +51,10 @@
 
 <br><br>
 
-<label for="rooms" style={% if selected_floor %} "display:block" {% else %} "display:none" {% endif %}>Choose a room</label>
-<form id="rooms" action="{% url 'review:review' %}" style={% if selected_floor %} "display:block" {% else %} "display:none" {% endif %}>
+<label for="rooms" style={% if selected_floor or selected_floor == 0 %} "display:block" {% else %} "display:none" {% endif %}>Choose a room</label>
+<form id="rooms" action="{% url 'review:review' %}" style={% if selected_floor or selected_floor == 0 %} "display:block" {% else %} "display:none" {% endif %}>
     <input type="hidden" name="building" value="{{ selected_building }}">
+    <input type="hidden" name="region" value="{{ selected_region }}">
     <input type="hidden" name="floor" value="{{ selected_floor }}">
     <select name="room">
         {% if room_list %}
@@ -50,7 +69,7 @@
 </form>
 
 <fieldset id="review" style={% if selected_room %} "display:block" {% else %} "display:none" {% endif %}>
-<form action="{% url 'review:add' building_name=selected_building room_number=selected_room %}" method="post" enctype="multipart/form-data">
+<form action="{% url 'review:review' %}" method="post" enctype="multipart/form-data">
 {% csrf_token %} 
         <h2>You are reviewing room {{ selected_room }} of {{ selected_building }} Hall</h2>
         <h3>Rating</h3>
