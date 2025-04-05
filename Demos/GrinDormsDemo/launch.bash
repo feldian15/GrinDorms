@@ -15,7 +15,7 @@ echo "Commit: $commit_hash"
 echo "Timestamp: $timestamp"
 
 # Install required packages
-pip install django django-environ pillow python-dotenv psycopg2
+pip install django django-environ pillow python-dotenv psycopg2-binary
 
 # Define manage.py path (using POSIX path format)
 manage_path="~/ROOT/Demos/GrinDormsDemo/manage.py"
