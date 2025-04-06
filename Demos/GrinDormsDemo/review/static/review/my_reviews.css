@@ -80,7 +80,7 @@ fieldset {
 
 /* Radio Button Styles */
 input[type="radio"] {
-    margin: 0 4px 0 15px;
+    margin: 0 5px 0 15px;
     accent-color: #2b9533;
 }
 
@@ -143,7 +143,7 @@ button:hover {
         display: block;
         margin: 10px 0;
     }
-
+    
     input[type="radio"]:first-of-type {
         margin-top: 0;
     }
