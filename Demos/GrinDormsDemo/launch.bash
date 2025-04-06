@@ -10,18 +10,16 @@ timestamp=$(date +"%Y-%m-%d %T")
 # Create log file with commit in filename
 log_file="$HOME/logs/log_cmt:$commit_hash:$(date +%Y-%m-%d).txt"
 
-script "$log_file"
-
 # Write commit and timestamp to log file
 echo "Commit: $commit_hash"
 echo "Timestamp: $timestamp"
 
 # Install required packages
-pip install django django-environ pillow python-dotenv
+pip install django django-environ pillow python-dotenv psycopg2-binary
 
 # Define manage.py path (using POSIX path format)
-manage_path="ROOT/Demos/GrinDormsDemo/manage.py"
-settings_path="ROOT/Demos/GrinDormsDemo/grindormsdemo/settings.py"
+manage_path="~/ROOT/Demos/GrinDormsDemo/manage.py"
+settings_path="~/ROOT/Demos/GrinDormsDemo/grindormsdemo/settings.py"
 
 echo -e "\nChecking settings to ensure security..."
 if grep -q "DEBUG = True" "$settings_path"; then
@@ -32,5 +30,5 @@ else
     python "$manage_path" migrate
 
     echo -e "\nStarting server..."
-    python "$manage_path" runserver
+    python "$manage_path" runserver csc-234.us.reclaim.cloud:8080 & disown # Run in background
 fi
