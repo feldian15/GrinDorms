@@ -66,4 +66,4 @@
 7. Sign in with the old username and new password. 
 8. Should navigate you to the dashboard. 
 
-### Once done with testing, navigate to the \admin url and remove any test users you created from the database. 
+### Once done with testing, navigate to the /admin url and remove any test users you created from the database. 
