@@ -54,7 +54,30 @@ def delete_success(request):
     return HttpResponse("This is the page after a successful deletion")
 
 # logic to handle post request to add
-def add(request):
+def add(request, building_name, room_number):
+    # grab the non image related fields
+    rating = request.POST.get("stars")
+    review_text = request.POST.get("review_text")
+
+    # Get the associated room
+    room = Room.objects.get(building__name=building_name, number=room_number)
+
+    # make the new review:
+    new_review = Review(room=room, rating=rating, text=review_text)
+    new_review.save()
+
+    # update the rating on the room
+    room.calc_avg_rating()
+
+    # Image handing
+    image_list = request.POST.getlist("image")
+
+    # save all new images
+    for image in image_list:
+        new_image = Image(review=new_review, image_url=image)
+        new_image.save()
+
+    # redirect to the success screen
     return HttpResponseRedirect(reverse("review:add_success"))
 
 # logic to handle post request to delete

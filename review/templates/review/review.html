@@ -69,7 +69,7 @@
 </form>
 
 <fieldset id="review" style={% if selected_room %} "display:block" {% else %} "display:none" {% endif %}>
-<form action="{% url 'review:review' %}" method="post" enctype="multipart/form-data">
+<form action="{% url 'review:add' building_name=selected_building room_number=selected_room %}" method="post" enctype="multipart/form-data">
 {% csrf_token %} 
         <h2>You are reviewing room {{ selected_room }} of {{ selected_building }} Hall</h2>
         <h3>Rating</h3>
