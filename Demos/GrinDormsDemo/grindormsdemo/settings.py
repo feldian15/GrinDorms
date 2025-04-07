@@ -34,12 +34,10 @@ SECRET_KEY = f'{os.getenv("SECRET_KEY")}'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = f'{os.getenv("DEBUG")}'
 
-# RECLAIM HAS THE FOLLOWING OPEN PORTS:
-# 80, 8080, 8686, 8443, 4848, 4949, 7979
-# USING THE PUBLIC IP ALLOWS FOR ALL PORTS TO BE USED.
-PORT=os.environ.get('PORT', 8080)
+# INTERNAL PORT
+PORT=os.environ.get('PORT', 8000)
 
-ALLOWED_HOSTS = ['csc-234.us.reclaim.cloud', '135.148.74.19', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'localhost').split(' ')
 
 
 # Application definition
