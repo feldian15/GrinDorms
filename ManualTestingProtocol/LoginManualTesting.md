@@ -1,5 +1,5 @@
 # Auth Testing Protocol
-(Full functionality is demonstrated in the Demos folder in GrinDormsDemo, but is not yet implemented in the dev branch.)
+(functionality implemented in the GrinDormsDev branch)
 
 ### Create a superuser for yourself to have access to the admin page to clean up users made during testing
 
