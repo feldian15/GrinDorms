@@ -5,12 +5,10 @@ from django.forms.widgets import PasswordInput, TextInput
 from django.core.exceptions import ValidationError
 from django.core.validators import EmailValidator
 
-
 class CreateUserForm(UserCreationForm):
     email = forms.EmailField(required=True)
 
     class Meta:
-
         model = User
         fields = ["username", "email", "password1", "password2"]
     
@@ -23,13 +21,9 @@ class CreateUserForm(UserCreationForm):
             raise ValidationError("Please use your Grinnell College email address.")
         return email
 
-
 class LoginForm(AuthenticationForm):
-
     username = forms.CharField(widget=TextInput())
     password = forms.CharField(widget=PasswordInput())
-
-
 
 class ResendRegEmailForm(forms.Form):
     email = forms.EmailField(required=True)
