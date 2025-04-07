@@ -1,5 +1,8 @@
 from django.db import models
 from browse.models import Room
+import os
+from django.db.models.signals import post_delete
+from django.dispatch import receiver
 
 MAXLEN = 200
 class Ratings(models.IntegerChoices):
@@ -25,3 +28,14 @@ class Image(models.Model):
 
     def __str__ (self):
         return "%s %d review image" % (self.review.room.building.name, self.review.room.number)
+    
+
+# function to delete all associated images from media folder whenever a review is deleted
+@receiver(post_delete, sender=Image)
+def delete_image_file(sender, instance, **kwargs):
+    # Check for the image path
+    if instance.image_url and instance.image_url.path:
+        # ensure it's a file
+        if os.path.isfile(instance.image_url.path):
+            # remove it
+            os.remove(instance.image_url.path)

@@ -43,15 +43,24 @@ def review(request):
 
 # view for viewing user specific reviews
 def my_reviews(request):
-    return HttpResponse("This is the page for viewing my reviews")
+    # Get reviews 
+    # NEED TO MAKE THIS USER SPECIFIC
+    review_list = Review.objects.filter(display=True)
+
+    # Grab any associated images
+    review_list = review_list.prefetch_related("images")
+
+    context = {"review_list": review_list}
+
+    return render(request, "review/my_reviews.html", context)
 
 # view after a successful add
 def add_success(request):
-    return HttpResponse("This is the page after submitting a review successfully")
+    return render(request, "review/add_success.html", {})
 
 # view after a successful delete
 def delete_success(request):
-    return HttpResponse("This is the page after a successful deletion")
+    return render(request, "review/delete_success.html", {})
 
 # logic to handle post request to add
 def add(request, building_name, room_number):
@@ -70,7 +79,7 @@ def add(request, building_name, room_number):
     room.calc_avg_rating()
 
     # Image handing
-    image_list = request.POST.getlist("image")
+    image_list = request.FILES.getlist("image")
 
     # save all new images
     for image in image_list:
@@ -82,4 +91,18 @@ def add(request, building_name, room_number):
 
 # logic to handle post request to delete
 def delete(request):
+    # get the id of the review to delete
+    review_id = request.POST.get("review_id")
+    review = Review.objects.get(id=review_id)
+
+    # find the room to recalculate the ratings
+    room = review.room
+
+    # delete the the review
+    review.delete()
+
+    # recalculate the average rating
+    room.calc_avg_rating()
+
+    # redirect to a success message
     return HttpResponseRedirect(reverse("review:delete_success"))
