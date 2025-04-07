@@ -7,6 +7,30 @@ To run this project locally, ensure you have:
 - **Django** installed ('pip install django')
 - **Git** installed (for managing version control)
 
+## Instructions to run the system
+1. Clone this repo in VSCode
+2. Navigate to the GrinDormsDev branch
+3. Open the VSCode terminal
+4. Run in the terminal (to initialize a virtual environment):\
+     python3 -m venv .venv\
+     source .venv/bin/activate
+5. Open the Command Palette (View > Command Palette or (⇧⌘P)). Then select the Python: Select Interpreter command. From the list, select the virtual environment in your project folder that starts with ./.venv or .\.venv
+   ![image](https://github.com/user-attachments/assets/9eb6e5e1-b0b9-4c3a-acd1-126cf8ae6b47)
+6. In the terminal, run these series of commands:\
+     python -m pip install --upgrade pip\
+     python -m pip install django\
+     pip install python-dotenv\
+     pip install django-environ\
+     python -m pip install Pillow
+7. In the GrinDorms folder, add a .env file with necessary information to run the email backend. **(instructor note: this information was sent to you in an email)**
+8. To access the database to delete users created during testing:
+   In the terminal, run:\
+       python manage.py createsuperuser\
+   Choose a username, click enter, click enter to skip email address, enter password
+9. Finally, to run the app, in the terminal run:\
+      python manage.py runserver\
+   click the link generated in the terminal.
+
 ## Project Description
 GrinDorms is an online platform designed to help Grinnell College students browse and contribute dorm room information. Students can search for specific dorms, upload room details, add photos, leave reviews, and compare different rooms based on various attributes (e.g., location, floor). The platform aims to provide a centralized resource for students making housing decisions. 
 
