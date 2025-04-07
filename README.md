@@ -30,6 +30,7 @@ To run this project locally, ensure you have:
 9. Finally, to run the app, in the terminal run:\
       python manage.py runserver\
    click the link generated in the terminal.
+**Note: Email functionality does not work on Grinnell Wifi, but works on a hotspot**
 
 ## Project Description
 GrinDorms is an online platform designed to help Grinnell College students browse and contribute dorm room information. Students can search for specific dorms, upload room details, add photos, leave reviews, and compare different rooms based on various attributes (e.g., location, floor). The platform aims to provide a centralized resource for students making housing decisions. 
