@@ -72,7 +72,7 @@ def my_login(request):
                 if user.is_active:
 
                     auth.login(request, user)
-                    return redirect("login:dashboard")
+                    return redirect("home:homepage")
                 else:
                     messages.error(request, "Your account is not activated. Please check your email to activate your account.")
                     return redirect("login:my-login")
