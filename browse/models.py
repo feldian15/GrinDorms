@@ -65,6 +65,8 @@ class Room(models.Model):
     internal_bathroom = models.BooleanField(default=False)
     kitchen = models.BooleanField(default=False)
     common_room = models.BooleanField(default=False)
+    available = models.BooleanField(default=True)
+    ca = models.BooleanField(default=False)
     avg_rating = models.FloatField(default=0.0)
 
     class Meta:
