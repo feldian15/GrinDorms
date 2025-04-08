@@ -1,3 +1,13 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Reviews</title>
+    <link rel="stylesheet" href="{% static 'css/my_reviews.css' %}">
+</head>
+<body>
+
 <a href="/home/">Back to Home</a>
 <h1>All Reviews</h1>
 
@@ -30,3 +40,6 @@
 {% else %}
     <h3>No reviews to display</h3>
 {% endif %}
+
+</body>
+</html>
