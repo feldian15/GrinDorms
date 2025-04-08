@@ -33,7 +33,7 @@ To run this project locally, ensure you have:
 **Note: Email functionality does not work on Grinnell Wifi, but works on a hotspot**
 
 ## Functional Use Cases
-All use cases outlined in the sprint 3 requirements document should be functional EXCEPT for administrators removing flagged content. Currently there is no flagging option for reviews.
+All use cases outlined in the sprint 3 requirements document should be functional EXCEPT for administrators removing flagged content. Currently there is no flagging option for reviews. Also, the account verification process is currently only working on one team-member's computers, so that might not work either. 
 
 ## Instructions to test the system:
 1. Follow steps 1-8 on running the system.
