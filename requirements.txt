@@ -7,3 +7,7 @@ python-socketio==5.12.1
 pywizlight==0.5.14
 PyYAML==6.0.2
 Pillow>=10.0.0
+selenium>=4.31.0
+webdriver-manager >= 4.0.2
+
+
