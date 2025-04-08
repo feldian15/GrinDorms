@@ -1,0 +1,87 @@
+/* ========================
+        Global Styling
+   ======================== */
+body {
+    background-color: #f0f4f8;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* Start content from top */
+    min-height: 100vh;
+    padding: 40px 20px;
+    /* Top and bottom spacing */
+    margin: 0;
+    text-align: center;
+}
+
+/* ==================
+        Headings
+   ================== */
+h1 {
+    font-size: 3em;
+    color: #2c3e50;
+    margin-bottom: -0.3em;
+}
+
+p.note {
+    color: red;
+    font-size: 1.1em;
+    margin-bottom: 1.3em;
+}
+
+p.link-note {
+    margin-top: 1.5em;
+    font-size: 1em;
+}
+
+/* ======================
+        Form Styling
+   ====================== */
+form {
+    background-color: white;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+}
+
+input[type="submit"] {
+    background-color: #2b9533;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+a {
+    color: #2b9533;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}

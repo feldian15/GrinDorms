@@ -1,0 +1,41 @@
+/* ============================
+        Global Page Layout
+   ============================ */
+body {
+    background-color: #f0f4f8;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+}
+
+/* =======================
+        Heading Styles
+   ======================= */
+h1 {
+    font-size: 3em;
+    color: #2c3e50;
+    margin-bottom: 1em;
+}
+
+/* ============================
+        Button/Link Styles
+   ============================ */
+a {
+    text-decoration: none;
+    color: white;
+    background-color: #2b9533;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+a:hover {
+    background-color: #2980b9;
+}
