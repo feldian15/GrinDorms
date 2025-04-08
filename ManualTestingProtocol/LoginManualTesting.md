@@ -1,5 +1,6 @@
 # Auth Testing Protocol
 (functionality implemented in the GrinDormsDev branch)
+This functionality works on some computers but not others. We are currently working to resolve this issue.
 
 ### Create a superuser for yourself to have access to the admin page to clean up users made during testing
 
