@@ -14,7 +14,7 @@ class HomePageTest(StaticLiveServerTestCase):
     def setUpClass(cls):
         super().setUpClass()
         chrome_options = Options()
-        #chrome_options.add_argument("--headless")  # run without opening a window
+        chrome_options.add_argument("--headless")  # run without opening a window
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
 
@@ -39,7 +39,7 @@ class HomePageTest(StaticLiveServerTestCase):
 
         # Check that we are on the right page
         title = self.driver.title
-        self.assertIn("GrinDorms", title)
+        self.assertEqual("GrinDorms", title)
 
         # Check for the presence of the browse link:
         browse_link = self.driver.find_element(By.ID, "browse_link")
@@ -48,3 +48,26 @@ class HomePageTest(StaticLiveServerTestCase):
         # Check that the browse link navigates correctly
         browse_link.click()
         self.assertEqual(self.driver.current_url, self.live_server_url + "/browse/")
+
+        # Go back to the homepage for the next test
+        self.driver.get(self.live_server_url + "/home/")
+
+        # Check that the review link is displayed on the page
+        review_link = self.driver.find_element(By.ID, "review_link")
+        self.assertIs(review_link.is_displayed(), True)
+
+        # check that the review link navigates to the correct location
+        review_link.click()
+        self.assertEqual(self.driver.current_url, self.live_server_url + "/review/")
+
+        # Go back to the homepage for the next test
+        self.driver.get(self.live_server_url + "/home/")
+
+        # Check that the my reviews link is displayed on the page
+        my_reviews_link = self.driver.find_element(By.ID, "my_reviews_link")
+        self.assertIs(my_reviews_link.is_displayed(), True)
+
+        # check that the my reviews link navigates to the correct location
+        my_reviews_link.click()
+        self.assertEqual(self.driver.current_url, self.live_server_url + "/review/my_reviews/")
+
