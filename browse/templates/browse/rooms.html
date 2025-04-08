@@ -1,0 +1,107 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'browse/rooms.css' %}">
+<a href="/home/"> Home </a>
+<h1>Browse Rooms</h1>
+
+<fieldset>
+    <legend><h3>Filter</h3></legend>
+    <label>Regions</label>
+    <br>
+    <form id="filters" action="{% url 'browse:browse' %}" method="get">
+    {% if region_list %}
+        {% for value, label in region_list %}
+            <label><input type="checkbox" name="region" value="{{ value }}" {% if value in selected_regions %} checked {% endif %}>{{ label }}</label>
+        {% endfor %}
+    {% else %}
+        <p value="none">No regions to display</p>
+    {% endif %}
+
+    <br><br>
+
+    <label>Buildings</label>
+    <br>
+    {% if building_list %}
+        {% for building in building_list %}
+            <label><input type="checkbox" name="building" value="{{ building.name }}" {% if building.name in selected_buildings %} checked {% endif %}>{{ building.name }}</label> 
+        {% endfor %}
+    {% else %}
+        <p value="none">No buildings to display</p>
+    {% endif %}
+
+    <br><br>
+
+    <label>Floors</label>
+    <br>
+    {% if floor_list %}
+        {% for value, label in floor_list %}
+            <label><input type="checkbox" name="floor" value="{{ value }}" {% if value in selected_floors %} checked {% endif %}>{{ label }}</label>
+        {% endfor %}
+    {% else %}
+        <p value="none">No floors to display</p>
+    {% endif %}
+
+    <br><br>
+
+    <label>Room Size</label>
+    <br>
+    {% if size_list %}
+        {% for value, label in size_list %}
+            <label><input type="checkbox" name="size" value="{{ value }}" {% if value in selected_sizes %} checked {% endif %}>{{ label }}</label>
+        {% endfor %}
+    {% else %}
+        <p value="none">No sizes to display</p>
+    {% endif %}
+
+    <br><br>
+
+    <div id="additional_filters">
+        <label>Additional Filters</label>
+        <br>
+        <label><input type="checkbox" name="sub_free" value="True" {% if sub_free %} checked {% endif %}>Building is sub free</label>
+        <br>
+        <label><input type="checkbox" name="elevator" value="True" {% if elevator %} checked {% endif %}>Building has elevator</label>
+        <br>
+        <label><input type="checkbox" name="women_only" value="True" {% if women_only %} checked {% endif %}>Building is for women only</label>
+        <br>
+        <label><input type="checkbox" name="srd" value="True" {% if srd %} checked {% endif %}>Special Room Draw</label>
+        <br>
+        <label>Window Direction</label>
+        <br>
+        {% if direction_list %}
+            {% for value, label in direction_list %}
+                <label><input type="checkbox" name="direction" value="{{ value }}" {% if value in selected_directions %} checked {% endif %}>{{ label }}</label>
+            {% endfor %}
+        {% else %}
+            <p value="none">No directions to display</p>
+        {% endif %}
+    </div>
+
+    <br><br>
+    
+    <label>Sort by Rating</label>
+    <br>
+    <select name="rating">
+            <option value="" {% if rating == "" %}selected{% endif %}>Default</option>
+            <option value="desc" {% if rating == "desc" %}selected{% endif %}>Rating: High to Low</option>
+            <option value="asc" {% if rating == "asc" %}selected{% endif %}>Rating: Low to High</option>
+        </select>
+        <br><br>
+    <button type="submit">Apply Filters</button>
+    <a href="{% url 'browse:browse' %}" class="btn">Clear Filters</a>
+
+
+    </form>
+</fieldset>
+
+<h2>Available Rooms</h2>
+
+{% if room_list %}
+    <ul>
+    {% for room in room_list %}
+        <li><a href="/browse/{{ room.building.name }}/{{ room.number }}">{{ room.building.name }} {{ room.number }}</a>: {{ room.avg_rating }} stars</li>
+    {% endfor %}
+    </ul>
+{% else %}
+<p>No rooms are available</p>
+{% endif %}

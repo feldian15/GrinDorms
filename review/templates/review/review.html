@@ -1,0 +1,90 @@
+<a href="/home/">Back to Home</a>
+<h1>Review a Room</h1>
+<label for="regions">Choose a region</label>
+<form id="regions" action="{% url 'review:review' %}">
+<select name="region">
+    {% if region_list %}
+        {% for value, label in region_list %}
+            <option value="{{ value }}" {% if value == selected_region %} selected {% endif %}>{{ label }}</option>
+        {% endfor %}
+    {% else %}
+        <option value="">No buildings to display</option> 
+    {% endif %}
+</select>
+<button type="submit">Next</button>
+</form>
+
+<br><br>
+
+<label for="buildings" style={% if selected_region %} "display:block" {% else %} "display:none" {% endif %}>Choose a building</label>
+<form id="buildings" action="{% url 'review:review' %}" style={% if selected_region %} "display:block" {% else %} "display:none" {% endif %}>
+    <input type="hidden" name="region" value="{{ selected_region }}">
+    <select name="building">
+        {% if building_list %}
+            {% for building in building_list %}
+                <option value="{{ building.name }}" {% if building.name == selected_building %} selected {% endif %}>{{ building.name }}</option>
+            {% endfor %}
+        {% else %}
+            <option value="">No buildings to display</option> 
+        {% endif %}
+    </select>
+    <button type="submit">Next</button>
+</form>
+
+<br><br>
+
+<label for="floors" style={% if selected_building %} "display:block" {% else %} "display:none" {% endif %}>Choose a floor</label>
+<form id = "floors" action="{% url 'review:review' %}" style={% if selected_building %} "display:block" {% else %} "display:none" {% endif %}>
+    <input type="hidden" name="building" value="{{ selected_building }}">
+    <input type="hidden" name="region" value="{{ selected_region }}">
+    <select name="floor">
+        {% if floor_list %}
+            {% for value, label in floor_list %}
+                <option value="{{ value }}" {% if value == selected_floor %} selected {% endif %}>{{ label }}</option>
+            {% endfor %}
+        {% else %}
+            <option value="">No floors to display</option> 
+        {% endif %}
+    </select>
+<button type="submit">Next</button>
+</form>
+
+<br><br>
+
+<label for="rooms" style={% if selected_floor or selected_floor == 0 %} "display:block" {% else %} "display:none" {% endif %}>Choose a room</label>
+<form id="rooms" action="{% url 'review:review' %}" style={% if selected_floor or selected_floor == 0 %} "display:block" {% else %} "display:none" {% endif %}>
+    <input type="hidden" name="building" value="{{ selected_building }}">
+    <input type="hidden" name="region" value="{{ selected_region }}">
+    <input type="hidden" name="floor" value="{{ selected_floor }}">
+    <select name="room">
+        {% if room_list %}
+            {% for room in room_list %}
+                <option value="{{ room.number }}" {% if room.number == selected_room %} selected {% endif %}>{{ room.number }}</option>
+            {% endfor %}
+        {% else %}
+            <option value="none">No rooms to display</option> 
+        {% endif %}
+    </select>
+<button type="submit">Next</button>
+</form>
+
+<fieldset id="review" style={% if selected_room %} "display:block" {% else %} "display:none" {% endif %}>
+<form action="{% url 'review:add' building_name=selected_building room_number=selected_room %}" method="post" enctype="multipart/form-data">
+{% csrf_token %} 
+        <h2>You are reviewing room {{ selected_room }} of {{ selected_building }} Hall</h2>
+        <h3>Rating</h3>
+        <input type="radio" name="stars" id="one_star" value="1" required>One Star
+        <input type="radio" name="stars" id="two_stars" value="2">Two Stars
+        <input type="radio" name="stars" id="three_stars" value="3">Three Stars
+        <input type="radio" name="stars" id="four_stars" value="4">Four Stars
+        <input type="radio" name="stars" id="five_stars" value="5">Five Stars
+        <br>
+        <h3>Review</h3>
+        <textarea name="review_text" id="review_text" required></textarea>
+        <h3>Pictures</h3>
+        <input name="image" id="image" type="file" multiple>
+        <br>
+        <button type="submit">Submit</button>
+</form>
+</fieldset>
+
