@@ -32,6 +32,9 @@ To run this project locally, ensure you have:
    click the link generated in the terminal.
 **Note: Email functionality does not work on Grinnell Wifi, but works on a hotspot**
 
+## Functional Use Cases
+All use cases outlined in the requirements document should be functional EXCEPT for administrators removing flagged content. Currently there is no flagging option for reviews.
+
 ## Instructions to test the system:
 1. Follow steps 1-8 on running the system.
 2. Type "python manage.py test" to test the project.
