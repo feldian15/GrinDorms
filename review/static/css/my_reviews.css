@@ -1,0 +1,150 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+    background-color: white;
+    color: #333;
+    line-height: 1.5;
+    margin: 0;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Link Styles */
+a {
+    text-decoration: none;
+    color: white;
+    background-color: #2b9533;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin: 5px 0;
+}
+
+a:hover {
+    background-color: #2980b9;
+}
+
+/* Header Styles */
+h1 {
+    color: #0d1014;
+    margin: 20px 0;
+    font-size: 2.2em;
+}
+
+h2 {
+    color: #080707;
+    font-size: 1.8em;
+    margin: 20px 0 10px;
+}
+
+h3 {
+    color: #0f0e0e;
+    font-size: 1.4em;
+    margin: 15px 0 10px;
+}
+
+/* Form Styles */
+form {
+    margin: 15px 0;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #0a0a0a;
+}
+
+select {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    font-size: 1em;
+    border: 2px solid #2b9533;
+    border-radius: 6px;
+    background-color: white;
+    color: #080707;
+    margin-bottom: 10px;
+}
+
+/* Fieldset Styles */
+fieldset {
+    background-color: #f8f8f8;
+    border: 2px solid #2b9533;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+/* Radio Button Styles */
+input[type="radio"] {
+    margin: 0 5px 0 15px;
+    accent-color: #2b9533;
+}
+
+input[type="radio"]:first-of-type {
+    margin-left: 0;
+}
+
+/* Textarea Styles */
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #2b9533;
+    border-radius: 6px;
+    min-height: 100px;
+    font-family: inherit;
+    font-size: 1em;
+}
+
+/* File Input Styles */
+input[type="file"] {
+    margin: 10px 0;
+}
+
+/* Button Styles */
+button {
+    background-color: #2b9533;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1em;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+}
+
+button:hover {
+    background-color: #247a2a;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    body {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    h2 {
+        font-size: 1.5em;
+    }
+    
+    select {
+        max-width: 100%;
+    }
+    
+    input[type="radio"] {
+        display: block;
+        margin: 10px 0;
+    }
+    
+    input[type="radio"]:first-of-type {
+        margin-top: 0;
+    }
+}
