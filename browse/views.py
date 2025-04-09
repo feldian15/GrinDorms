@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse
 from . models import Room, Building, Regions, Directions, Sizes, Floors
 from review.models import Review, Image
+from django.contrib.auth.decorators import login_required
 
 # Set up all the filtering lists
 BUILDING_LIST = Building.objects.all()
@@ -8,6 +9,7 @@ BUILDING_LIST = Building.objects.all()
 
 # Create your views here.
 # View for browse filtering and sorting
+@login_required
 def browse(request):
     # filtering criteria are region, building, floor, srd, size, 
     # direction, washers, dryers, elevator, gender specific, rating...
@@ -80,6 +82,7 @@ def browse(request):
     return render(request, "browse/rooms.html", context)
 
 # View for a specific room's details and reviews
+@login_required
 def room_details(request, building_name, room_number):
     # get the room
     room = Room.objects.get(building__name=building_name, number=room_number)
