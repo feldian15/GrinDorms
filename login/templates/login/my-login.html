@@ -1,15 +1,22 @@
-<html>
-    
-    <h1> GrinDorms Login Page </h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GrinDorms Login</title>
+    <link rel="stylesheet" href="{% static 'css/my-login.css' %}">
+</head>
+<body>
+
+    <h1>GrinDorms Login Page</h1>
 
     <form method="POST" autocomplete="off">
-
         {% csrf_token %}
+        {{ loginform.as_p }}
+        <input type="submit" value="Log In" />
+        <br>
+        <a href="{% url 'password_reset' %}">Forgot username/password?</a>
+    </form>
 
-        {{loginform.as_p}}
-
-        <input type="submit" value="Log In"/>
-
-    <a href="{% url 'password_reset'%}" > Forgot username/password? </a>
-
+</body>
 </html>
