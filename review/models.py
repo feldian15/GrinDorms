@@ -1,8 +1,10 @@
+from datetime import timezone
 from django.db import models
 from browse.models import Room
 import os
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
+from django.contrib.auth.models import User
 
 MAXLEN = 200
 class Ratings(models.IntegerChoices):
@@ -12,15 +14,19 @@ class Ratings(models.IntegerChoices):
     GOOD = 4, 'Good'
     AWESOME = 5, 'Awesome'
 
+DEF_UID = User.objects.get(username="defaultuser").pk
+
 # Create your models here.
 class Review(models.Model):
+    user = models.ForeignKey(User, related_name="reviews", on_delete=models.CASCADE, default=DEF_UID)
+    created_time = models.DateTimeField(auto_now_add=True)
     room = models.ForeignKey(Room, related_name="reviews", on_delete=models.CASCADE)
     rating = models.IntegerField(choices=Ratings.choices, default=Ratings.OKAY)
     text = models.CharField(max_length=MAXLEN)
     display = models.BooleanField(default=True)
 
     def __str__ (self):
-        return "%s %d review" % (self.room.building.name, self.room.number)
+        return "%s %d review by %s" % (self.room.building.name, self.room.number, self.user.username)
 
 class Image(models.Model):
     review = models.ForeignKey(Review, related_name="images", on_delete=models.CASCADE)
