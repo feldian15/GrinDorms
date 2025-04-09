@@ -14,11 +14,11 @@ class Ratings(models.IntegerChoices):
     GOOD = 4, 'Good'
     AWESOME = 5, 'Awesome'
 
-DEF_UID = User.objects.get(username="defaultuser").pk
+
 
 # Create your models here.
 class Review(models.Model):
-    user = models.ForeignKey(User, related_name="reviews", on_delete=models.CASCADE, default=DEF_UID)
+    user = models.ForeignKey(User, related_name="reviews", on_delete=models.CASCADE, default=1)
     created_time = models.DateTimeField(auto_now_add=True)
     room = models.ForeignKey(Room, related_name="reviews", on_delete=models.CASCADE)
     rating = models.IntegerField(choices=Ratings.choices, default=Ratings.OKAY)
