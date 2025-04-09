@@ -72,12 +72,13 @@ def add(request, building_name, room_number):
     # grab the non image related fields
     rating = request.POST.get("stars")
     review_text = request.POST.get("review_text")
+    user = request.user
 
     # Get the associated room
     room = Room.objects.get(building__name=building_name, number=room_number)
 
     # make the new review:
-    new_review = Review(room=room, rating=rating, text=review_text)
+    new_review = Review(room=room, rating=rating, text=review_text, user=user)
     new_review.save()
 
     # update the rating on the room
