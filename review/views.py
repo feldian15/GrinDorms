@@ -2,9 +2,11 @@ from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from browse.models import Room, Building, Regions
 from .models import Review, Image
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 # View for adding a new review
+@login_required
 def review(request):
     # get input params
     selected_region = request.GET.get("region")
@@ -42,10 +44,11 @@ def review(request):
     return render(request, "review/review.html", context)
 
 # view for viewing user specific reviews
+@login_required
 def my_reviews(request):
     # Get reviews 
     # NEED TO MAKE THIS USER SPECIFIC
-    review_list = Review.objects.filter(display=True)
+    review_list = Review.objects.filter(display=True, user=request.user)
 
     # Grab any associated images
     review_list = review_list.prefetch_related("images")
@@ -55,6 +58,7 @@ def my_reviews(request):
     return render(request, "review/my_reviews.html", context)
 
 # view after a successful add
+@login_required
 def add_success(request):
     return render(request, "review/add_success.html", {})
 
@@ -63,16 +67,18 @@ def delete_success(request):
     return render(request, "review/delete_success.html", {})
 
 # logic to handle post request to add
+@login_required
 def add(request, building_name, room_number):
     # grab the non image related fields
     rating = request.POST.get("stars")
     review_text = request.POST.get("review_text")
+    user = request.user
 
     # Get the associated room
     room = Room.objects.get(building__name=building_name, number=room_number)
 
     # make the new review:
-    new_review = Review(room=room, rating=rating, text=review_text)
+    new_review = Review(room=room, rating=rating, text=review_text, user=user)
     new_review.save()
 
     # update the rating on the room
@@ -90,6 +96,7 @@ def add(request, building_name, room_number):
     return HttpResponseRedirect(reverse("review:add_success"))
 
 # logic to handle post request to delete
+@login_required
 def delete(request):
     # get the id of the review to delete
     review_id = request.POST.get("review_id")
