@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 # View for adding a new review
-@login_required
+@login_required(login_url="login:my-login")
 def review(request):
     # get input params
     selected_region = request.GET.get("region")
@@ -50,7 +50,7 @@ def review(request):
     return render(request, "review/review.html", context)
 
 # view for viewing user specific reviews
-@login_required
+@login_required(login_url="login:my-login")
 def my_reviews(request):
     # Get reviews 
     # NEED TO MAKE THIS USER SPECIFIC
@@ -64,7 +64,7 @@ def my_reviews(request):
     return render(request, "review/my_reviews.html", context)
 
 # view after a successful add
-@login_required
+@login_required(login_url="login:my-login")
 def add_success(request):
     return render(request, "review/add_success.html", {})
 
@@ -73,7 +73,7 @@ def delete_success(request):
     return render(request, "review/delete_success.html", {})
 
 # logic to handle post request to add
-@login_required
+@login_required(login_url="login:my-login")
 def add(request, building_name, room_number):
     # grab the non image related fields
     rating = request.POST.get("rating")
@@ -102,7 +102,7 @@ def add(request, building_name, room_number):
     return HttpResponseRedirect(reverse("review:add_success"))
 
 # logic to handle post request to delete
-@login_required
+@login_required(login_url="login:my-login")
 def delete(request):
     # get the id of the review to delete
     review_id = request.POST.get("review_id")
