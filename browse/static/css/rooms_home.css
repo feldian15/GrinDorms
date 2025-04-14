@@ -204,6 +204,9 @@ p.no-results {
 /* ===========================
         Responsive Design
    =========================== */
+/* What this does is whenever the window size is changed to a lower resolution,
+   the specified fields will then adjust accordingly depending on the pixel
+   difference specified with the media parameter. */
 @media (max-width: 600px) {
     fieldset {
         padding: 15px;
