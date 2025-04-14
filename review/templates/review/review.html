@@ -33,7 +33,7 @@
     <select name="building">
         {% if building_list %}
             {% for building in building_list %}
-                <option value="{{ building.name }}" {% if building.name == selected_building %} selected {% endif %}>{{ building.name }}</option>
+                <option value="{{ building.name }}" {% if building.name == selected_building %} selected {% endif %}>{{ building.display_building_name }}</option>
             {% endfor %}
         {% else %}
             <option value="">No buildings to display</option> 
@@ -84,11 +84,18 @@
         {% csrf_token %}
         <h2>You are reviewing room {{ selected_room }} of {{ selected_building }} Hall</h2>
         <h3>Rating</h3>
-        <input type="radio" name="stars" id="one_star" value="1" required>One Star
-        <input type="radio" name="stars" id="two_stars" value="2">Two Stars
-        <input type="radio" name="stars" id="three_stars" value="3">Three Stars
-        <input type="radio" name="stars" id="four_stars" value="4">Four Stars
-        <input type="radio" name="stars" id="five_stars" value="5">Five Stars
+        <fieldset class="rating">
+            <input type="radio" id="1star5" name="rating" value="5" required />
+            <label class="full" for="1star5" title="Awesome - 5 stars"></label>
+            <input type="radio" id="1star4" name="rating" value="4" />
+            <label class="full" for="1star4" title="Pretty good - 4 stars"></label>
+            <input type="radio" id="1star3" name="rating" value="3" />
+            <label class="full" for="1star3" title="Meh - 3 stars"></label>
+            <input type="radio" id="1star2" name="rating" value="2" />
+            <label class="full" for="1star2" title="Kinda bad - 2 stars"></label>
+            <input type="radio" id="1star1" name="rating" value="1" />
+            <label class="full" for="1star1" title="Sucks big time - 1 star"></label>
+          </fieldset>
         <br>
         <h3>Review</h3>
         <textarea name="review_text" id="review_text" required></textarea>

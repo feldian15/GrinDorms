@@ -46,6 +46,35 @@ h3 {
 }
 
 /* Form Styles */
+.star-rating {
+    --rating: 0;
+    --star-size: 20px;
+    --star-color: #ddd;
+    --star-background: #ffc107;
+    --letter-spacing: 2px;
+    
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: var(--star-size);
+    font-family: Arial;
+    line-height: 1;
+  }
+  
+  .star-rating::after {
+    content: "★★★★★";
+    letter-spacing: var(--letter-spacing);
+    background: linear-gradient(90deg, 
+      var(--star-background) calc(var(--rating) * 20%), 
+      var(--star-color) calc(var(--rating) * 20%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .star-rating[data-rating] {
+    --rating: attr(data-rating);
+  }
+  
 form {
     margin: 15px 0;
 }
@@ -122,28 +151,31 @@ button:hover {
 }
 
 /* Responsive Adjustments */
+/* What this does is whenever the window size is changed to a lower resolution,
+   the specified fields will then adjust accordingly depending on the pixel
+   difference specified with the media parameter. */
 @media (max-width: 600px) {
     body {
         padding: 15px;
     }
-    
+
     h1 {
         font-size: 1.8em;
     }
-    
+
     h2 {
         font-size: 1.5em;
     }
-    
+
     select {
         max-width: 100%;
     }
-    
+
     input[type="radio"] {
         display: block;
         margin: 10px 0;
     }
-    
+
     input[type="radio"]:first-of-type {
         margin-top: 0;
     }
