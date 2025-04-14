@@ -82,7 +82,7 @@ def browse(request):
     return render(request, "browse/rooms.html", context)
 
 # View for a specific room's details and reviews
-@login_required
+@login_required(login_url="login:my-login")
 def room_details(request, building_name, room_number):
     # get the room
     room = Room.objects.get(building__name=building_name, number=room_number)
