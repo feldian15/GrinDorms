@@ -138,7 +138,7 @@ h1 {
 /* lighten current selection */
 
 .rating>input:checked~label:hover~label {
-  color: #ff8080;
+    color: #2b9533;
 }
 
 fieldset {

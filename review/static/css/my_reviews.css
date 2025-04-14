@@ -46,6 +46,35 @@ h3 {
 }
 
 /* Form Styles */
+.star-rating {
+    --rating: 0;
+    --star-size: 20px;
+    --star-color: #ddd;
+    --star-background: #ffc107;
+    --letter-spacing: 2px;
+    
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: var(--star-size);
+    font-family: Arial;
+    line-height: 1;
+  }
+  
+  .star-rating::after {
+    content: "★★★★★";
+    letter-spacing: var(--letter-spacing);
+    background: linear-gradient(90deg, 
+      var(--star-background) calc(var(--rating) * 20%), 
+      var(--star-color) calc(var(--rating) * 20%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .star-rating[data-rating] {
+    --rating: attr(data-rating);
+  }
+  
 form {
     margin: 15px 0;
 }
