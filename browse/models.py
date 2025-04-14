@@ -53,6 +53,9 @@ class Building(models.Model):
             return Floors.choices[0:self.num_floors]
         else:
             return Floors.choices[1:self.num_floors + 1]
+        
+    def display_building_name(self):
+        return self.name.title() + " Hall"
 
 class Room(models.Model):
     building = models.ForeignKey(Building, related_name="rooms", on_delete=models.CASCADE)

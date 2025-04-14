@@ -33,7 +33,7 @@
     <select name="building">
         {% if building_list %}
             {% for building in building_list %}
-                <option value="{{ building.name }}" {% if building.name == selected_building %} selected {% endif %}>{{ building.name }}</option>
+                <option value="{{ building.name }}" {% if building.name == selected_building %} selected {% endif %}>{{ building.display_building_name }}</option>
             {% endfor %}
         {% else %}
             <option value="">No buildings to display</option> 
