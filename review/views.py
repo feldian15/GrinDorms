@@ -76,7 +76,7 @@ def delete_success(request):
 @login_required
 def add(request, building_name, room_number):
     # grab the non image related fields
-    rating = request.POST.get("stars")
+    rating = request.POST.get("rating")
     review_text = request.POST.get("review_text")
     user = request.user
 
