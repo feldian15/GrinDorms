@@ -9,3 +9,7 @@ For each subgroup:
 - Identify existing documentation that was helpful
 - Identify the commit hash of the commit in which you wrote your new documentation. Provide a Github link where your instructor can view the diff of that commit.
 - If you created or updated any issues in your issue tracker, show a "before" and "after" snapshot of the detailed view of each issue so that the difference can clearly be seen
+
+### Rene & Tim
+#### Code
+- 'rooms_details.css', 'rooms_home.css', 'my_reviews.css'
