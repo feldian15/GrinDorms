@@ -23,5 +23,5 @@ Assignment: What will each team member do this sprint?
 
 Issue Tracker: How can your instructor view the results of your sprint planning using your issue tracker?
 
-- Issues in the Trello board with the label Sprint 5:
+- Issues in the Trello board with the label Sprint 4:
 https://trello.com/b/fiZwfAwq/grindorms
