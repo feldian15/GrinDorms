@@ -4,6 +4,9 @@
 <a href="/home/"> Home </a>
 <h1>Browse Rooms</h1>
 
+<div class="main-container">
+    <!-- Filter Panel -->
+    <div class="filter-panel">
 <fieldset>
     <legend><h3>Filter</h3></legend>
     <label>Regions</label>
@@ -93,7 +96,9 @@
 
     </form>
 </fieldset>
+</div>
 
+<div class="room-list">
 <h2>Available Rooms</h2>
 
 {% if room_list %}
@@ -105,3 +110,4 @@
 {% else %}
 <p>No rooms are available</p>
 {% endif %}
+</div>

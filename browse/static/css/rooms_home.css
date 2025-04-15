@@ -9,6 +9,18 @@ body {
     padding: 20px;
 }
 
+/* =============================
+        Main Container Layout
+   ============================= */
+   .main-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
 /* =======================
         Header Styles
    ======================= */
@@ -57,6 +69,13 @@ a:hover {
 /* =============================
         Filter Panel Styles
    ============================= */
+
+.filter-panel {
+    flex: 1;
+    min-width: 300px;
+    max-width: 350px;
+}
+
 fieldset {
     position: relative;
     /* Needed to position legend absolutely */
@@ -149,6 +168,12 @@ button[type="submit"]:hover {
 /* ==========================
         Room List Styles
    ========================== */
+
+.room-list {
+    flex: 2;
+    min-width: 300px;
+}
+
 ul {
     list-style-type: none;
     padding: 0;
