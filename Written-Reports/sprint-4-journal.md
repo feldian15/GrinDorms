@@ -22,4 +22,29 @@ The only existing documentation was a brief description of what the view was doi
 ### Ella and Nitin
 - views.py in the login app (entire file)
 - This file did not have exsiting documentation for functionality accomplished in the code and remaining tasks to complete. We added descriptive in-line comments to detail what each function does and to describe specific lines of code. We added a block comment at the beginning of the document describing the code in general. We also went through and added comments for TODO items, including things we can delete and changes to make the code more consistent throughout.
-- We added an issue to the issue tracker for the next step for login, which is to ensure all of the urls in the other app are protected, and redirect users to the login page before being able to access them. This issue is called "Protect web pages" and we were able to successfully make the needed changes to do so. This issue has been moved to the completed section of our Trello board. 
+- We added an issue to the issue tracker for the next step for login, which is to ensure all of the urls in the other app are protected, and redirect users to the login page before being able to access them. This issue is called "Protect web pages" and we were able to successfully make the needed changes to do so. This issue has been moved to the completed section of our Trello board.
+
+## TODO: External Documentation and Stakeholder Meetings
+FOR EACH MEETING:
+- Who you met with
+- Name, occupation, and other relevant information about the stakeholder
+- Date and time of the stakeholder meeting
+- Description of the test session and feedback
+- What was their behavior of interacting with the documentation?
+- Did they succeed or get stuck?
+- What feedback did they provide about documentation?
+- What questions did you ask, and what were the stakeholder's answers?
+
+
+## TODO: Self-Selected Work toward Minimum Viable Product (MVP)
+- In a Sprint Journal entry, remind us what your MVP is (look back to Milestone 1 where you described what features would be included in your MVP)
+- Describe what work, if any, remains toward delivering your MVP
+
+## TODO: Generative AI Experiment
+For each use of AI this sprint, write an entry in your Sprint Journal including:
+- Name the members of your team who tried it.
+- Going into this use of AI, what were your goals and expectations?
+- Describe the use specifically in detail. How did you prompt the AI, and what was its output?
+- How did this use of AI affect your product development or other sprint deliverables? If you integrated any of its output directly into your code base, include a link to a pull request where the generated output can be clearly distinguished.
+- Refer back to your answer to question 2. To what extent did the use of AI achieve your goals and conform to your expectations?
+
