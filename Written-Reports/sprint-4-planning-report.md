@@ -10,7 +10,7 @@ Goals: Name the outcomes you plan to complete this sprint. Consider your backlog
 - update the product with all of the changes we identified in our issue log
 - (Hopefully) host the website
 - (hopefully) integrate the database
-- Finish user documentation
+- Finish user documentation and finish stakeholder meetings
 - Finish automated testing
 
 Task breakdown: For the work you plan to do this sprint, summarize the component parts. (Ok to just refer to your issue tracker.)
