@@ -104,7 +104,11 @@
 {% if room_list %}
     <ul>
     {% for room in room_list %}
-        <li><a href="/browse/{{ room.building.name }}/{{ room.number }}">{{ room.building.name }} {{ room.number }}</a>: {{ room.avg_rating }} stars</li>
+    <li>
+        <a href="/browse/{{ room.building.name }}/{{ room.number }}">{{ room.building.name }} {{ room.number }}</a>: 
+        <span class="star-rating" style="--rating: {{ room.avg_rating }};"></span>
+        ({{ room.avg_rating }})
+    </li>
     {% endfor %}
     </ul>
 {% else %}

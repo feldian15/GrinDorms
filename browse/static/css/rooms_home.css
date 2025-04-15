@@ -227,6 +227,34 @@ p.no-results {
 }
 
 /* ===========================
+        Star Function
+   =========================== */
+
+.star-rating {
+    display: inline-block;
+    font-size: 1.2em;
+    color: #ffc107; /* Gold color for stars */
+    position: relative;
+    unicode-bidi: bidi-override;
+    width: 5em;
+}
+
+.star-rating::before {
+    content: "★★★★★";
+    opacity: 0.3;
+}
+
+.star-rating::after {
+    content: "★★★★★";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: calc(var(--rating) * 1em);
+    overflow: hidden;
+    opacity: 1;
+}
+
+/* ===========================
         Responsive Design
    =========================== */
 /* What this does is whenever the window size is changed to a lower resolution,
