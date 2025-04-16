@@ -14,7 +14,8 @@
 {% if review_list %}
     {% for review in review_list %}
         <fieldset>
-            <legend><h3>Review for {{ review.room.building.name }} {{ review.room.number }}</h3></legend>
+            <legend><h3>Review for <a href="{% url 'browse:room_details' building_name=review.room.building.name room_number=review.room.number %}">{{ review.room.building.name }} {{ review.room.number }}</a></h3></legend>
+            <h4>Posted on {{ review.created_time.date }} at {{ review.created_time.time }}</h4>
             <h5 class="star-rating" data-rating="{{ review.rating }}">Rating: {{ review.rating }} stars</h5>
             <fieldset>
                 <legend><strong>Comments</strong></legend>

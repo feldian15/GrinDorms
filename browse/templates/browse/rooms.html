@@ -4,6 +4,9 @@
 <a href="/home/"> Home </a>
 <h1>Browse Rooms</h1>
 
+<div class="main-container">
+    <!-- Filter Panel -->
+    <div class="filter-panel">
 <fieldset>
     <legend><h3>Filter</h3></legend>
     <label>Regions</label>
@@ -93,15 +96,22 @@
 
     </form>
 </fieldset>
+</div>
 
+<div class="room-list">
 <h2>Available Rooms</h2>
 
 {% if room_list %}
     <ul>
     {% for room in room_list %}
-        <li><a href="/browse/{{ room.building.name }}/{{ room.number }}">{{ room.building.name }} {{ room.number }}</a>: {{ room.avg_rating }} stars</li>
+    <li>
+        <a href="/browse/{{ room.building.name }}/{{ room.number }}">{{ room.building.name }} {{ room.number }}</a>: 
+        <span class="star-rating" style="--rating: {{ room.avg_rating }};"></span>
+        ({{ room.avg_rating }})
+    </li>
     {% endfor %}
     </ul>
 {% else %}
 <p>No rooms are available</p>
 {% endif %}
+</div>
