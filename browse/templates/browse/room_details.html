@@ -1,33 +1,33 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/room_details.css' %}">
 
+
+
 <a href="/home/">Back to Home</a>
 <br>
 <a href="/browse/">Back to Browse</a>
-<h1>{{ room.building.name }} {{ room.number }}</h1>
-<a href="/review?building={{room.building.name}}&floor={{room.floor}}&room={{room.number}}">Review this room</a>
-
-<fieldset>
-    <legend><h2>Details</h2></legend>
-    Average Rating: {% if room.avg_rating %} {{ room.avg_rating }} {% else %} No reviews yet {% endif %}
-    <br>
-    Building: {{ room.building.name }} Hall
-    <br>
-    Campus Region: {{ room.building.region }}
-    <br>
-    Floor in building: {% if room.floor %} {{ room.floor }} {% else %} Pit {% endif %}
-</fieldset>
-
-<br><br>
 
 
+
+<h1>{{ room.building.name }} {{ room.number }} </h1> 
+    
+<h6>
+    Building: {{ room.building.name }} Hall |
+    Campus Region: {{ room.building.region }} |
+    Floor in building: {% if room.floor %} {{ room.floor }} {% else %} Pit {% endif %} | 
+    Average Rating: <span class="star-rating" style="--rating: {{ room.avg_rating }};"></span> ({{ room.avg_rating }}) |
+    <b href="/review?building={{room.building.name}}&floor={{room.floor}}&room={{room.number}}">Review this room</b> 
+</h6>
+
+<div class="main-container">
+<div class="room-reviews"> 
 <fieldset>
 <legend><h2>Reviews</h2></legend>
 {% if review_list %}
     {% for review in review_list %}
         <fieldset>
-            <h5>Rating: {{ review.rating }} stars</h5>
             <h4>Posted on {{ review.created_time.date }} at {{ review.created_time.time }}</h4>
+            <div> <span class="star-rating" style="--rating: {{ review.rating }};"></span> </div>       
             <fieldset>
                 <legend><strong>Comments</strong></legend>
                 {{ review.text }}
@@ -40,7 +40,9 @@
     <a href="/review?building={{room.building.name}}&floor={{room.floor}}&room={{room.number}}">Be the first</a>
 {% endif %}
 </fieldset>
+</div>
 <br>
+<div class="room-images">
 <fieldset>
     <legend><h2>Images</h2></legend>
     {% if image_list %}
@@ -52,3 +54,4 @@
         <a href="/review?building={{room.building.name}}&floor={{room.floor}}&room={{room.number}}">Be the first to add photos of this room</a>
     {% endif %}
 </fieldset>
+</div></div>

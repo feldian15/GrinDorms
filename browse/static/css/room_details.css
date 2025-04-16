@@ -8,6 +8,30 @@ body {
     padding: 20px;
 }
 
+/* =============================
+        Main Container Layout
+   ============================= */
+   .main-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.room-reviews {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+}
+
+.room-images {
+    flex: 2;
+    min-width: 300px;
+    max-width: 500px;
+}
+
 /* Link Styles */
 a {
     text-decoration: none;
@@ -21,6 +45,22 @@ a {
 }
 
 a:hover {
+    background-color: #2980b9;
+}
+
+/* Link Styles 2 */
+b {
+    text-decoration: none;
+    color: white;
+    background-color: #2b9533;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin: 5px 0;
+}
+
+b:hover {
     background-color: #2980b9;
 }
 
@@ -49,6 +89,12 @@ h5 {
     font-size: 2em;
     color: #0f0e0e;
     margin: 10px 0;
+}
+
+h6 {
+    font-size: 1.2em;
+    color: #0f0e0e;
+    margin: 15px 0;
 }
 
 /* Fieldset Styles */
@@ -84,6 +130,34 @@ img {
 .rating {
     font-weight: bold;
     color: #2b9533;
+}
+
+/* ===========================
+        Star Function
+   =========================== */
+
+.star-rating {
+    display: inline-flex;
+    font-size: 1.2em;
+    color: #ffc107; /* Gold color for stars */
+    position: relative;
+    unicode-bidi: bidi-override;
+    width: 5em;
+}
+
+.star-rating::before {
+    content: "★★★★★";
+    opacity: 0.3;
+}
+
+.star-rating::after {
+    content: "★★★★★";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: calc(var(--rating) * 1em);
+    overflow: hidden;
+    opacity: 1;
 }
 
 /* Responsive Adjustments */
