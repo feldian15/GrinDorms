@@ -35,7 +35,27 @@ FOR EACH MEETING:
 - What feedback did they provide about documentation?
 - What questions did you ask, and what were the stakeholder's answers?
 
+### Meeting 1: Kailee Shermak (April 16, 6:14pm)
+- This meeting was with Kailee Shermak, a fourth year sociology major with a digital studies concentration at Grinnell College. Kailee is on the swim team and was a test user for our paper prototype. She has lived in various dorms on campus.
+- Kailee's interaction with the documentation was limited. She skimmed it beforehand, but said that it was not necessary for her to understand how to navigate the website, and did not refer to it while testing the project. She did not give feedback on the documentation otherwise. 
+- Kailee succeeded in the goal of creating and verifying an account, browsing for rooms, and posting room reviews.
+  
+**Question 1: What aspects of the website did you like?**
+- Overall, Kailee enjoyed the aesthetics of the website. 
+- She liked the black bar display for each room in the browsing page of our website and also liked the setup of the initial homepage after logging in.
+- She said the process for registering and verifying an account was easy, and she liked the email verification aspect of that process.
+  
+**Question 2: What aspects of the website were confusing/unintuitive?**
+- When filtering for rooms in the browse section of the webstite, she thought the apply filters button was hard to navigate to because she had to scroll down a lot. She recommended moving this button to the top of the filtering section.
+- Kailee also found part of the review form to be unintuitive. She thinks that if someone goes back to change information about a room (ex. cluster on campus, floor number, etc, it should automatically refresh/remove the information following it, as it would then be incorrect. This happens when users change info and click the next button, but Kailee found this unintuitive and a little clunky.
+- When navigating to the review page directly from clicking on a "review this room" button on a room review page, Kailee thinks that users should not have the ability to alter the room/cluster/floor information, and should just be allowed to post a review for that specific room
 
+**Other misc feedback during the test:**
+- Kailee thought the inital colors of the stars for the room reviewing form were confusing because they were already green, so she thought it was a default five-star review and didn't know she had to select a star rating. She thinks the starts should start out with a black outline and white center. When she didn't select stars and tried to submit, she was unable to submit and it took her a while to figure out the reason, since there was no error message shown. 
+- She thought the room labels "five-man", "six-man", etc should be changed to "five-person," etc.
+- She thinks the website should limit image files uploaded to be JPEG and PNG. She tried to upload a PDF and nothing broke, but the image was blank and just showed the name of the image, so users should probaly be prevented from uploading files of an invalid format. 
+
+  
 ## TODO: Self-Selected Work toward Minimum Viable Product (MVP)
 - In a Sprint Journal entry, remind us what your MVP is (look back to Milestone 1 where you described what features would be included in your MVP)
 - Describe what work, if any, remains toward delivering your MVP
