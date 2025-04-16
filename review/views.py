@@ -69,8 +69,10 @@ def my_reviews(request):
 def add_success(request):
     return render(request, "review/add_success.html", {})
 
+# view after a failed add
 @login_required(login_url="login:my-login")
 def add_fail(request, error_type):
+    # might need to add more errors but this works for now
     if error_type == "UNIQUEREV":
         error = "ERROR: cannot post multiple reviews of the same room by the same user."
     else:
@@ -96,9 +98,11 @@ def add(request, building_name, room_number):
     # make the new review:
     new_review = Review(room=room, rating=rating, text=review_text, user=user)
 
+    # try to save the review and check if the user has already posted a review of this room
     try:
         new_review.save()
     except IntegrityError:
+        # if they have, redirect to the error page without adding the review
         error_type = "UNIQUEREV"
         return HttpResponseRedirect(reverse("review:add_fail", args=(error_type,)))
 
