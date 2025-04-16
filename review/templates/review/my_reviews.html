@@ -15,7 +15,7 @@
     {% for review in review_list %}
         <fieldset>
             <legend><h3>Review for {{ review.room.building.name }} {{ review.room.number }}</h3></legend>
-            <h5>Rating: {{ review.rating }} stars</h5>
+            <h5 class="star-rating" data-rating="{{ review.rating }}">Rating: {{ review.rating }} stars</h5>
             <fieldset>
                 <legend><strong>Comments</strong></legend>
                 {{ review.text }}
