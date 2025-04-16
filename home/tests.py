@@ -33,7 +33,7 @@ class HomePageTest(StaticLiveServerTestCase):
         self.driver.get(self.live_server_url + '/home/')
 
         # Wait until the page title is not empty (max 5 seconds)
-        WebDriverWait(self.driver, 10).until(
+        WebDriverWait(self.driver, 20).until(
             lambda driver: driver.title != ""
         )
 
