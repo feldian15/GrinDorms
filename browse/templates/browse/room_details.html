@@ -4,6 +4,7 @@
 <a href="/home/">Back to Home</a>
 <br>
 <a href="/browse/">Back to Browse</a>
+<a href="{% url 'login:user-logout'%}" > Logout here </a>
 <h1>{{ room.building.name }} {{ room.number }}</h1>
 <a href="/review?building={{room.building.name}}&floor={{room.floor}}&room={{room.number}}">Review this room</a>
 
