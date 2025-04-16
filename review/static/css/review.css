@@ -7,8 +7,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 40px 20px 40px 20px;
-    /* Top and bottom padding */
+    padding: 40px 20px;
     margin: 0;
     text-align: center;
     position: relative;
@@ -24,7 +23,6 @@
     text-decoration: none;
     color: white;
     background-color: #2b9533;
-    /* Same as other buttons */
     padding: 10px 18px;
     border-radius: 8px;
     transition: background-color 0.3s ease;
@@ -33,7 +31,6 @@
 
 .back-home:hover {
     background-color: #2980b9;
-    /* Same hover as other buttons */
 }
 
 /* ==================
@@ -73,78 +70,74 @@ form {
 
 fieldset,
 label {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  margin: 20px;
-}
-
-h1 {
-  font-size: 1.5em;
-  margin: 10px;
-}
-
-.rating {
-  border: none;
-  float: left;
-}
-
-.rating>input {
-  display: none;
-}
-
-.rating>label:before {
-  margin: 5px;
-  font-size: 1.25em;
-  font-family: FontAwesome;
-  display: inline-block;
-  content: "★";
-}
-
-.rating>.half:before {
-  content: "★";
-  position: absolute;
-}
-
-.rating>label {
-  color: #ddd;
-  float: right;
-}
-
-.rating>input:checked~label,
-
-/* show gold star when clicked */
-
-.rating:not(:checked)>label:hover,
-
-/* hover current star */
-
-.rating:not(:checked)>label:hover~label {
-  color: #2b9533;
-}
-
-
-/* hover previous stars in list */
-
-.rating>input:checked+label:hover,
-
-/* hover current star when changing rating */
-
-.rating>input:checked~label:hover,
-.rating>label:hover~input:checked~label,
-
-/* lighten current selection */
-
-.rating>input:checked~label:hover~label {
-    color: #2b9533;
+    margin: 0;
+    padding: 0;
 }
 
 fieldset {
     border: none;
     padding: 0;
     margin: 0;
+}
+
+/* ======================
+      Star Rating Styling
+   ====================== */
+   .rating {
+    border: none;
+    display: inline-block;
+    font-size: 2em;
+    text-align: center;
+}
+
+/* Hide the radio inputs */
+.rating > input {
+    display: none;
+}
+
+/* Base star style */
+.rating > label:before {
+    margin: 8px;
+    font-size: 2em;
+    font-family: FontAwesome;
+    display: inline-block;
+    content: "★";
+}
+
+/* Default unselected stars = green */
+.rating > label {
+    color: #2b9533;
+    float: right;
+    transition: color 0.2s ease;
+}
+
+/* Hovered stars = blue (no selection yet) */
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: #2980b9;
+}
+
+/* Selected stars = gold */
+.rating > input:checked ~ label {
+    color: gold;
+}
+
+/* Hover after selection:
+   Only stars BEYOND the selected ones turn blue */
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label {
+    color: #2980b9;
+}
+
+/* Keep already selected stars gold even on direct hover */
+.rating > input:checked ~ input:hover ~ label,
+.rating > input:checked ~ label:hover ~ input:checked ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label,
+.rating > input:checked ~ label:hover ~ input:checked ~ label {
+    color: gold;
 }
 
 /* ======================
@@ -164,8 +157,15 @@ input[type="password"] {
 }
 
 textarea {
-    height: 100px;
-    resize: vertical;
+  display: block;
+  margin: 0 auto 15px auto; /* top: 0, horizontal: auto, bottom: 15px */
+  height: 100px;
+  resize: vertical;
+  width: 94%;              
+  padding: 12px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
 }
 
 /* ======================
