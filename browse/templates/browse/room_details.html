@@ -27,6 +27,7 @@
     {% for review in review_list %}
         <fieldset>
             <h5>Rating: {{ review.rating }} stars</h5>
+            <h4>Posted on {{ review.created_time.date }} at {{ review.created_time.time }}</h4>
             <fieldset>
                 <legend><strong>Comments</strong></legend>
                 {{ review.text }}
