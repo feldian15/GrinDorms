@@ -7,17 +7,20 @@
     <meta charset="UTF-8">
     <title>GrinDorms</title>
     <link rel="stylesheet" href="{% static 'css/homepage.css' %}">
-    <a href="{% url 'login:user-logout'%}" > Logout here </a>
 </head>
 
 <body>
 
+    <div class="logout-container">
+        <a href="{% url 'login:user-logout' %}" class="logout-button">Logout</a>
+    </div>
+
     <h1>Welcome to GrinDorms</h1>
     <h2>Use the following links to navigate the site:</h2>
 
-    <h3><a href="/browse/" id="browse_link">Browse for rooms</a></h3>
-    <h3><a href="/review/" id="review_link">Review a room</a></h3>
-    <h3><a href="{% url 'review:my_reviews' %}" id="my_reviews_link">View your reviews</a></h3>
+    <h3><a href="/browse/" id="browse_link">Browse Rooms</a></h3>
+    <h3><a href="/review/" id="review_link">Review a Room</a></h3>
+    <h3><a href="{% url 'review:my_reviews' %}" id="my_reviews_link">View Your Reviews</a></h3>
 
 </body>
 

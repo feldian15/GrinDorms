@@ -1,8 +1,10 @@
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'css/rooms_home.css' %}">
+<link rel="stylesheet" href="{% static 'css/rooms.css' %}">
 <a href="/home/"> Home </a>
-<a href="{% url 'login:user-logout'%}" > Logout here </a>
+<div class="logout-top">
+    <a href="{% url 'login:user-logout' %}" class="logout-button logout-button">Logout</a>
+</div>
 <h1>Browse Rooms</h1>
 
 <div class="main-container">
