@@ -1,3 +1,8 @@
+### *****************
+### tokens.py
+### Author: Ella Berman
+### Generate the token used to validate user accounts via an emailed link.
+### *****************
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
 
 class AccountActivationTokenGenerator(PasswordResetTokenGenerator):
