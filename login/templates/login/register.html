@@ -18,6 +18,8 @@
         {% csrf_token %}
         {{ registerform.as_p }}
         <input type="submit" value="Register"/>
+        <br>
+        <a href="{% url 'login:my-login' %}">Already have an account? Sign in here!</a>
     </form>
 
 </body>
