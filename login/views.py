@@ -114,7 +114,7 @@ def activate(request, uidb64, token):
         messages.error(request, "Activation link is invalid or expired.")
         return redirect("login:")
 
-# this is self explainitory, although there is potential for repeated code from the register function.
+# this is self explanitory, although there is potential for repeated code from the register function.
 # TODO see if we can refactor this to be more DRY
 def resend_registration(request):
     form = ResendRegEmailForm()
@@ -126,7 +126,8 @@ def resend_registration(request):
             email = request.POST.get('email')
 
             try:
-                user = User.objects.get(email=email)
+                to_email = form.cleaned_data.get("email").strip().lower()
+                user = User.objects.get(email=to_email)
 
                 if user is not None:
                     if user.is_active:
@@ -140,7 +141,7 @@ def resend_registration(request):
                             "uid": urlsafe_base64_encode(force_bytes(user.pk)),
                             "token": account_activation_token.make_token(user)
                         })
-                        to_email = form.cleaned_data.get("email")
+                        # to_email = form.cleaned_data.get("email").strip().lower()
                         email = EmailMessage(
                             mail_subject, message, to=[to_email]
                         )
