@@ -16,6 +16,7 @@ from django.core.validators import EmailValidator
 class CreateUserForm(UserCreationForm):
     email = forms.EmailField(required=True)
 
+    # Create an instance of a user given information in the form
     class Meta:
         model = User
         fields = ["username", "email", "password1", "password2"]

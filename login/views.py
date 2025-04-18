@@ -77,15 +77,8 @@ def my_login(request):
                     return redirect("login:my-login")
     
     # provide the form to the frontend and render the html
-    # TODO be consistent with if we are putting objects in render functions
-    # TODO go fuck myself
     context = {'loginform':form}
     return render(request, 'login/my-login.html', context=context)
-
-# this is no longers needed.
-# TODO delete this, does not seem to be referenced anywhere
-def dashboard(request):
-    return render(request, 'login/dashboard.html')
 
 # logs out and redirects the user to the login page upon logout
 def user_logout(request):
@@ -114,8 +107,7 @@ def activate(request, uidb64, token):
         messages.error(request, "Activation link is invalid or expired.")
         return redirect("login:")
 
-# this is self explanitory, although there is potential for repeated code from the register function.
-# TODO see if we can refactor this to be more DRY
+# this is similar to the register page, but it does not create a new user. 
 def resend_registration(request):
     form = ResendRegEmailForm()
 
@@ -147,8 +139,6 @@ def resend_registration(request):
                         )
                         email.send()
                         messages.success(request, "Please check your email to complete the registration process. It might be in your spam folder.")
-                        # TODO reslove inconsistency with redirecting vs rendering registartion_submitted from this to
-                            # TODO normal register function
                         return render(request, "login/registration_submitted.html")
 
             except User.DoesNotExist:
