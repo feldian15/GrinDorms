@@ -68,3 +68,48 @@ For each use of AI this sprint, write an entry in your Sprint Journal including:
 - How did this use of AI affect your product development or other sprint deliverables? If you integrated any of its output directly into your code base, include a link to a pull request where the generated output can be clearly distinguished.
 - Refer back to your answer to question 2. To what extent did the use of AI achieve your goals and conform to your expectations?
 
+### Email Experiment (Ella)
+1. One of the tasks I needed to complete was to ensure that email address input is always case insensitive so the app can sucessfully match an email address to a user's account and send a verification/password reset email. My goal for this AI experiment was to test how AI could help me understand why the code was not currently case insensitive, and how to change the code to complete the task.
+2. First, I wanted to figure out what the line of code "self.cleaned_data.get("email")" in my forms.py file was actually doing. I expecting an answer that would indicate that the email string was being altered in some way. 
+
+**Prompt:** "I am working on a login subapp using django. In my forms.py file, I have "self.cleaned_data.get("email")". What does this do to the email entered by the user?"
+
+**Output:** 
+
+...............................................................................
+
+Great question!
+In Django forms, self.cleaned_data.get("email") is used after form validation to retrieve the cleaned (i.e., validated and normalized) value of the email field that the user submitted. Here's a breakdown of what it does:
+
+📌 What self.cleaned_data.get("email") Does
+self.cleaned_data is a dictionary-like object that holds all the form fields and their cleaned (processed) values after calling form.is_valid().
+
+.get("email") attempts to retrieve the value associated with the "email" field from that dictionary.
+
+So essentially:
+
+python
+Copy
+Edit
+email = self.cleaned_data.get("email")
+means: "Give me the email the user entered, but only after it's been validated and cleaned by the form."
+
+🧼 What "cleaned" Means
+Django applies a few steps during cleaning:
+
+Validation: It checks if the field satisfies all conditions (e.g., required, proper email format).
+
+Type conversion: It converts the value to the expected Python type (e.g., converting string to datetime, ensuring email is a string in valid format).
+
+Custom clean methods: If you define clean_email(self) in your form, Django will run it and use its return value in cleaned_data.
+
+🚨 Important
+This only works after form.is_valid() is called, because cleaned_data doesn’t get populated until then.
+
+...............................................................................
+
+4. This output did not exactly answer what I was trying to figure out. I then asked if that line converted the email to the trimmed, lowercase version. The response what that it did not. I then asked how to accomplish that conversion, and it told me to add .strip().lower() to the line of code. I changed my code based on this advice, and accomplished my goal. (Altered code is in commit 1 for the Cleaned Code pull request (#41).
+5. This use of AI affected my product development because it helped me understand what a line of code was doing, and gave me options on how to alter that line of code to accomplish my goal. Once I knew the right questions to ask, it helped me in my product development.
+6. Initally, I got an answer I was not expecting and had to rephrase my question in order to get the results I wanted. In general, this use of AI mostly conformed to my expectations and overall helped me achieve my goal more efficiently than I would have by trying to look at documentation or going on Google. 
+
+
