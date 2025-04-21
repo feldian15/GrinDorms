@@ -8,8 +8,12 @@
 </head>
 <body>
 
-<a href="/home/" class="back-home">Back to Home</a>
-<a href="{% url 'login:user-logout'%}" > Logout here </a>
+<!-- Top Navigation -->
+<div class="top-nav">
+    <a href="/home/" class="nav-button">Home</a>
+    <a href="{% url 'login:user-logout' %}" class="nav-button logout-button">Logout</a>
+</div>
+
 <h1>Review a Room</h1>
 
 <label for="regions">Choose a region</label>
@@ -96,7 +100,7 @@
             <label class="full" for="1star2" title="Kinda bad - 2 stars"></label>
             <input type="radio" id="1star1" name="rating" value="1" />
             <label class="full" for="1star1" title="Sucks big time - 1 star"></label>
-          </fieldset>
+        </fieldset>
         <br>
         <h3>Review</h3>
         <textarea name="review_text" id="review_text" required></textarea>

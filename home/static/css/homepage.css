@@ -39,3 +39,24 @@ a {
 a:hover {
     background-color: #2980b9;
 }
+
+/* Logout button */
+.logout-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.logout-button {
+    text-decoration: none;
+    color: white;
+    background-color: #2b9533;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.logout-button:hover {
+    background-color: #2980b9;
+}
