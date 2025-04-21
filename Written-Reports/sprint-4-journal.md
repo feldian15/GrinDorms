@@ -142,4 +142,96 @@ This only works after form.is_valid() is called, because cleaned_data doesn’t 
 5. This use of AI affected my product development because it helped me understand what a line of code was doing, and gave me options on how to alter that line of code to accomplish my goal. Once I knew the right questions to ask, it helped me in my product development.
 6. Initally, I got an answer I was not expecting and had to rephrase my question in order to get the results I wanted. In general, this use of AI mostly conformed to my expectations and overall helped me achieve my goal more efficiently than I would have by trying to look at documentation or going on Google. 
 
+### Documentation to .css login files (Rene)
+One thing I thought that needed to be addressed in our code was the lack of documentation, specifically in our .css files. This is not limited to the 3 files I experimentated on, but I wanted to see how ChatGPT would go about providing comments to the code. I first provided the .css I wanted to be documented (in this case 'index.css'), and then provided the associated .html file that it is being loaded in (in this case 'index.html'). The prompt looked something like this:
 
+*This is 'index.css': [provided code]*
+
+*This is 'index.html': [provided code]*
+
+*Add documentation to the code.*
+
+I thought providing the .html file would provide clarity as to what is exactly being styled. And would thus provide a more accurate and comprehensive comments within the .css files. This is what was provided to me for 'index.css':
+
+...............................................................................
+
+Here is your updated `index.css` file with clear and professional documentation added as comments throughout the file:
+
+```css
+/* ============================
+    Global Page Layout
+   ============================ */
+
+/* 
+   Styles for the entire page layout.
+   - Centers all content both vertically and horizontally.
+   - Uses a clean, readable sans-serif font.
+   - Sets a light background and removes default margins.
+*/
+body {
+    background-color: #f0f4f8;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+}
+
+
+/* =======================
+    Heading Styles
+   ======================= */
+
+/*
+   Styles the main heading on the page.
+   - Increases font size for emphasis.
+   - Applies a dark, modern color.
+   - Adds spacing below the heading.
+*/
+h1 {
+    font-size: 3em;
+    color: #2c3e50;
+    margin-bottom: 1em;
+}
+
+
+/* ============================
+    Button/Link Styles
+   ============================ */
+
+/*
+   Styles for all <a> elements acting as buttons.
+   - Removes underlines from links.
+   - Applies white text on a green background.
+   - Adds padding and rounded corners for a button look.
+   - Adds smooth transition effect on hover.
+   - Adds vertical spacing between buttons.
+*/
+a {
+    text-decoration: none;
+    color: white;
+    background-color: #2b9533;
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    margin: 10px 0;
+}
+
+/*
+   Hover state for links.
+   - Changes background color to a blue tone when hovered over.
+*/
+a:hover {
+    background-color: #2980b9;
+}
+```
+
+Let me know if you want this broken into separate component-specific files later (e.g., `buttons.css`, `layout.css`, etc.), or want dark mode variants!
+
+...............................................................................
+
+After reviewing the documentation provided, I thought it was very accurate and helpful to understand what exactly is being done in each code block. It definetly exceeded my expectations as to what will be provided. It significantly improved not only my group members understanding of what each block of styling is doing, but even my own understanding, and I wrote most of this code. It definetly was useful in this regard, and it will definetly help improve our own documentation practices moving forward.
