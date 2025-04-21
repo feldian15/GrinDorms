@@ -67,6 +67,36 @@ For each use of AI this sprint, write an entry in your Sprint Journal including:
 - Describe the use specifically in detail. How did you prompt the AI, and what was its output?
 - How did this use of AI affect your product development or other sprint deliverables? If you integrated any of its output directly into your code base, include a link to a pull request where the generated output can be clearly distinguished.
 - Refer back to your answer to question 2. To what extent did the use of AI achieve your goals and conform to your expectations?
+### Golden Stars Experiment (Mac)
+
+One issue we had with our code (or goal we had), was to implement a visually appealing rating with golden stars specific to each room. For example, the average room rating would say “4 stars”, and we wanted to create a visual representation of the corresponding amount of stars. I prompted the AI to implement a CSS function that displays the correct corresponding number of golden stars when give an integer as a parameter. It gave me a function that worked as expected. 
+
+This significantly helped our project because stack overflow and other resources did not have any examples of code that worked for our specific format. This has definitely added to my learning because it showed me a new way to use a CSS function to display a visual result. My advice to my peers is to use AI when you are fully stuck, or you have a problem that is specific to your exact project, where limited resources exist online posted by real humans. 
+
+
+.star-rating {
+    display: inline-block;
+    font-size: 1.2em;
+    color: #ffc107; /* Gold color for stars */
+    position: relative;
+    unicode-bidi: bidi-override;
+    width: 5em;
+}
+
+.star-rating::before {
+    content: "★★★★★";
+    opacity: 0.3;
+}
+
+.star-rating::after {
+    content: "★★★★★";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: calc(var(--rating) * 1em);
+    overflow: hidden;
+    opacity: 1;
+}
 
 ### Email Experiment (Ella)
 1. One of the tasks I needed to complete was to ensure that email address input is always case insensitive so the app can sucessfully match an email address to a user's account and send a verification/password reset email. My goal for this AI experiment was to test how AI could help me understand why the code was not currently case insensitive, and how to change the code to complete the task.
