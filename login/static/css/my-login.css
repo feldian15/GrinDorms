@@ -65,7 +65,7 @@ input[type="submit"]:hover {
     background-color: #2980b9;
 }
 
-/* Forgot Password Link */
+/* Forgot Password/Create Account Links */
 a {
     display: inline-block;
     margin-top: 15px;
