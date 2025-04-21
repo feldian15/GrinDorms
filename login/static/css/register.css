@@ -1,6 +1,14 @@
 /* ========================
         Global Styling
    ======================== */
+/*
+   Base layout styles for the registration page.
+   - Sets light background and clean sans-serif font.
+   - Uses Flexbox to vertically align content, starting from the top.
+   - Adds vertical padding for spacing from top and bottom.
+   - Ensures full viewport height coverage.
+   - Centers and aligns all text content.
+*/
 body {
     background-color: #f0f4f8;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -8,10 +16,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    /* Start content from top */
     min-height: 100vh;
     padding: 40px 20px;
-    /* Top and bottom spacing */
     margin: 0;
     text-align: center;
 }
@@ -19,18 +25,32 @@ body {
 /* ==================
         Headings
    ================== */
+/*
+   Main heading for the registration page.
+   - Large font size and dark color for visibility.
+   - Slight negative margin to reduce spacing before the next element.
+*/
 h1 {
     font-size: 3em;
     color: #2c3e50;
     margin-bottom: -0.3em;
 }
 
+/*
+   Important instructional note (e.g., email requirement).
+   - Red to draw attention.
+   - Slightly larger font for emphasis.
+*/
 p.note {
     color: red;
     font-size: 1.1em;
     margin-bottom: 1.3em;
 }
 
+/*
+   Note for link section (e.g., sign-in link).
+   - Provides extra space above the link.
+*/
 p.link-note {
     margin-top: 1.5em;
     font-size: 1em;
@@ -39,6 +59,11 @@ p.link-note {
 /* ======================
         Form Styling
    ====================== */
+/*
+   Registration form container.
+   - White card with padding, rounded corners, and subtle drop shadow.
+   - Width is constrained for readability across screen sizes.
+*/
 form {
     background-color: white;
     padding: 30px 40px;
@@ -48,6 +73,11 @@ form {
     max-width: 400px;
 }
 
+/*
+   Text, email, and password input fields.
+   - Full width with padding and spacing between fields.
+   - Rounded corners and border for clean look.
+*/
 input[type="text"],
 input[type="email"],
 input[type="password"] {
@@ -59,6 +89,12 @@ input[type="password"] {
     font-size: 1em;
 }
 
+/*
+   Submit button styling.
+   - Green background matches branding.
+   - Full-width button with padding and smooth hover transition.
+   - Rounded corners and white text for accessibility.
+*/
 input[type="submit"] {
     background-color: #2b9533;
     color: white;
@@ -71,20 +107,29 @@ input[type="submit"] {
     width: 100%;
 }
 
+/*
+   Submit button hover state.
+   - Changes background to blue for visual feedback.
+*/
 input[type="submit"]:hover {
     background-color: #2980b9;
 }
 
-/* Already have an account link */
+/* ======================
+        Link Styling
+   ====================== */
+/*
+   Anchor link styling (e.g., sign-in redirect).
+   - Green bold text without underline by default.
+   - Transitions to blue with underline on hover.
+*/
 a {
-    display: inline-block;
-    margin-top: 15px;
     color: #2b9533;
     text-decoration: none;
     font-weight: bold;
-    transition: color 0.3s ease;
 }
 
 a:hover {
     color: #2980b9;
+    text-decoration: underline;
 }
