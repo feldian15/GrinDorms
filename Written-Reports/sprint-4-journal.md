@@ -67,6 +67,114 @@ For each use of AI this sprint, write an entry in your Sprint Journal including:
 - Describe the use specifically in detail. How did you prompt the AI, and what was its output?
 - How did this use of AI affect your product development or other sprint deliverables? If you integrated any of its output directly into your code base, include a link to a pull request where the generated output can be clearly distinguished.
 - Refer back to your answer to question 2. To what extent did the use of AI achieve your goals and conform to your expectations?
+### Selenium Tests Experiment (Ian and Tim)
+1. Our goal in this experiment was to see if ChatGPT could help us create a test user and login to our site so that we could access the full site and run automated integration tests. We expected ChatGPT to be mostly right, since this is a simple task with plenty of examples online.
+2. We prompted the AI by first writing: "I am going to give you a couple of html templates and some test functions for a django app. I need help writing a selenium test that is able to login and access login required pages. Please do not write me any code until I tell you what I want written." Then we provided three HTML templates relating to our login page, followed by our existing test code. ChatGPT responded with "Sounds good! Go ahead and share your HTML templates and test functions whenever you're ready, and I’ll follow your lead." After each HTML file, it remained in waiting and prompted us to continue to submit our code. Once we had uploaded all of the necessary code, we used the prompt: "Lets create a test user first, step by step." Chat GPT then respnded with:
+
+`Great! To create a test user, you can add this to the setUpClass method in your HomePageTest. Django’s test database is recreated for each test run, so this user will only exist during tests:
+
+from django.contrib.auth.models import User
+
+@classmethod
+def setUpClass(cls):
+    super().setUpClass()
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+
+    cls.driver = webdriver.Chrome(
+        service=Service(ChromeDriverManager().install()),
+        options=chrome_options
+    )
+
+    # Create a test user
+    cls.test_username = "testuser"
+    cls.test_password = "testpassword123"
+    User.objects.create_user(username=cls.test_username, password=cls.test_password)
+This gives you a consistent test user you can use in your Selenium login test. When you're ready, we can move on to the Selenium login step.`
+
+Finally, we had it go step by step through the full login, which it responded to with:
+
+`Perfect! Let's break it down step by step.
+
+Step 1: Navigate to the landing page
+First, we want to go to the landing page where the user will click on the "Sign-in" link. This is the page you showed earlier.
+
+def login(self):
+    # Navigate to the landing page
+    self.driver.get(self.live_server_url)
+Step 2: Click the "Sign-in" link
+Once we're on the landing page, we will find the Sign-in link and click it to go to the login form.
+
+    # Click on the "Sign-in" link
+    sign_in_link = self.driver.find_element(By.LINK_TEXT, "Sign-in")
+    sign_in_link.click()
+Step 3: Wait for the login page to load
+After clicking the link, we'll need to wait for the login form to be fully loaded before interacting with the elements.
+
+    # Wait for the login form to be available (e.g., wait for a form element)
+    WebDriverWait(self.driver, 10).until(
+        EC.presence_of_element_located((By.NAME, 'username'))  # assuming 'username' is a field in the form
+    )
+Step 4: Fill in the username and password
+Next, we'll find the username and password fields and enter the test user's credentials.
+
+    # Find the username and password fields and fill them in
+    username_field = self.driver.find_element(By.NAME, 'username')
+    password_field = self.driver.find_element(By.NAME, 'password')
+
+    # Fill in the test user's credentials
+    username_field.send_keys(self.test_username)
+    password_field.send_keys(self.test_password)
+Step 5: Submit the form
+Once the form is filled out, we’ll find the submit button and click it.
+
+    # Find and click the submit button
+    submit_button = self.driver.find_element(By.CSS_SELECTOR, 'input[type="submit"]')
+    submit_button.click()
+Step 6: Wait for the redirect to the home page
+Finally, we'll wait until the login process is complete and the user is redirected to the home page.
+
+    # Wait for the redirection to the home page (or another page that indicates login success)
+    WebDriverWait(self.driver, 10).until(
+        EC.url_to_be(self.live_server_url + "/home/")
+    )
+Full Login Function
+Here’s the complete function:
+
+def login(self):
+    # Navigate to the landing page
+    self.driver.get(self.live_server_url)
+
+    # Click on the "Sign-in" link
+    sign_in_link = self.driver.find_element(By.LINK_TEXT, "Sign-in")
+    sign_in_link.click()
+
+    # Wait for the login form to be available
+    WebDriverWait(self.driver, 10).until(
+        EC.presence_of_element_located((By.NAME, 'username'))
+    )
+
+    # Fill in the username and password
+    username_field = self.driver.find_element(By.NAME, 'username')
+    password_field = self.driver.find_element(By.NAME, 'password')
+    username_field.send_keys(self.test_username)
+    password_field.send_keys(self.test_password)
+
+    # Submit the form
+    submit_button = self.driver.find_element(By.CSS_SELECTOR, 'input[type="submit"]')
+    submit_button.click()
+
+    # Wait for the user to be redirected to the home page
+    WebDriverWait(self.driver, 10).until(
+        EC.url_to_be(self.live_server_url + "/home/")
+    )
+With this function, your test is ready to log in the user before checking the homepage.
+
+Let me know when you want to continue and write a test that uses this login function!`
+
+
 ### Golden Stars Experiment (Mac)
 
 One issue we had with our code (or goal we had), was to implement a visually appealing rating with golden stars specific to each room. For example, the average room rating would say “4 stars”, and we wanted to create a visual representation of the corresponding amount of stars. I prompted the AI to implement a CSS function that displays the correct corresponding number of golden stars when give an integer as a parameter. It gave me a function that worked as expected. 
