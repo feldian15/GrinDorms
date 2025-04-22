@@ -3,6 +3,7 @@ from django.urls import reverse
 from browse.models import Room, Building, Regions
 from .models import Review, Image
 from django.contrib.auth.decorators import login_required
+from django.db.utils import IntegrityError
 
 # Create your views here.
 # View for adding a new review
@@ -68,6 +69,17 @@ def my_reviews(request):
 def add_success(request):
     return render(request, "review/add_success.html", {})
 
+# view after a failed add
+@login_required(login_url="login:my-login")
+def add_fail(request, error_type):
+    # might need to add more errors but this works for now
+    if error_type == "UNIQUEREV":
+        error = "ERROR: cannot post multiple reviews of the same room by the same user."
+    else:
+        error = "Unrecognized error"
+    
+    return render(request, "review/add_fail.html", {"error": error})
+
 # view after a successful delete
 def delete_success(request):
     return render(request, "review/delete_success.html", {})
@@ -85,7 +97,14 @@ def add(request, building_name, room_number):
 
     # make the new review:
     new_review = Review(room=room, rating=rating, text=review_text, user=user)
-    new_review.save()
+
+    # try to save the review and check if the user has already posted a review of this room
+    try:
+        new_review.save()
+    except IntegrityError:
+        # if they have, redirect to the error page without adding the review
+        error_type = "UNIQUEREV"
+        return HttpResponseRedirect(reverse("review:add_fail", args=(error_type,)))
 
     # update the rating on the room
     room.calc_avg_rating()

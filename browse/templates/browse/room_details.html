@@ -1,12 +1,15 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/room_details.css' %}">
 
-<a href="/home/">Back to Home</a>
+<div class="logout-top">
+    <a href="{% url 'login:user-logout' %}" class="logout-button">Logout</a>
+</div>
+
+<a href="/home/">Home</a>
 <br>
-<a href="/browse/">Back to Browse</a>
-<a href="{% url 'login:user-logout'%}" > Logout here </a>
+<a href="/browse/">Browse Rooms</a>
 <h1>{{ room.building.name }} {{ room.number }}</h1>
-<a href="/review?building={{room.building.name}}&floor={{room.floor}}&room={{room.number}}">Review this room</a>
+<a href="/review?building={{room.building.name}}&floor={{room.floor}}&room={{room.number}}">Review This Room</a>
 
 <fieldset>
     <legend><h2>Details</h2></legend>

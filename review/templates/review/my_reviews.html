@@ -3,14 +3,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>All Reviews</title>
+    <title>Your Reviews</title>
     <link rel="stylesheet" href="{% static 'css/my_reviews.css' %}">
 </head>
 <body>
 
-<a href="/home/">Back to Home</a>
-<a href="{% url 'login:user-logout'%}" > Logout here </a>
-<h1>All Reviews</h1>
+<div class="top-nav">
+    <a href="/home/" class="nav-button">Home</a>
+    <a href="{% url 'login:user-logout' %}" class="nav-button logout-button">Logout</a>
+</div>
+    
+<h1>Your Reviews</h1>
 
 {% if review_list %}
     {% for review in review_list %}
