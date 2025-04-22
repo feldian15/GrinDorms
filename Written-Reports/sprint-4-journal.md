@@ -67,11 +67,13 @@ For each use of AI this sprint, write an entry in your Sprint Journal including:
 - Describe the use specifically in detail. How did you prompt the AI, and what was its output?
 - How did this use of AI affect your product development or other sprint deliverables? If you integrated any of its output directly into your code base, include a link to a pull request where the generated output can be clearly distinguished.
 - Refer back to your answer to question 2. To what extent did the use of AI achieve your goals and conform to your expectations?
+
+
 ### Selenium Tests Experiment (Ian and Tim)
 1. Our goal in this experiment was to see if ChatGPT could help us create a test user and login to our site so that we could access the full site and run automated integration tests. We expected ChatGPT to be mostly right, since this is a simple task with plenty of examples online.
 2. We prompted the AI by first writing: "I am going to give you a couple of html templates and some test functions for a django app. I need help writing a selenium test that is able to login and access login required pages. Please do not write me any code until I tell you what I want written." Then we provided three HTML templates relating to our login page, followed by our existing test code. ChatGPT responded with "Sounds good! Go ahead and share your HTML templates and test functions whenever you're ready, and I’ll follow your lead." After each HTML file, it remained in waiting and prompted us to continue to submit our code. Once we had uploaded all of the necessary code, we used the prompt: "Lets create a test user first, step by step." Chat GPT then respnded with:
 
-`Great! To create a test user, you can add this to the setUpClass method in your HomePageTest. Django’s test database is recreated for each test run, so this user will only exist during tests:
+Great! To create a test user, you can add this to the setUpClass method in your HomePageTest. Django’s test database is recreated for each test run, so this user will only exist during tests:
 
 from django.contrib.auth.models import User
 
@@ -92,11 +94,11 @@ def setUpClass(cls):
     cls.test_username = "testuser"
     cls.test_password = "testpassword123"
     User.objects.create_user(username=cls.test_username, password=cls.test_password)
-This gives you a consistent test user you can use in your Selenium login test. When you're ready, we can move on to the Selenium login step.`
+This gives you a consistent test user you can use in your Selenium login test. When you're ready, we can move on to the Selenium login step.
 
-Finally, we had it go step by step through the full login, which it responded to with:
+  Finally, we had it go step by step through the full login, which it responded to with:
 
-`Perfect! Let's break it down step by step.
+Perfect! Let's break it down step by step.
 
 Step 1: Navigate to the landing page
 First, we want to go to the landing page where the user will click on the "Sign-in" link. This is the page you showed earlier.
@@ -172,7 +174,11 @@ def login(self):
     )
 With this function, your test is ready to log in the user before checking the homepage.
 
-Let me know when you want to continue and write a test that uses this login function!`
+Let me know when you want to continue and write a test that uses this login function!
+
+3. This use of AI made the process of troubleshooting our broken tests much simpler. Instead of trying to find an example somewhere on the internet and then trying to piece it together in our own code, we were able to give ChatGPT our existing work and have it amend the code with specific details relevant to our project. The hash for the commit is 8ab9025ffb20dd1ee63fac1c68fe340c29f1ddf6. We made a few changes to the code like altering the password and making sure the test user was marked as active, but otherwise, we left the code mostly the same as it was generated.
+4. This experiment mostly conformed to our expectations. Since we were very deliberate about asking for specifics in the type of responses, we got easy to understand answers with explanations that made it easy to fix the issue we were having in our tests.
+  
 
 
 ### Golden Stars Experiment (Mac)
