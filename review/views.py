@@ -37,6 +37,7 @@ def review(request):
     selected_room = int(request.GET.get('room')) if request.GET.get('room') and request.GET.get('room') != 'none' else 0
 
     review_success = request.GET.get("review_success") == "1"
+    review_dup = request.GET.get("review_dup") == "1"
 
     # pass in the lists and the previously selected options to display in the dropdowns
     context = {
@@ -48,7 +49,8 @@ def review(request):
         "selected_building": selected_building,
         "selected_floor": selected_floor,
         "selected_room": selected_room,
-        "review_success": review_success
+        "review_success": review_success,
+        "review_dup": review_dup
     }
 
     return render(request, "review/review.html", context)
@@ -90,37 +92,33 @@ def delete_success(request):
 # logic to handle post request to add
 @login_required(login_url="login:my-login")
 def add(request, building_name, room_number):
-    # grab the non image related fields
     rating = request.POST.get("rating")
     review_text = request.POST.get("review_text")
     user = request.user
 
-    # Get the associated room
+    # Get the room
     room = Room.objects.get(building__name=building_name, number=room_number)
 
-    # make the new review:
+    # Duplicate Review Check
+    if Review.objects.filter(room=room, user=user).exists():
+        # horseshit conditional check for the modal not fucking loading
+        # print("DUP REVIEW HERE YOU SHOULD BE REDIRECTED TO ?review_dup=1")
+
+        # If the user already reviewed this room, redirect with error flag
+        return HttpResponseRedirect(reverse("review:review") + "?review_dup=1")
+
+    # Normal Review Creation
     new_review = Review(room=room, rating=rating, text=review_text, user=user)
-
-    # try to save the review and check if the user has already posted a review of this room
-    try:
-        new_review.save()
-    except IntegrityError:
-        # if they have, redirect to the error page without adding the review
-        error_type = "UNIQUEREV"
-        return HttpResponseRedirect(reverse("review:add_fail", args=(error_type,)))
-
-    # update the rating on the room
+    new_review.save()
     room.calc_avg_rating()
 
-    # Image handing
+    # Handle image uploads
     image_list = request.FILES.getlist("image")
-
-    # save all new images
     for image in image_list:
         new_image = Image(review=new_review, image_url=image)
         new_image.save()
 
-    # redirect to the success screen
+    # Redirect to review page with success popup
     return HttpResponseRedirect(reverse("review:review") + "?review_success=1")
 
 # logic to handle post request to delete

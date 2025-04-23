@@ -112,6 +112,7 @@
 </fieldset>
 
 {% if review_success %}
+<!-- Modal structure for successful review submission -->
 <div id="successModal" class="modal-overlay">
     <div class="modal-content">
         <h2>Review Successfully Added!</h2>
@@ -120,14 +121,37 @@
             <a href="/home/">Back to Home</a>
         </div>
     </div>
-</div>
-<script>
-    // Show modal on load
-    window.onload = function () {
-        document.getElementById('successModal').style.display = 'flex';
-    };
-</script>
+</div>   
 {% endif %}
 
+{% if review_dup %}
+<!-- Modal structure for duplicate review submission -->
+<div id="dupModal" class="modal-overlay">
+    <div class="modal-content">
+        <h2>You’ve already submitted a review for this room.</h2>
+        <div class="modal-buttons">
+            <a href="{% url 'review:my_reviews' %}">View Your Reviews</a>
+            <a href="/review/">Back to Reviews</a>
+        </div>
+    </div>
+</div>  
+{% endif %}
+
+<!-- Display the CORRECT modal on page load -->
+<script>
+    window.onload = function () {
+        // Show success modal if it exists
+        const successModal = document.getElementById('successModal');
+        if (successModal) {
+            successModal.style.display = 'flex';
+        }
+    
+        // Show duplicate modal if it exists
+        const dupModal = document.getElementById('dupModal');
+        if (dupModal) {
+            dupModal.style.display = 'flex';
+        }
+    };
+</script> 
 </body>
 </html>
