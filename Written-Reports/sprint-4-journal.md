@@ -73,6 +73,21 @@ FOR EACH MEETING:
 - Similar to Kailee's interaction, Devon thought the stars in the 'review a room' page where already filled in due to the stars when they are not yet selected to appear green. He tried to submit a review without selecting a star rating. He suggested greying them out to tell users that the stars are not filled out.
 - He also suggested that if the users do not select a star rating, a popup should inform users that a star rating is required.
 
+### Meeting #3: Jacob Gaynor (April 22, 1:00pm)
+**Question 1: What aspects of the website did you like?**
+- Jacob enjoyed the layout of the browsing page. He said it was easy to see the filtering options and rooms side by side instead of in a long list.
+- Jacob also like that the reviewing process was straightforward and worked in steps. He said it was easy to understand and find the correct room.
+- Jacob commented on the simplicity of the site as a positive. He said he thought the UI was not distracting and made it very straightforward to navigate.
+
+**Question 2: What aspects of the website were confusing/unintuitive?**
+- Jacob thought that having the submit button all the way at the bottom of the filtering panel on the browse page was somewhat confusing, as it could be missed for someone who didn't scroll.
+- Jacob also commented on the way that images were not able to be enlarged on the room details page.
+- Jacob thought that not being able to edit a review and instead having to delete and reupload was a major drawback.
+
+**Other misc feedback during the test:**
+- Jacob thought that there should be some way to limit results on the browse page, as having every possible room could be overwhelming.
+- He also thought that seeing the type of room on the browse page before selecting it would be helpful. He mentioned that seeing more information as well (Like region, srd status, etc) would also be helpful to see more information across a range of rooms without navigating to a specific one.
+
 ## TODO: Self-Selected Work toward Minimum Viable Product (MVP)
 - In a Sprint Journal entry, remind us what your MVP is (look back to Milestone 1 where you described what features would be included in your MVP)
 - Describe what work, if any, remains toward delivering your MVP
