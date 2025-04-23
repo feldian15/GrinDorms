@@ -111,5 +111,23 @@
     </form>
 </fieldset>
 
+{% if review_success %}
+<div id="successModal" class="modal-overlay">
+    <div class="modal-content">
+        <h2>Review Successfully Added!</h2>
+        <div class="modal-buttons">
+            <a href="{% url 'review:my_reviews' %}">View Your Reviews</a>
+            <a href="/home/">Back to Home</a>
+        </div>
+    </div>
+</div>
+<script>
+    // Show modal on load
+    window.onload = function () {
+        document.getElementById('successModal').style.display = 'flex';
+    };
+</script>
+{% endif %}
+
 </body>
 </html>
