@@ -24,16 +24,7 @@ The only existing documentation was a brief description of what the view was doi
 - This file did not have exsiting documentation for functionality accomplished in the code and remaining tasks to complete. We added descriptive in-line comments to detail what each function does and to describe specific lines of code. We added a block comment at the beginning of the document describing the code in general. We also went through and added comments for TODO items, including things we can delete and changes to make the code more consistent throughout.
 - We added an issue to the issue tracker for the next step for login, which is to ensure all of the urls in the other app are protected, and redirect users to the login page before being able to access them. This issue is called "Protect web pages" and we were able to successfully make the needed changes to do so. This issue has been moved to the completed section of our Trello board.
 
-## TODO: External Documentation and Stakeholder Meetings
-FOR EACH MEETING:
-- Who you met with
-- Name, occupation, and other relevant information about the stakeholder
-- Date and time of the stakeholder meeting
-- Description of the test session and feedback
-- What was their behavior of interacting with the documentation?
-- Did they succeed or get stuck?
-- What feedback did they provide about documentation?
-- What questions did you ask, and what were the stakeholder's answers?
+## External Documentation and Stakeholder Meetings
 
 ### Meeting 1: Kailee Shermak (April 16, 6:14pm)
 - This meeting was with Kailee Shermak, a fourth year sociology major with a digital studies concentration at Grinnell College. Kailee is on the swim team and was a test user for our paper prototype. She has lived in various dorms on campus.
@@ -88,9 +79,16 @@ FOR EACH MEETING:
 - Jacob thought that there should be some way to limit results on the browse page, as having every possible room could be overwhelming.
 - He also thought that seeing the type of room on the browse page before selecting it would be helpful. He mentioned that seeing more information as well (Like region, srd status, etc) would also be helpful to see more information across a range of rooms without navigating to a specific one.
 
-## TODO: Self-Selected Work toward Minimum Viable Product (MVP)
-- In a Sprint Journal entry, remind us what your MVP is (look back to Milestone 1 where you described what features would be included in your MVP)
-- Describe what work, if any, remains toward delivering your MVP
+## Self-Selected Work toward Minimum Viable Product (MVP)
+The MVP described in our Milestone 1 document has the following features:
+- Log-in with your student email before viewing any dorm information. 
+- A feature to upload information about your own dorm room (photos, star rating, text review, etc.)
+- Ability to view a catalogue of all dorm rooms on campus (photos, etc.). These will be static pages that are linked from the home page and from the details of the rooms.
+- Ability to remove information at your own discretion (privacy) 
+- Ability to view/edit/delete your past reviews
+- Add custom sorting and filtering functionality for users to query the room database instead of the flow where users need to click on building, floor, and room.
+
+Almost all of this functionality has been implemented so far. The work that remains is to populate our database with all rooms on campus to allow for reviews/browing functionality for all of the rooms (the third feature). Right now, we have a limited selection of rooms to review/browse. Additionally, we are in the process of working on hosting our website publicly, and making sure the email backend is correctly configured for this new setup, to allow for account verification. 
 
 ## TODO: Generative AI Experiment
 For each use of AI this sprint, write an entry in your Sprint Journal including:
@@ -99,7 +97,6 @@ For each use of AI this sprint, write an entry in your Sprint Journal including:
 - Describe the use specifically in detail. How did you prompt the AI, and what was its output?
 - How did this use of AI affect your product development or other sprint deliverables? If you integrated any of its output directly into your code base, include a link to a pull request where the generated output can be clearly distinguished.
 - Refer back to your answer to question 2. To what extent did the use of AI achieve your goals and conform to your expectations?
-
 
 ### Selenium Tests Experiment (Ian and Tim)
 1. Our goal in this experiment was to see if ChatGPT could help us create a test user and login to our site so that we could access the full site and run automated integration tests. We expected ChatGPT to be mostly right, since this is a simple task with plenty of examples online.
@@ -210,9 +207,8 @@ Let me know when you want to continue and write a test that uses this login func
 
 3. This use of AI made the process of troubleshooting our broken tests much simpler. Instead of trying to find an example somewhere on the internet and then trying to piece it together in our own code, we were able to give ChatGPT our existing work and have it amend the code with specific details relevant to our project. The hash for the commit is 8ab9025ffb20dd1ee63fac1c68fe340c29f1ddf6. We made a few changes to the code like altering the password and making sure the test user was marked as active, but otherwise, we left the code mostly the same as it was generated.
 4. This experiment mostly conformed to our expectations. Since we were very deliberate about asking for specifics in the type of responses, we got easy to understand answers with explanations that made it easy to fix the issue we were having in our tests.
+
   
-
-
 ### Golden Stars Experiment (Mac)
 
 One issue we had with our code (or goal we had), was to implement a visually appealing rating with golden stars specific to each room. For example, the average room rating would say “4 stars”, and we wanted to create a visual representation of the corresponding amount of stars. I prompted the AI to implement a CSS function that displays the correct corresponding number of golden stars when give an integer as a parameter. It gave me a function that worked as expected. 
