@@ -55,7 +55,24 @@ FOR EACH MEETING:
 - She thought the room labels "five-man", "six-man", etc should be changed to "five-person," etc.
 - She thinks the website should limit image files uploaded to be JPEG and PNG. She tried to upload a PDF and nothing broke, but the image was blank and just showed the name of the image, so users should probaly be prevented from uploading files of an invalid format. 
 
-  
+### Meeting 2: Devon Cuddihy (April 22, 8:00pm)
+- This meeting was with Devon Cuddihy, a first-year economics major at Grinnell College. Devon is on the football team and was a test user for our paper prototype.
+- Devon's interaction with the website was very breif, as he used it to try and look up room information of dorms that were popular during room draw just to try and gage what each room was like with the details that were presented.
+- Devon was able to browse rooms easily, as well as posting a review for the room he currently resides in.
+
+**Question 1: What aspects of the website did you like?**
+- Devon really enjoyed the color scheme that was used. He said the blue hover mechanic on the buttons was a nice touch, and the modern/sleek aesthetic was not overwhelming.
+- He also enjoyed how simple it was to navigate the website was. He thought it was very intuitive and straight-forward.
+- He thought the ability to not only review a room from the home button that is present, but to review a room from the actual room details itself was very convenient, as it removes having to navigate back to the home page and searching for the room through the initial review a room steps.
+
+**Question 2: What aspects of the website were confusing/unintuitive?**
+- Devon brought up a similar point to Kailee's that when someone checks a filter, it should automatically do so, instead of having to scroll down and click apply filters, as the rooms are already present on the right-hand side of the filter bar.
+- He also said the filter bar is too long, as having to scroll up and down just to see all of the filter options was a hassle for him, as he seemed to get lost. He suggested having a drop down for each filter option, as well as condesning the filter bar as a whole (i.e., not have so much blank space between options, but this could be addressed with the use of drop downs).
+
+**Other misc feedback during the test:**
+- Similar to Kailee's interaction, Devon thought the stars in the 'review a room' page where already filled in due to the stars when they are not yet selected to appear green. He tried to submit a review without selecting a star rating. He suggested greying them out to tell users that the stars are not filled out.
+- He also suggested that if the users do not select a star rating, a popup should inform users that a star rating is required.
+
 ## TODO: Self-Selected Work toward Minimum Viable Product (MVP)
 - In a Sprint Journal entry, remind us what your MVP is (look back to Milestone 1 where you described what features would be included in your MVP)
 - Describe what work, if any, remains toward delivering your MVP
