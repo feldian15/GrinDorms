@@ -379,3 +379,30 @@ Let me know if you want this broken into separate component-specific files later
 After reviewing the documentation provided, I thought it was very accurate and helpful to understand what exactly is being done in each code block. It definetly exceeded my expectations as to what will be provided. It significantly improved not only my group members understanding of what each block of styling is doing, but even my own understanding, and I wrote most of this code. It definetly was useful in this regard, and it will definetly help improve our own documentation practices moving forward.
 
 **These AI-generated comments can be found in pull request #43, titled: 'login' .css documentation**
+
+### Deployment Experiment (Nitin)
+
+1. Goals and Expectations
+
+The goal was to deploy a Django web application using Apache and Nginx in a containerized environment managed by Virtuozzo. I used ChatGPT with the expectation that it could assist in identifying misconfigurations and streamline the deployment process, particularly involving Apache, WSGI, and container networking.
+
+2. Description of Use
+
+ChatGPT was used to iteratively diagnose issues in a Django deployment behind Apache and Nginx in separate containers. The discussion focused on:
+
+- Apache configuration using mod_wsgi
+- Nginx reverse proxy settings
+- Inter-container communication issues
+- System-level errors such as "permission denied," "duplicate WSGIDaemonProcess," and "bad gateway"
+
+Prompts included specific questions about configuration errors, network communication failures, and HTTP status codes. ChatGPT’s responses included example Apache and Nginx configurations, diagnostic command suggestions, and error explanations.
+
+While the responses were context-aware and adjusted based on provided feedback, no individual answer was entirely correct, and none led to a direct fix of the problems encountered. Most answers did not fully address the underlying issues. However, the interaction with ChatGPT still contributed meaningfully to the debugging process by helping to identify adjacent problems and by encouraging further investigation into system behavior.
+
+3. Effect on Product Development
+
+Although none of the AI-generated solutions resolved the deployment issues directly, ChatGPT accelerated progress by helping identify misconfigurations, overlooked system behavior, and alternative debugging paths. The tool functioned effectively as a problem-exploration companion. While no configuration was adopted verbatim, much of the final system setup was influenced by patterns and concepts that were able to be learned through the AI conversation.
+
+4. Reflection
+
+Despite not producing any even near to correct solutions, ChatGPT met the criteria of being a useful tool by aiding in the discovery of related system issues that were critical to resolving the overall deployment problem. Its primary value was in supporting exploration and iterative learning rather than in providing definitive answers. This use of AI enhanced problem-solving by exposing knowledge gaps and prompting investigation rather than serving as an authoritative source of solutions.
