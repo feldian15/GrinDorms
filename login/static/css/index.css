@@ -1,6 +1,12 @@
 /* ============================
         Global Page Layout
    ============================ */
+/* 
+   Styles for the entire page layout.
+   - Centers all content both vertically and horizontally.
+   - Uses a clean, readable sans-serif font.
+   - Sets a light background and removes default margins.
+*/
 body {
     background-color: #f0f4f8;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -16,6 +22,12 @@ body {
 /* =======================
         Heading Styles
    ======================= */
+/*
+   Styles the main heading on the page.
+   - Increases font size for emphasis.
+   - Applies a dark, modern color.
+   - Adds spacing below the heading.
+*/
 h1 {
     font-size: 3em;
     color: #2c3e50;
@@ -25,6 +37,14 @@ h1 {
 /* ============================
         Button/Link Styles
    ============================ */
+/*
+   Styles for all <a> elements acting as buttons.
+   - Removes underlines from links.
+   - Applies white text on a green background.
+   - Adds padding and rounded corners for a button look.
+   - Adds smooth transition effect on hover.
+   - Adds vertical spacing between buttons.
+*/
 a {
     text-decoration: none;
     color: white;
