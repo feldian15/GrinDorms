@@ -106,7 +106,7 @@ fieldset {
 
 /* Default unselected stars = green */
 .rating > label {
-    color: #ffffff;
+    color: #e2ddcf;
     float: right;
     transition: color 0.2s ease;
 }
