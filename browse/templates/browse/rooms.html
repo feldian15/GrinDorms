@@ -110,7 +110,7 @@
     <li>
         <a href="/browse/{{ room.building.name }}/{{ room.number }}">{{ room.building.name }} {{ room.number }}</a>| 
         <span class="star-rating" style="--rating: {{ room.avg_rating }};"></span>
-        ({{ room.avg_rating }}) | {{room.get_num_occupants_display}} | {% if room.srd %} Special Room Draw {% endif %}
+        ({{ room.avg_rating }}) | {{room.get_num_occupants_display}} {% if room.srd %}| Special Room Draw {% endif %}
     </li>
     {% endfor %}
     </ul>
