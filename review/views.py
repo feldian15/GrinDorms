@@ -36,6 +36,8 @@ def review(request):
     # if a room is selected, make sure its valid (make sure it isnt "none") and then store the room number
     selected_room = int(request.GET.get('room')) if request.GET.get('room') and request.GET.get('room') != 'none' else 0
 
+    review_success = request.GET.get("review_success") == "1"
+
     # pass in the lists and the previously selected options to display in the dropdowns
     context = {
         "region_list": Regions.choices,
@@ -45,7 +47,8 @@ def review(request):
         "selected_region": selected_region,
         "selected_building": selected_building,
         "selected_floor": selected_floor,
-        "selected_room": selected_room
+        "selected_room": selected_room,
+        "review_success": review_success
     }
 
     return render(request, "review/review.html", context)
@@ -118,7 +121,7 @@ def add(request, building_name, room_number):
         new_image.save()
 
     # redirect to the success screen
-    return HttpResponseRedirect(reverse("review:add_success"))
+    return HttpResponseRedirect(reverse("review:review") + "?review_success=1")
 
 # logic to handle post request to delete
 @login_required(login_url="login:my-login")
