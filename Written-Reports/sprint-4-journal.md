@@ -90,7 +90,7 @@ The MVP described in our Milestone 1 document has the following features:
 
 Almost all of this functionality has been implemented so far. The work that remains is to populate our database with all rooms on campus to allow for reviews/browing functionality for all of the rooms (the third feature). Right now, we have a limited selection of rooms to review/browse. Additionally, we are in the process of working on hosting our website publicly, and making sure the email backend is correctly configured for this new setup, to allow for account verification. 
 
-## TODO: Generative AI Experiment
+## Generative AI Experiment
 For each use of AI this sprint, write an entry in your Sprint Journal including:
 - Name the members of your team who tried it.
 - Going into this use of AI, what were your goals and expectations?
