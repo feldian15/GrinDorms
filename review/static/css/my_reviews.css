@@ -133,6 +133,30 @@ input[type="file"] {
     margin: 10px 0;
 }
 
+.star-rating {
+    display: inline-flex;
+    font-size: 1.2em;
+    color: #ffc107; /* Gold color for stars */
+    position: relative;
+    unicode-bidi: bidi-override;
+    width: 5em;
+}
+
+.star-rating::before {
+    content: "★★★★★";
+    opacity: 0.3;
+}
+
+.star-rating::after {
+    content: "★★★★★";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: calc(var(--rating) * 1em);
+    overflow: hidden;
+    opacity: 1;
+}
+
 /* Button Styles */
 button {
     background-color: #2b9533;
