@@ -39,7 +39,9 @@ class HomePageTest(StaticLiveServerTestCase):
         # Navigate to main page
         self.driver.get(self.live_server_url)
         
-        print(self.driver.current_url)
+        sign_in_link = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.ID, "sign_in_link"))
+        )
 
         sign_in_link = self.driver.find_element(By.ID, "sign_in_link")
         sign_in_link.click()
