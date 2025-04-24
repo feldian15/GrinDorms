@@ -1,6 +1,12 @@
 /* ==============================
         Global Layout Styles
    ============================== */
+/*
+   Sets up the base layout for the login page.
+   - Centers content both vertically and horizontally using Flexbox.
+   - Uses a light background and a clean sans-serif font for readability.
+   - Removes default margins and aligns all text to center.
+*/
 body {
     background-color: #f0f4f8;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -16,6 +22,12 @@ body {
 /*  ======================
          Header Styles
     ====================== */
+/*
+   Styles the login page header.
+   - Enlarges the text for prominence.
+   - Applies a modern, dark color.
+   - Adds spacing below the header.
+*/
 h1 {
     font-size: 2.5em;
     color: #2c3e50;
@@ -25,6 +37,13 @@ h1 {
 /* =====================
         Form Styling
    ===================== */
+/*
+   Styles the login form container.
+   - White background for contrast against the page.
+   - Padding and border radius for a card-like appearance.
+   - Soft box shadow adds depth.
+   - Max width keeps form readable on large screens.
+*/
 form {
     background-color: white;
     padding: 30px 40px;
@@ -35,7 +54,16 @@ form {
     box-sizing: border-box;
 }
 
-/* Input fields */
+/* ====================== 
+        Input fields 
+   ====================== */
+/*
+   Styles input fields for text, email, and password.
+   - Full width fields for alignment.
+   - Spacing between fields.
+   - Rounded corners and subtle border.
+   - Clear font size for accessibility.
+*/
 input[type="text"],
 input[type="password"],
 input[type="email"] {
@@ -48,7 +76,9 @@ input[type="email"] {
     font-size: 1em;
 }
 
-/* Submit Button */
+/* =======================
+        Submit Button 
+   ======================= */
 input[type="submit"] {
     background-color: #2b9533;
     color: white;
@@ -61,11 +91,24 @@ input[type="submit"] {
     margin-top: 10px;
 }
 
+/*
+   Hover state for the submit button.
+   - Changes to a deep blue for interaction feedback.
+*/
 input[type="submit"]:hover {
     background-color: #2980b9;
 }
 
-/* Forgot Password/Create Account Links */
+/* ==============================
+        Forgot Password Link 
+   ============================== */
+/*
+   Styles the "Forgot username/password?" link.
+   - Green text matches brand.
+   - Removes underline for a cleaner look.
+   - Bold font to draw attention.
+   - Adds slight spacing above.
+*/
 a {
     display: inline-block;
     margin-top: 15px;
@@ -75,6 +118,10 @@ a {
     transition: color 0.3s ease;
 }
 
+/*
+   Hover state for the link.
+   - Transitions to blue for consistency with button hover.
+*/
 a:hover {
     color: #2980b9;
 }
