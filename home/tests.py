@@ -37,7 +37,7 @@ class HomePageTest(StaticLiveServerTestCase):
 
     def login(self):
         # Navigate to main page
-        self.driver.get(self.live_server_url + 'my_login')
+        self.driver.get(self.live_server_url)
 
         sign_in_link = self.driver.find_element(By.ID, "sign_in_link")
         sign_in_link.click()
