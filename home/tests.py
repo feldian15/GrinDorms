@@ -37,32 +37,30 @@ class HomePageTest(StaticLiveServerTestCase):
 
     def login(self):
         # Navigate to main page
-        self.driver.get(self.live_server_url)
-        
-        print(self.driver.current_url)
+        self.driver.get(self.live_server_url + 'my_login')
 
-        # sign_in_link = self.driver.find_element(By.ID, "sign_in_link")
-        # sign_in_link.click()
+        sign_in_link = self.driver.find_element(By.ID, "sign_in_link")
+        sign_in_link.click()
 
-        # WebDriverWait(self.driver, 10).until(
-        #     EC.presence_of_element_located((By.NAME, 'username'))  # assuming 'username' is a field in the form
-        # )
+        WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.NAME, 'username'))  # assuming 'username' is a field in the form
+        )
 
-        # # Find the username and password fields and fill them in
-        # username_field = self.driver.find_element(By.NAME, 'username')
-        # password_field = self.driver.find_element(By.NAME, 'password')
+        # Find the username and password fields and fill them in
+        username_field = self.driver.find_element(By.NAME, 'username')
+        password_field = self.driver.find_element(By.NAME, 'password')
 
-        # # Fill in the test user's credentials
-        # username_field.send_keys(self.test_username)
-        # password_field.send_keys(self.test_password)
+        # Fill in the test user's credentials
+        username_field.send_keys(self.test_username)
+        password_field.send_keys(self.test_password)
 
-        # # Find and click the submit button
-        # submit_button = self.driver.find_element(By.CSS_SELECTOR, 'input[type="submit"]')
-        # submit_button.click()
+        # Find and click the submit button
+        submit_button = self.driver.find_element(By.CSS_SELECTOR, 'input[type="submit"]')
+        submit_button.click()
 
-        # WebDriverWait(self.driver, 10).until(
-        #     EC.url_to_be(self.live_server_url + "/home/")
-        # )
+        WebDriverWait(self.driver, 10).until(
+            EC.url_to_be(self.live_server_url + "/home/")
+        )
 
 
     def test_homepage(self):
