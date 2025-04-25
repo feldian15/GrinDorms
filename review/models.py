@@ -25,6 +25,14 @@ class Review(models.Model):
     text = models.CharField(max_length=MAXLEN)
     display = models.BooleanField(default=True)
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields = ['user', 'room'],
+                name = 'unique_user_review_of_room'
+            )
+        ]
+
     def __str__ (self):
         return "%s %d review by %s" % (self.room.building.name, self.room.number, self.user.username)
 

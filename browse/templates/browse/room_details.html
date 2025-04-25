@@ -6,6 +6,28 @@
 <a href="/home/">Back to Home</a>
 <br>
 <a href="/browse/">Back to Browse</a>
+<div class="logout-top">
+    <a href="{% url 'login:user-logout' %}" class="logout-button">Logout</a>
+</div>
+
+<a href="/home/">Home</a>
+<br>
+<a href="/browse/">Browse Rooms</a>
+<h1>{{ room.building.name }} {{ room.number }}</h1>
+<a href="/review?building={{room.building.name}}&floor={{room.floor}}&room={{room.number}}">Review This Room</a>
+
+<fieldset>
+    <legend><h2>Details</h2></legend>
+    Average Rating: {% if room.avg_rating %} {{ room.avg_rating }} {% else %} No reviews yet {% endif %}
+    <br>
+    Building: {{ room.building.name }} Hall
+    <br>
+    Campus Region: {{ room.building.region }}
+    <br>
+    Floor in building: {% if room.floor %} {{ room.floor }} {% else %} Pit {% endif %}
+</fieldset>
+
+<br><br>
 
 
 

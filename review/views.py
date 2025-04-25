@@ -3,6 +3,7 @@ from django.urls import reverse
 from browse.models import Room, Building, Regions
 from .models import Review, Image
 from django.contrib.auth.decorators import login_required
+from django.db.utils import IntegrityError
 
 # Create your views here.
 # View for adding a new review
@@ -35,6 +36,8 @@ def review(request):
     # if a room is selected, make sure its valid (make sure it isnt "none") and then store the room number
     selected_room = int(request.GET.get('room')) if request.GET.get('room') and request.GET.get('room') != 'none' else 0
 
+    review_success = request.GET.get("review_success") == "1"
+
     # pass in the lists and the previously selected options to display in the dropdowns
     context = {
         "region_list": Regions.choices,
@@ -44,7 +47,8 @@ def review(request):
         "selected_region": selected_region,
         "selected_building": selected_building,
         "selected_floor": selected_floor,
-        "selected_room": selected_room
+        "selected_room": selected_room,
+        "review_success": review_success
     }
 
     return render(request, "review/review.html", context)
@@ -68,6 +72,17 @@ def my_reviews(request):
 def add_success(request):
     return render(request, "review/add_success.html", {})
 
+# view after a failed add
+@login_required(login_url="login:my-login")
+def add_fail(request, error_type):
+    # might need to add more errors but this works for now
+    if error_type == "UNIQUEREV":
+        error = "ERROR: cannot post multiple reviews of the same room by the same user."
+    else:
+        error = "Unrecognized error"
+    
+    return render(request, "review/add_fail.html", {"error": error})
+
 # view after a successful delete
 def delete_success(request):
     return render(request, "review/delete_success.html", {})
@@ -85,7 +100,14 @@ def add(request, building_name, room_number):
 
     # make the new review:
     new_review = Review(room=room, rating=rating, text=review_text, user=user)
-    new_review.save()
+
+    # try to save the review and check if the user has already posted a review of this room
+    try:
+        new_review.save()
+    except IntegrityError:
+        # if they have, redirect to the error page without adding the review
+        error_type = "UNIQUEREV"
+        return HttpResponseRedirect(reverse("review:add_fail", args=(error_type,)))
 
     # update the rating on the room
     room.calc_avg_rating()
@@ -99,7 +121,7 @@ def add(request, building_name, room_number):
         new_image.save()
 
     # redirect to the success screen
-    return HttpResponseRedirect(reverse("review:add_success"))
+    return HttpResponseRedirect(reverse("review:review") + "?review_success=1")
 
 # logic to handle post request to delete
 @login_required(login_url="login:my-login")
