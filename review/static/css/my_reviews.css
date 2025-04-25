@@ -65,34 +65,28 @@ h3 {
 /* ========================
         Star Rating Display
    ======================== */
-.star-rating {
-    --rating: 0;
-    --star-size: 20px;
-    --star-color: #ddd;
-    --star-background: #ffc107;
-    --letter-spacing: 2px;
+   .star-rating {
+    display: inline-block;
+    font-size: 1.2em;
+    color: #ffc107; /* Gold color for stars */
+    position: relative;
+    unicode-bidi: bidi-override;
+    width: 5em;
+}
 
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-size: var(--star-size);
-    font-family: Arial;
-    line-height: 1;
+.star-rating::before {
+    content: "★★★★★";
+    opacity: 0.3;
 }
 
 .star-rating::after {
     content: "★★★★★";
-    letter-spacing: var(--letter-spacing);
-    background: linear-gradient(90deg, 
-        var(--star-background) calc(var(--rating) * 20%), 
-        var(--star-color) calc(var(--rating) * 20%));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.star-rating[data-rating] {
-    --rating: attr(data-rating);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: calc(var(--rating) * 1em);
+    overflow: hidden;
+    opacity: 1;
 }
 
 /* ========================
