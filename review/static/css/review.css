@@ -113,7 +113,7 @@ fieldset {
 }
 
 .rating > label {
-    color: #2b9533;
+    color: #e2ddcf;
     float: right;
     transition: color 0.2s ease;
 }
