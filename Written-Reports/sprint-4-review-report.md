@@ -1,6 +1,6 @@
 # Sprint 4 Review Report
 
-- **TODO: In your report, describe what work remains toward your MVP and your plans for completing the work.**
+- **In your report, describe what work remains toward your MVP and your plans for completing the work.**
 - To achieve our MVP, we need to host our website publicly and populate our database with basic information for all rooms on campus.
 - For the latter, we plan to split up the work amongst our team to add room data to an excel spreadsheet, which will be then be read by an existing script in our code to fill in our app's database. 
   
