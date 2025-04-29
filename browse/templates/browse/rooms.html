@@ -72,15 +72,7 @@
         <br>
         <label><input type="checkbox" name="srd" value="True" {% if srd %} checked {% endif %}>Special Room Draw</label>
         <br>
-        <label>Window Direction</label>
-        <br>
-        {% if direction_list %}
-            {% for value, label in direction_list %}
-                <label><input type="checkbox" name="direction" value="{{ value }}" {% if value in selected_directions %} checked {% endif %}>{{ label }}</label>
-            {% endfor %}
-        {% else %}
-            <p value="none">No directions to display</p>
-        {% endif %}
+        <label><input type="checkbox" name="ca" value="True" {% if ca %} checked {% endif %}>CA Room</label>
     </div>
 
     <br><br>
