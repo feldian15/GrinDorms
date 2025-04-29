@@ -3,12 +3,6 @@ from django.db.models import Avg
 
 MAXLEN = 50
 
-class Directions(models.TextChoices):
-    NORTH = "N", 'North'
-    SOUTH = "S", 'South'
-    EAST = "E", 'East'
-    WEST = "W", 'West'
-
 class Regions(models.TextChoices):
     NORTH = "N", "North"
     EAST = "E", "East"
@@ -62,12 +56,10 @@ class Room(models.Model):
     number = models.IntegerField(default = 1111)
     floor = models.IntegerField(editable=False, choices=Floors.choices, default=Floors.PIT)
     num_occupants = models.IntegerField(choices=Sizes.choices, default=Sizes.SINGLE)
-    window_direction = models.CharField(choices=Directions.choices, default=Directions.NORTH, max_length=1)
     floor_bathrooms = models.IntegerField(default=1)
     srd = models.BooleanField(default=False)
     internal_bathroom = models.BooleanField(default=False)
     kitchen = models.BooleanField(default=False)
-    common_room = models.BooleanField(default=False)
     available = models.BooleanField(default=True)
     ca = models.BooleanField(default=False)
     avg_rating = models.FloatField(default=0.0)
