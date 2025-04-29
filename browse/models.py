@@ -77,8 +77,8 @@ class Room(models.Model):
     
     def save(self, *args, **kwargs):
         # Check that the room number is 4 digits
-        if not (1000 <= self.number <= 9999):
-            raise ValueError("Room number must be a 4-digit number.")
+        if not (100 <= self.number <= 9999):
+            raise ValueError("Room number must be a 3 or 4-digit number.")
         
         # set the floor based on the second digit of the room number
         temp = str(self.number)
