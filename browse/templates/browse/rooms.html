@@ -93,10 +93,11 @@
             <option value="asc" {% if rating == "asc" %}selected{% endif %}>Rating: Low to High</option>
         </select>
         <br><br>
-    <button type="submit">Apply Filters</button>
-    <a href="{% url 'browse:browse' %}" class="btn">Clear Filters</a>
-
-
+        <div class="filter-buttons">
+            <button type="submit">Apply Filters</button>
+        </div>
+        <a href="{% url 'browse:browse' %}" class="clear-link">Clear Filters</a>
+        
     </form>
 </fieldset>
 </div>
