@@ -13,7 +13,7 @@
 
 <br>
 <h1>{{ room.building.name }} {{ room.number }}</h1>
-<a href="/review?building={{room.building.name}}&floor={{room.floor}}&room={{room.number}}">Review This Room</a>
+<a href="/review?region={{room.building.region}}&building={{room.building.name}}&floor={{room.floor}}&room={{room.number}}">Review This Room</a>
 
 <br><br>
 
@@ -45,7 +45,7 @@
     {% endfor %}
 {% else %}
     <h3>No reviews to display</h3>
-    <a href="/review?building={{room.building.name}}&floor={{room.floor}}&room={{room.number}}">Be the first</a>
+    <a href="/review?region={{room.building.region}}&building={{room.building.name}}&floor={{room.floor}}&room={{room.number}}">Be the first</a>
 {% endif %}
 </fieldset>
 </div>
@@ -59,7 +59,7 @@
         {% endfor %}
     {% else %}
         <h3>No images to display</h3>
-        <a href="/review?building={{room.building.name}}&floor={{room.floor}}&room={{room.number}}">Be the first to add photos of this room</a>
+        <a href="/review?region={{room.building.region}}&building={{room.building.name}}&floor={{room.floor}}&room={{room.number}}">Be the first to add photos of this room</a>
     {% endif %}
 </fieldset>
 </div></div>
