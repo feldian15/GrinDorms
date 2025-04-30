@@ -29,7 +29,7 @@
     <br>
     {% if building_list %}
         {% for building in building_list %}
-            <label><input type="checkbox" name="building" value="{{ building.name }}" {% if building.name in selected_buildings %} checked {% endif %}>{{ building.name }}</label> 
+            <label><input type="checkbox" name="building" value="{{ building.name }}" {% if building.name in selected_buildings %} checked {% endif %}>{{ building.display_building_name }}</label> 
         {% endfor %}
     {% else %}
         <p value="none">No buildings to display</p>
@@ -98,7 +98,7 @@
     <li>
         <a href="/browse/{{ room.building.name }}/{{ room.number }}">{{ room.building.name }} {{ room.number }}</a>| 
         <span class="star-rating" style="--rating: {{ room.avg_rating }};"></span>
-        [{{ room.avg_rating }} from {{room.reviews.count}} review(s)] | {{room.get_num_occupants_display}} {% if room.srd %}| Special Room Draw {% endif %}
+        [{{ room.avg_rating }} from {{room.reviews.count}} review(s)] | {{room.get_num_occupants_display}} {% if room.srd %}| Special Room Draw {% endif %} {% if room.ca %}| CA Room {% endif %}
     </li>
     {% endfor %}
     </ul>
