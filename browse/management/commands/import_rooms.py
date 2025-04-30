@@ -20,7 +20,6 @@ class Command(BaseCommand):
                     building=building,
                     number=int(row['number']),
                     num_occupants=int(row['num_occupants_2025']),
-                    window_direction=row['window_direction'],
                     floor_bathrooms=int(row['floor_bathrooms']),
                     srd=True if row['srd'] == 't' else False,
                     internal_bathroom=True if row['internal_bathroom'] == 't' else False,
