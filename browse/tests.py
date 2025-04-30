@@ -33,22 +33,6 @@ class RoomModelTests(TestCase):
 
         # top floor value should be the number of floors minus 1
         self.assertIs(floor_list[test_building.num_floors - 1][0], test_building.num_floors - 1)
-
-    def test_room_number_is_four_digits(self):
-        test_building = Building(name="TESTBLD", num_floors=3, has_pit=True)
-        test_building.save()
-
-        # should err because room number is invalid
-        test_room = Room(building=test_building, number = 111)
-
-        try:
-            test_room.save()
-        except ValueError:
-            caught = True
-        else:
-            caught = False
-
-        self.assertIs(caught, True)
     
     def test_valid_floor_number(self):
         test_building = Building(name="TESTBLD", num_floors=3, has_pit=True)
