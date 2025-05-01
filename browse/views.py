@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from . models import Room, Building, Regions, Directions, Sizes, Floors
+from . models import Room, Building, Regions, Sizes, Floors
 from review.models import Review, Image
 from django.contrib.auth.decorators import login_required
 
@@ -28,7 +28,7 @@ def browse(request):
     elevator = request.GET.get("elevator")
     women_only = request.GET.get("women_only")
     srd = request.GET.get("srd")
-    selected_directions = request.GET.getlist("direction")
+    ca = request.GET.get("ca")
     rating = request.GET.get("rating")
 
     # Get the full set of rooms first
@@ -51,8 +51,8 @@ def browse(request):
         room_list = room_list.filter(building__gender_specific=women_only)
     if srd:
         room_list = room_list.filter(srd=srd)
-    if selected_directions:
-        room_list = room_list.filter(window_direction__in=selected_directions)
+    if ca:
+        room_list = room_list.filter(ca=ca)
     if rating == 'asc':
         room_list = room_list.order_by('avg_rating')
     if rating == 'desc':
@@ -68,13 +68,12 @@ def browse(request):
         "elevator": elevator,
         "women_only": women_only,
         "srd": srd,
-        "selected_directions": selected_directions,
+        "ca": ca,
         "rating": rating,
         "room_list": room_list,
         "building_list": BUILDING_LIST,
         "floor_list": Floors.choices,
         "region_list": Regions.choices,
-        "direction_list": Directions.choices,
         "size_list": Sizes.choices
     }
 
