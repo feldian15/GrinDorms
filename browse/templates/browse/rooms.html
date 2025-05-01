@@ -12,8 +12,12 @@
     <div class="filter-panel">
 <fieldset>
     <legend><h3>Filter</h3></legend>
-    <label>Regions</label>
-    <br>
+    <!-- Clear filters button added at the top of the filter panel -->
+    <button type="button" class="clear-button" onclick="window.location.href='{% url 'browse:browse' %}'">
+        Clear Filters
+    </button>
+        <!-- Changed ALL section headers from <label> to <p class="filter-section-title"> to distinguish them visually -->
+    <p class="filter-section-title">Regions</p>
     <form id="filters" action="{% url 'browse:browse' %}" method="get">
     {% if region_list %}
         {% for value, label in region_list %}
@@ -23,10 +27,9 @@
         <p value="none">No regions to display</p>
     {% endif %}
 
-    <br><br>
-
-    <label>Buildings</label>
     <br>
+
+    <p class="filter-section-title">Buildings</p>
     {% if building_list %}
         {% for building in building_list %}
             <label><input type="checkbox" name="building" value="{{ building.name }}" {% if building.name in selected_buildings %} checked {% endif %}>{{ building.name }}</label> 
@@ -35,10 +38,9 @@
         <p value="none">No buildings to display</p>
     {% endif %}
 
-    <br><br>
-
-    <label>Floors</label>
     <br>
+
+    <p class="filter-section-title">Floors</p>
     {% if floor_list %}
         {% for value, label in floor_list %}
             <label><input type="checkbox" name="floor" value="{{ value }}" {% if value in selected_floors %} checked {% endif %}>{{ label }}</label>
@@ -47,10 +49,9 @@
         <p value="none">No floors to display</p>
     {% endif %}
 
-    <br><br>
-
-    <label>Room Size</label>
     <br>
+
+    <p class="filter-section-title">Room Size</p>
     {% if size_list %}
         {% for value, label in size_list %}
             <label><input type="checkbox" name="size" value="{{ value }}" {% if value in selected_sizes %} checked {% endif %}>{{ label }}</label>
@@ -59,21 +60,16 @@
         <p value="none">No sizes to display</p>
     {% endif %}
 
-    <br><br>
+    <br>
 
     <div id="additional_filters">
-        <label>Additional Filters</label>
-        <br>
+        <p class="filter-section-title">Additional Filters</p>
         <label><input type="checkbox" name="sub_free" value="True" {% if sub_free %} checked {% endif %}>Building is sub free</label>
-        <br>
         <label><input type="checkbox" name="elevator" value="True" {% if elevator %} checked {% endif %}>Building has elevator</label>
-        <br>
         <label><input type="checkbox" name="women_only" value="True" {% if women_only %} checked {% endif %}>Building is for women only</label>
-        <br>
         <label><input type="checkbox" name="srd" value="True" {% if srd %} checked {% endif %}>Special Room Draw</label>
         <br>
-        <label>Window Direction</label>
-        <br>
+        <p class="filter-section-title">Window Direction</p>
         {% if direction_list %}
             {% for value, label in direction_list %}
                 <label><input type="checkbox" name="direction" value="{{ value }}" {% if value in selected_directions %} checked {% endif %}>{{ label }}</label>
@@ -83,22 +79,52 @@
         {% endif %}
     </div>
 
-    <br><br>
-    
-    <label>Sort by Rating</label>
     <br>
+    
+    <p class="filter-section-title">Sort by Rating</p>
     <select name="rating">
             <option value="" {% if rating == "" %}selected{% endif %}>Default</option>
             <option value="desc" {% if rating == "desc" %}selected{% endif %}>Rating: High to Low</option>
             <option value="asc" {% if rating == "asc" %}selected{% endif %}>Rating: Low to High</option>
         </select>
         <br><br>
-        <div class="filter-buttons">
-            <button type="submit">Apply Filters</button>
-        </div>
-        <a href="{% url 'browse:browse' %}" class="clear-link">Clear Filters</a>
+        <button type="button" class="clear-button" onclick="window.location.href='{% url 'browse:browse' %}'">
+            Clear Filters
+        </button>
         
     </form>
+
+<!-- Auto-submit Filters Script -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const filterForm = document.getElementById("filters");
+
+        // Attach a 'change' event to all checkboxes and the rating dropdown.
+        // When a user checks/unchecks a box or changes the rating, the form is submitted automatically.
+        filterForm.querySelectorAll("input[type='checkbox'], select").forEach(function (element) {
+            element.addEventListener("change", function () {
+                filterForm.submit(); // Auto-submit form on interaction
+            });
+        });
+    });
+</script>  
+
+    <!-- Preserve Scroll Position on Refresh -->
+     <script>
+        // Save the current vertical scroll position before the page unloads
+        window.addEventListener("beforeunload", function () {
+            sessionStorage.setItem("scrollPosition", window.scrollY);
+        });
+    
+        // Restore the scroll position after the page has loaded
+        window.addEventListener("load", function () {
+            const scrollPosition = sessionStorage.getItem("scrollPosition");
+            if (scrollPosition !== null) {
+                window.scrollTo(0, parseInt(scrollPosition));
+            }
+        });
+    </script>
+
 </fieldset>
 </div>
 
