@@ -18,4 +18,7 @@
 
 ### Continued Development
 - Our product will be ready after we get the user verification functionality and web hosting figured out. Currently, we cannot verify that users are grinnell students, and our web hosting platform is throwing some internal errors with our database. We believe we can fix these issues by the end of the semester, but they are integral to our product, so we cannot proceed to adoption without these pieces.
-- Additionally, we are currently missing test code for some of our code. We still need to write integration tests for our full site. 
+- Additionally, we are currently missing test code for some of our code. We still need to write integration tests for our full site.
+
+## Bug Reports
+1. Autopopulated review issue: https://trello.com/c/3PQV3iMs/79-fix-bug-with-auto-population-of-review-page
