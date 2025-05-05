@@ -22,3 +22,5 @@
 
 ## Bug Reports
 1. Autopopulated review issue: https://trello.com/c/3PQV3iMs/79-fix-bug-with-auto-population-of-review-page
+2. File extension issue: https://trello.com/c/WMyDlvID/80-fix-file-extension-bug
+3. Email sending issue: https://trello.com/c/1Oop57xU/81-fix-email-bug
