@@ -17,10 +17,10 @@
     <form id="filters" action="{% url 'browse:browse' %}" method="get">
     {% if region_list %}
         {% for value, label in region_list %}
-            <label><input type="checkbox" name="region" value="{{ value }}" {% if value in selected_regions %} checked {% endif %}>{{ label }}</label>
+            <label><input type="checkbox" name="region" id="{{ value }}" value="{{ value }}" {% if value in selected_regions %} checked {% endif %}>{{ label }}</label>
         {% endfor %}
     {% else %}
-        <p value="none">No regions to display</p>
+        <p id="no_regions" value="none">No regions to display</p>
     {% endif %}
 
     <br><br>
@@ -32,7 +32,7 @@
             <label><input type="checkbox" name="building" value="{{ building.name }}" {% if building.name in selected_buildings %} checked {% endif %}>{{ building.display_building_name }}</label> 
         {% endfor %}
     {% else %}
-        <p value="none">No buildings to display</p>
+        <p id="no_buildings" value="none">No buildings to display</p>
     {% endif %}
 
     <br><br>
@@ -44,7 +44,7 @@
             <label><input type="checkbox" name="floor" value="{{ value }}" {% if value in selected_floors %} checked {% endif %}>{{ label }}</label>
         {% endfor %}
     {% else %}
-        <p value="none">No floors to display</p>
+        <p id="no_floors" value="none">No floors to display</p>
     {% endif %}
 
     <br><br>
@@ -56,7 +56,7 @@
             <label><input type="checkbox" name="size" value="{{ value }}" {% if value in selected_sizes %} checked {% endif %}>{{ label }}</label>
         {% endfor %}
     {% else %}
-        <p value="none">No sizes to display</p>
+        <p id="no_sizes" value="none">No sizes to display</p>
     {% endif %}
 
     <br><br>
@@ -81,7 +81,7 @@
             <option value="asc" {% if rating == "asc" %}selected{% endif %}>Rating: Low to High</option>
         </select>
         <br><br>
-    <button type="submit">Apply Filters</button>
+    <button id="submit_filters" type="submit">Apply Filters</button>
     <a href="{% url 'browse:browse' %}" class="btn">Clear Filters</a>
 
 
@@ -93,13 +93,13 @@
 <h2>Available Rooms ({{ room_list.count }})</h2>
 
 {% if room_list %}
-    <ul>
+    <ul id="room_list">
     {% for room in room_list %}
-    <li>
-        <a href="/browse/{{ room.building.name }}/{{ room.number }}">{{ room.building.name }} {{ room.number }}</a>| 
-        <span class="star-rating" style="--rating: {{ room.avg_rating }};"></span>
-        [{{ room.avg_rating }} from {{room.reviews.count}} review(s)] | {{room.get_num_occupants_display}} {% if room.srd %}| Special Room Draw {% endif %} {% if room.ca %}| CA Room {% endif %}
-    </li>
+        <li>
+            <a href="/browse/{{ room.building.name }}/{{ room.number }}">{{ room.building.name }} {{ room.number }}</a>| 
+            <span class="star-rating" style="--rating: {{ room.avg_rating }};"></span>
+            [{{ room.avg_rating }} from {{room.reviews.count}} review(s)] | {{room.get_num_occupants_display}} {% if room.srd %}| Special Room Draw {% endif %} {% if room.ca %}| CA Room {% endif %}
+        </li>
     {% endfor %}
     </ul>
 {% else %}

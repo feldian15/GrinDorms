@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Room, Building, Floors
+from .models import Room, Building, Floors, Regions
 from django.db.utils import IntegrityError
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
@@ -10,6 +10,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from django.contrib.auth.models import User
+from selenium.common.exceptions import NoSuchElementException
+import random
+from django.urls import reverse
+from django.core.management import call_command
 
 # Create your tests here.
 class RoomModelTests(TestCase):
@@ -93,6 +97,11 @@ class RoomPageTest(StaticLiveServerTestCase):
         cls.test_password = "testpasswordfortestuser"
         User.objects.create_user(username=cls.test_username, password=cls.test_password, is_active=True)
 
+        #Set up test DB
+        building_csv_path = 'Grinnell College Buildings Test Data.csv'
+        room_csv_path = 'Grinnell College Dorms Test Data.csv'
+        call_command('import_buildings', '--file', building_csv_path)
+        call_command('import_rooms', '--file', room_csv_path)
     
     @classmethod
     def tearDownClass(cls):
@@ -127,42 +136,72 @@ class RoomPageTest(StaticLiveServerTestCase):
         )
 
 
-    def test_browse_page(self):
+    def test_region_filters(self):
         # Login
         self.login()
 
         self.driver.get(self.live_server_url + '/browse')
 
-        # Check that we are on the homepage after login
+        # Check that we are on the browse page after login
         self.assertEqual(self.driver.current_url, self.live_server_url + "/browse/")
 
-        # # Check for the presence of the browse link:
-        # browse_link = self.driver.find_element(By.ID, "browse_link")
-        # self.assertIs(browse_link.is_displayed(), True)
+        # Check for presence of Region filters
+        try:
+            region_check = self.driver.find_element(By.ID, 'no_regions')
+        except NoSuchElementException:
+            # Should move to here, since there should be elements
+            index = random.randint(0, 3)
+            try:
+                region_check = True
+                random_region = Regions.values[index]
+                print(random_region)
+                region = self.driver.find_element(By.ID, random_region)
+            except NoSuchElementException:
+                region_check = False
+                # fail the test
+                self.assertTrue(region_check)
 
-        # # Check that the browse link navigates correctly
-        # browse_link.click()
-        # self.assertEqual(self.driver.current_url, self.live_server_url + "/browse/")
+        region.click()
 
-        # # Go back to the homepage for the next test
-        # self.driver.get(self.live_server_url + "/home/")
+        # find the submit button
+        try:
+            submit = self.driver.find_element(By.ID, 'submit_filters')
+        except NoSuchElementException:
+            no_submit = False
+            # Fail the test
+            self.assertTrue(no_submit)
+        
+        submit.click()
 
-        # # Check that the review link is displayed on the page
-        # review_link = self.driver.find_element(By.ID, "review_link")
-        # self.assertIs(review_link.is_displayed(), True)
+        WebDriverWait(self.driver, 10).until(
+            EC.url_contains(f'region={random_region}')
+        )
 
-        # # check that the review link navigates to the correct location
-        # review_link.click()
-        # self.assertEqual(self.driver.current_url, self.live_server_url + "/review/")
+        self.assertIn(f'region={random_region}', self.driver.current_url)
 
-        # # Go back to the homepage for the next test
-        # self.driver.get(self.live_server_url + "/home/")
+        # find what the correct number of rooms should be 
+        total_rooms_in_region = Room.objects.filter(building__region=random_region).count()
+        
 
-        # # Check that the my reviews link is displayed on the page
-        # my_reviews_link = self.driver.find_element(By.ID, "my_reviews_link")
-        # self.assertIs(my_reviews_link.is_displayed(), True)
+        # Check if room list is present
+        room_list = self.driver.find_element(By.ID, "room_list")
+        room_items = room_list.find_elements(By.TAG_NAME, "li")
 
-        # # check that the my reviews link navigates to the correct location
-        # my_reviews_link.click()
-        # self.assertEqual(self.driver.current_url, self.live_server_url + "/review/my_reviews/")
+        # Assert that the right number of rooms shows up after filtering
+        self.assertEqual(total_rooms_in_region, len(room_items), 'Expected number of rooms does not match displayed number')
+
+    def test_building_filters(self):
+        self.login()
+
+        self.driver.get(self.live_server_url + '/browse')
+
+        # Check that we are on the browse page after login
+        self.assertEqual(self.driver.current_url, self.live_server_url + "/browse/")
+
+        # First look for the presence of the building filters
+        try:
+            self.driver.find_element(By.ID, 'no_buildings')
+        except NoSuchElementException:
+            # Should reach here, since there should be building elements
+            
 
