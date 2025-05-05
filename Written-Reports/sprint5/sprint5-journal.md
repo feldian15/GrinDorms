@@ -1,5 +1,5 @@
 # Sprint 5 Journal
-## Adoption Plan (Wednesday, April 30)
+## Continued Development Plan (Wednesday, April 30)
 ### Current State
 - At the time of writing, our product is almost ready for adoption. The internal functionality of the site is complete and usable. The only missing piece currently is our email verification functionality. 
 
