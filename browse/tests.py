@@ -83,7 +83,8 @@ class RoomPageTest(StaticLiveServerTestCase):
     def setUpClass(cls):
         super().setUpClass()
         chrome_options = Options()
-        # chrome_options.add_argument("--headless")  # run without opening a window
+        # Uncomment the next line to run tests headlessly (no GUI)
+        chrome_options.add_argument("--headless=new")
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
 
