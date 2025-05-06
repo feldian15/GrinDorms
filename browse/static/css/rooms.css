@@ -119,8 +119,8 @@ a:hover {
    ============================= */
 .filter-panel {
     flex: 1;
-    min-width: 300px;
-    max-width: 350px;
+    min-width: 250px;
+    max-width: 300px;
 }
 
 /* Base card style for filter panel */
@@ -239,7 +239,7 @@ button[type="submit"]:hover {
    ========================== */
 .room-list {
     flex: 2;
-    min-width: 300px;
+    min-width: 350px;
 }
 
 ul {

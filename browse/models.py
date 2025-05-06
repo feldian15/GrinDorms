@@ -14,9 +14,9 @@ class Sizes(models.IntegerChoices):
     DOUBLE = 2, "Double"
     TRIPLE = 3, "Triple"
     QUAD = 4, "Quad"
-    FIVEMAN = 5, "Five-man"
-    SIXMAN = 6, "Six-man"
-    SEVENMAN = 7, "Seven-man"
+    FIVEMAN = 5, "Five-Person"
+    SIXMAN = 6, "Six-Person"
+    SEVENMAN = 7, "Seven-Person"
 
 class Floors(models.IntegerChoices):
     PIT = 0, "Pit"
