@@ -2,4 +2,3 @@ name,region,num_floors,has_pit,num_kitchens,central_ac,num_washers,num_dryers,el
 RATHJE,E,3,f,1,t,3,6,t,f,f
 MAIN,S,4,f,2,f,8,8,t,f,f
 CLARK,N,4,t,1,f,3,6,f,f,f
-RENFROW,O,4,f,0,t,9,9,t,f,f
