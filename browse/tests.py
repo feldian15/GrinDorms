@@ -83,7 +83,7 @@ class RoomPageTest(StaticLiveServerTestCase):
     def setUpClass(cls):
         super().setUpClass()
         chrome_options = Options()
-        chrome_options.add_argument("--headless")  # run without opening a window
+        # chrome_options.add_argument("--headless")  # run without opening a window
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
 
@@ -92,21 +92,25 @@ class RoomPageTest(StaticLiveServerTestCase):
             options=chrome_options
         )
 
+    def setUp(self):    
         # Create a test user
-        cls.test_username = "testuser"
-        cls.test_password = "testpasswordfortestuser"
-        User.objects.create_user(username=cls.test_username, password=cls.test_password, is_active=True)
+        self.test_username = "testuser"
+        self.test_password = "testpasswordfortestuser"
+        User.objects.create_user(username=self.test_username, password=self.test_password, is_active=True)
 
         #Set up test DB
         building_csv_path = 'Grinnell College Buildings Test Data.csv'
         room_csv_path = 'Grinnell College Dorms Test Data.csv'
         call_command('import_buildings', '--file', building_csv_path)
         call_command('import_rooms', '--file', room_csv_path)
-    
+        
     @classmethod
     def tearDownClass(cls):
         cls.driver.quit()
         super().tearDownClass()
+    
+    def tearDown(self):
+        self.driver.delete_all_cookies()  # Clear session between tests
 
     def login(self):
         # Navigate to main page
@@ -135,6 +139,9 @@ class RoomPageTest(StaticLiveServerTestCase):
             EC.url_to_be(self.live_server_url + "/home/")
         )
 
+    def logout(self):
+        logout_button = self.driver.find_element(By.LINK_TEXT, 'Logout')
+        logout_button.click()
 
     def test_region_filters(self):
         # Login
@@ -154,12 +161,11 @@ class RoomPageTest(StaticLiveServerTestCase):
             try:
                 region_check = True
                 random_region = Regions.values[index]
-                print(random_region)
                 region = self.driver.find_element(By.ID, random_region)
             except NoSuchElementException:
                 region_check = False
                 # fail the test
-                self.assertTrue(region_check)
+                self.assertTrue(region_check, f'no region with value {random_region}')
 
         region.click()
 
@@ -169,7 +175,7 @@ class RoomPageTest(StaticLiveServerTestCase):
         except NoSuchElementException:
             no_submit = False
             # Fail the test
-            self.assertTrue(no_submit)
+            self.assertTrue(no_submit, 'no submit button')
         
         submit.click()
 
@@ -182,7 +188,6 @@ class RoomPageTest(StaticLiveServerTestCase):
         # find what the correct number of rooms should be 
         total_rooms_in_region = Room.objects.filter(building__region=random_region).count()
         
-
         # Check if room list is present
         room_list = self.driver.find_element(By.ID, "room_list")
         room_items = room_list.find_elements(By.TAG_NAME, "li")
@@ -203,5 +208,43 @@ class RoomPageTest(StaticLiveServerTestCase):
             self.driver.find_element(By.ID, 'no_buildings')
         except NoSuchElementException:
             # Should reach here, since there should be building elements
+            num_buildings = Building.objects.all().count()
+            index = random.randint(0, num_buildings - 1)
+            random_building_name = Building.objects.all()[index].name
             
+            # Pick that building from the list
+            try:
+                random_building_filter = self.driver.find_element(By.ID, random_building_name)
+            except NoSuchElementException:
+                building_check = False
+                self.assertTrue(building_check, f'no building with name {random_building_name}')
+            
+        # Select the building
+        random_building_filter.click()
+
+        # find the submit button
+        try:
+            submit = self.driver.find_element(By.ID, 'submit_filters')
+        except NoSuchElementException:
+            no_submit = False
+            # Fail the test
+            self.assertTrue(no_submit, 'no submit button')
+        
+        submit.click()
+
+        WebDriverWait(self.driver, 10).until(
+            EC.url_contains(f'building={random_building_name}')
+        )
+
+        # Check that we reached the right url
+        self.assertIn(f'building={random_building_name}', self.driver.current_url)
+
+        total_rooms_in_building = Room.objects.filter(building__name=random_building_name).count()
+
+        # Check if room list is present
+        room_list = self.driver.find_element(By.ID, "room_list")
+        room_items = room_list.find_elements(By.TAG_NAME, "li")
+
+        # Assert that the right number of rooms shows up after filtering
+        self.assertEqual(total_rooms_in_building, len(room_items), 'Expected number of rooms does not match displayed number')
 

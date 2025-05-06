@@ -29,7 +29,7 @@
     <br>
     {% if building_list %}
         {% for building in building_list %}
-            <label><input type="checkbox" name="building" value="{{ building.name }}" {% if building.name in selected_buildings %} checked {% endif %}>{{ building.display_building_name }}</label> 
+            <label><input type="checkbox" id="{{ building.name }}" name="building" value="{{ building.name }}" {% if building.name in selected_buildings %} checked {% endif %}>{{ building.display_building_name }}</label> 
         {% endfor %}
     {% else %}
         <p id="no_buildings" value="none">No buildings to display</p>
