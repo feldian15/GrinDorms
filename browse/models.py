@@ -72,8 +72,23 @@ class Room(models.Model):
             )
         ]
 
+    def display_room_number(self):
+        if self.building.name == "RENFROW":
+            # Get first digit 1=N, 2=S, 3=W
+            lead_digit = int(self.number / 1000)
+            remainder = self.number % 1000
+            if lead_digit == 1:
+                return f'N{remainder}'
+            elif lead_digit == 2:
+                return f'S{remainder}'
+            else:
+                return f'W{remainder}'
+        else:
+            return str(self.number)
+        
+
     def __str__ (self):
-        return "%s %d" % (self.building.name, self.number)
+        return "%s %s" % (self.building.name, self.display_room_number())
     
     def save(self, *args, **kwargs):
         # Check that the room number is 4 digits
