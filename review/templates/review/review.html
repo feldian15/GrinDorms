@@ -75,7 +75,7 @@
     <select name="room">
         {% if room_list %}
             {% for room in room_list %}
-                <option value="{{ room.number }}" {% if room.number == selected_room %} selected {% endif %}>{{ room.number }}</option>
+                <option value="{{ room.number }}" {% if room.number == selected_room %} selected {% endif %}>{{ room.display_room_number }}</option>
             {% endfor %}
         {% else %}
             <option value="none">No rooms to display</option> 

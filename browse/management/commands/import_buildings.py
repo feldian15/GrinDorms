@@ -10,7 +10,7 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         file_path = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'Grinnell College Buildings.csv')
 
-        with open(file_path, mode='r') as file:
+        with open(file_path, mode='r', encoding='utf-8-sig') as file:
             reader = csv.DictReader(file)
             for row in reader:
                 # Map CSV values to the correct model fields
