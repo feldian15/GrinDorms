@@ -21,6 +21,7 @@ class Command(BaseCommand):
                     number=int(row['number']),
                     num_occupants=int(row['num_occupants_2025']),
                     floor_bathrooms=int(row['floor_bathrooms']),
+                    multi_room=True if row['multi_room'] == 't' else False,
                     srd=True if row['srd'] == 't' else False,
                     internal_bathroom=True if row['internal_bathroom'] == 't' else False,
                     kitchen=True if row['kitchen'] == 't' else False,

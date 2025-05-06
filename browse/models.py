@@ -57,6 +57,7 @@ class Room(models.Model):
     floor = models.IntegerField(editable=False, choices=Floors.choices, default=Floors.PIT)
     num_occupants = models.IntegerField(choices=Sizes.choices, default=Sizes.SINGLE)
     floor_bathrooms = models.IntegerField(default=1)
+    multi_room = models.BooleanField(default=True)
     srd = models.BooleanField(default=False)
     internal_bathroom = models.BooleanField(default=False)
     kitchen = models.BooleanField(default=False)
