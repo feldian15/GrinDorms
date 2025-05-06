@@ -28,6 +28,7 @@ def browse(request):
     elevator = request.GET.get("elevator")
     women_only = request.GET.get("women_only")
     srd = request.GET.get("srd")
+    multi_room = request.GET.get("multi_room")
     ca = request.GET.get("ca")
     rating = request.GET.get("rating")
 
@@ -51,6 +52,8 @@ def browse(request):
         room_list = room_list.filter(building__gender_specific=women_only)
     if srd:
         room_list = room_list.filter(srd=srd)
+    if multi_room:
+        room_list = room_list.filter(multi_room=multi_room)
     if ca:
         room_list = room_list.filter(ca=ca)
     if rating == 'asc':
@@ -68,6 +71,7 @@ def browse(request):
         "elevator": elevator,
         "women_only": women_only,
         "srd": srd,
+        "multi_room": multi_room,
         "ca": ca,
         "rating": rating,
         "room_list": room_list,
