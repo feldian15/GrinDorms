@@ -24,3 +24,13 @@
 1. Autopopulated review issue: https://trello.com/c/3PQV3iMs/79-fix-bug-with-auto-population-of-review-page
 2. File extension issue: https://trello.com/c/WMyDlvID/80-fix-file-extension-bug
 3. Email sending issue: https://trello.com/c/1Oop57xU/81-fix-email-bug
+
+## Development Plan Completion Process and Outcome (Wednesday, May 7)
+By hosting the website publicly, we were able to set up the backend email server in a way for emails to send through all
+computers and on the school's wifi. We tested this functionality in our class demo, asking our classmates to create
+and verify an account, and the emails successfully sent to their Grinnell emails. These people were able to post
+room reviews, and we have come closer to our end goal of crowdsourcing room data and creating a helpful website to help our
+peers with room draw. 
+
+
+
