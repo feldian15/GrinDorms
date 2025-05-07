@@ -17,6 +17,7 @@
         Clear Filters
     </button>
         <!-- Changed ALL section headers from <label> to <p class="filter-section-title"> to distinguish them visually -->
+    <br>
     <p class="filter-section-title">Regions</p>
     <form id="filters" action="{% url 'browse:browse' %}" method="get">
     {% if region_list %}
@@ -68,6 +69,7 @@
         <label><input type="checkbox" name="elevator" value="True" {% if elevator %} checked {% endif %}>Building has elevator</label>
         <label><input type="checkbox" name="women_only" value="True" {% if women_only %} checked {% endif %}>Building is for women only</label>
         <label><input type="checkbox" name="srd" value="True" {% if srd %} checked {% endif %}>Special Room Draw</label>
+        <label><input type="checkbox" name="multi_room" value="True" {% if multi_room %} checked {% endif %}>Multiple rooms in dorm</label>
         <!-- <br>
         <p class="filter-section-title">Window Direction</p>
         {% if direction_list %}
@@ -82,6 +84,7 @@
     <br>
     
     <p class="filter-section-title">Sort by Rating</p>
+    <br>
     <select name="rating">
             <option value="" {% if rating == "" %}selected{% endif %}>Default</option>
             <option value="desc" {% if rating == "desc" %}selected{% endif %}>Rating: High to Low</option>
@@ -135,9 +138,8 @@
     <ul>
     {% for room in room_list %}
     <li>
-        <a href="/browse/{{ room.building.name }}/{{ room.number }}">{{ room.building.name }} {{ room.display_room_number }}</a>| 
-        <span class="star-rating" style="--rating: {{ room.avg_rating }};"></span>
-        [{{ room.avg_rating }} from {{room.reviews.count}} review(s)] | {{room.get_num_occupants_display}} {% if room.srd %}| Special Room Draw {% endif %} {% if room.ca %}| CA Room {% endif %}
+        <a href="/browse/{{ room.building.name }}/{{ room.number }}">{{ room.building.name }} {{ room.display_room_number }}</a>| <span class="star-rating" style="--rating: {{ room.avg_rating }};"></span>
+        [{{ room.avg_rating }} from {{room.reviews.count}} review(s)] |{% if multi_room %} Multi-Room{% endif %} {{room.get_num_occupants_display}} {% if room.srd %}| Special Room Draw {% endif %} {% if room.ca %}| CA Room {% endif %}
     </li>
     {% endfor %}
     </ul>
