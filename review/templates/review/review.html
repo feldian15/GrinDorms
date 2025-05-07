@@ -87,7 +87,7 @@
 <fieldset id="review" style={% if selected_room %} "display:block" {% else %} "display:none" {% endif %}>
     <form action="{% url 'review:add' building_name=selected_building room_number=selected_room %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <h2>You are reviewing room {{ selected_room }} of {{ selected_building }} Hall</h2>
+        <h2>You are reviewing room {{ selected_room_display }} of {{ selected_building }} Hall</h2>
         <h3>Rating</h3>
         <fieldset class="rating">
             <input type="radio" id="1star5" name="rating" value="5" required />

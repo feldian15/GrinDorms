@@ -36,6 +36,13 @@ def review(request):
     # if a room is selected, make sure its valid (make sure it isnt "none") and then store the room number
     selected_room = int(request.GET.get('room')) if request.GET.get('room') and request.GET.get('room') != 'none' else 0
 
+    if selected_room:
+        room = Room.objects.get(building__name=selected_building, number=selected_room)
+        selected_room_display = room.display_room_number
+    else:
+        selected_room_display = 0
+        
+
     review_success = request.GET.get("review_success") == "1"
     review_dup = request.GET.get("review_dup") == "1"
 
@@ -49,6 +56,7 @@ def review(request):
         "selected_building": selected_building,
         "selected_floor": selected_floor,
         "selected_room": selected_room,
+        "selected_room_display": selected_room_display,
         "review_success": review_success,
         "review_dup": review_dup
     }
