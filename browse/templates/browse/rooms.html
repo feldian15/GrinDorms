@@ -139,7 +139,7 @@
     {% for room in room_list %}
     <li>
         <a href="/browse/{{ room.building.name }}/{{ room.number }}">{{ room.building.name }} {{ room.display_room_number }}</a>| <span class="star-rating" style="--rating: {{ room.avg_rating }};"></span>
-        [{{ room.avg_rating }} from {{room.reviews.count}} review(s)] |{% if multi_room %} Multi-Room{% endif %} {{room.get_num_occupants_display}} {% if room.srd %}| Special Room Draw {% endif %} {% if room.ca %}| CA Room {% endif %}
+        [{{ room.avg_rating }} from {{room.reviews.count}} review(s)] |{% if room.multi_room %} Multi-Room{% endif %} {{room.get_num_occupants_display}} {% if room.srd %}| Special Room Draw {% endif %} {% if room.ca %}| CA Room {% endif %}
     </li>
     {% endfor %}
     </ul>
