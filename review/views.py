@@ -122,7 +122,14 @@ def add(request, building_name, room_number):
 
     # Handle image uploads
     image_list = request.FILES.getlist("image")
+    allowed_extensions = ['.jpg', '.jpeg', 'png']
+
     for image in image_list:
+        ext = os.path.splitext(image.name)[1].lower()
+        # 
+        if ext not in allowed_extensions:
+            return HttpResponseRedirect(reverse("review:review") + "?review_dup=1")
+
         new_image = Image(review=new_review, image_url=image)
         new_image.save()
 
