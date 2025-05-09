@@ -105,7 +105,7 @@
         <h3>Review</h3>
         <textarea name="review_text" id="review_text" required></textarea>
         <h3>Pictures</h3>
-        <input name="image" id="image" type="file" multiple>
+        <input name="image" id="image" type="file" multiple accept=".png, .jpg, .jpeg">
         <br>
         <button type="submit">Submit</button>
     </form>
@@ -137,6 +137,18 @@
 </div>  
 {% endif %}
 
+{% if invalid_image %}
+<!-- Modal for invalid image format -->
+ <div id="invalidImageModal" class="modal-overlay">
+    <div class="modal-content">
+        <h2>Invalid image format. Please upload only .png or .jpeg files.</h2>
+        <div class="modal-buttons">
+            <a href="/review/">Back to Review</a>
+        </div>
+    </div>
+ </div>
+{% endif %}
+
 <!-- Display the CORRECT modal on page load -->
 <script>
     window.onload = function () {
@@ -150,6 +162,12 @@
         const dupModal = document.getElementById('dupModal');
         if (dupModal) {
             dupModal.style.display = 'flex';
+        }
+
+        // Show invalid image modal if it exists
+        const invalidImageModal = document.getElementById('invalidImageModal');
+        if (invalidImageModal) {
+            invalidImageModal.style.display = 'flex';
         }
     };
 </script> 
