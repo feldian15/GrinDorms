@@ -1,8 +1,5 @@
 # Sprint 5 Review Report
 
-Describe what you completed this sprint.
-
-How has your product improved or progressed from a customer perspective? Describe in terms of high level features that a non-technical user
-could recognize and appreciate.
-
-What progress have you made that is not visible to a common user?
+This sprint, our team added important features to wrap up our project. We enabled our website to have a public URL, allowing users outside of our team to access the website, create an account, and post/browse room reviews. By hosting our website through Reclaim Cloud, we were
+able to resolve the email problems we encountered through local hosting, and our website is now able to send emails over
+the school wifi on any computer. Now, users can properly verify their account and reset their account password via links sent by our website to their Grinnell email address. We also improved our filtering panel on the room broswing page, automatically refreshing the room list based on user selections instead of users having to click a button to refresh the room list. Also, we have finished uploading all basic room data to our database, allowing users to access information about all rooms on campus, including Renfrow (but excluding Loose, which is still under construction). One bug we addressed this sprint was a small issue with image posting. To resolve the issue, we restricted users to only upload image files with jpeg or png extensions. 
