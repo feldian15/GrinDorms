@@ -27,10 +27,7 @@
 
 ## Development Plan Completion Process and Outcome (Wednesday, May 7)
 By hosting the website publicly, we were able to set up the backend email server in a way for emails to send through all
-computers and on the school's wifi. We tested this functionality in our class demo, asking our classmates to create
-and verify an account, and the emails successfully sent to their Grinnell emails. These people were able to post
-room reviews, and we have come closer to our end goal of crowdsourcing room data and creating a helpful website to help our
-peers with room draw. 
+computers and on the school's wifi. By completing our continued development plan, we were able to have a functioning website that allowed our classmates to register and verify an account, browse room review, and post their own room reviews. We tested this functionality in our class demo, asking our classmates to create and verify an account, and the emails successfully sent to their Grinnell emails. These users were able to post room reviews, and we have come closer to our end goal of crowdsourcing room data and creating a helpful website to help our peers with room draw.  
 
 
 
