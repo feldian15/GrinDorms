@@ -223,7 +223,7 @@ class RoomPageTest(StaticLiveServerTestCase):
         # Select the building
         random_building_filter.click()
 
-        # find the submit button
+        # find the submit button CHANGE ONCE MERGED
         try:
             submit = self.driver.find_element(By.ID, 'submit_filters')
         except NoSuchElementException:
@@ -249,3 +249,90 @@ class RoomPageTest(StaticLiveServerTestCase):
         # Assert that the right number of rooms shows up after filtering
         self.assertEqual(total_rooms_in_building, len(room_items), 'Expected number of rooms does not match displayed number')
 
+    def test_filter_presence(self):
+        # login
+        self.login()
+
+        self.driver.get(self.live_server_url + '/browse')
+
+        # Check that we are on the browse page after login
+        self.assertEqual(self.driver.current_url, self.live_server_url + "/browse/")
+
+        # check for the presence of floors
+        try:
+            self.driver.find_element(By.ID, "no_floors")
+        except NoSuchElementException:
+            # should go here
+            floors_check = True
+        else:
+            floors_check = False
+
+        self.assertTrue(floors_check)
+        
+        # check for presence of room sizes
+        try:
+            self.driver.find_element(By.ID, "no_sizes")
+        except NoSuchElementException:
+            # should go here
+            sizes_check = True
+        else:
+            sizes_check = False
+
+        self.assertTrue(sizes_check)
+
+        #check for subfree
+        try:
+            self.driver.find_element(By.ID, "sub_free")
+        except NoSuchElementException:
+            #should not go here
+            sub_free_check = False
+        else:
+            sub_free_check = True
+
+        self.assertTrue(sub_free_check)
+
+        #check for elevator
+        try:
+            self.driver.find_element(By.ID, "elevator")
+        except NoSuchElementException:
+            #should not go here
+            elevator_check = False
+        else:
+            elevator_check = True
+
+        self.assertTrue(elevator_check)
+
+        #check for women only
+        try:
+            self.driver.find_element(By.ID, "women_only")
+        except NoSuchElementException:
+            #should not go here
+            women_only_check = False
+        else:
+            women_only_check = True
+
+        self.assertTrue(women_only_check)
+
+        #check for srd
+        try:
+            self.driver.find_element(By.ID, "srd")
+        except NoSuchElementException:
+            #should not go here
+            srd_check = False
+        else:
+            srd_check = True
+
+        self.assertTrue(srd_check)
+
+        #check for ca
+        try:
+            self.driver.find_element(By.ID, "ca")
+        except NoSuchElementException:
+            #should not go here
+            ca_check = False
+        else:
+            ca_check = True
+
+        self.assertTrue(ca_check)
+
+    
