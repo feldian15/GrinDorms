@@ -24,7 +24,7 @@ class Command(BaseCommand):
             self.stdout.write(self.style.ERROR(f"File not found: {file_path}"))
             return
 
-        with open(file_path, mode='r') as file:
+        with open(file_path, mode='r', encoding='utf-8-sig') as file:
             reader = csv.DictReader(file)
             for row in reader:
                 # Map CSV values to the correct model fields

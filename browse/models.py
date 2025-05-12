@@ -14,9 +14,9 @@ class Sizes(models.IntegerChoices):
     DOUBLE = 2, "Double"
     TRIPLE = 3, "Triple"
     QUAD = 4, "Quad"
-    FIVEMAN = 5, "Five-man"
-    SIXMAN = 6, "Six-man"
-    SEVENMAN = 7, "Seven-man"
+    FIVEMAN = 5, "Five-Person"
+    SIXMAN = 6, "Six-Person"
+    SEVENMAN = 7, "Seven-Person"
 
 class Floors(models.IntegerChoices):
     PIT = 0, "Pit"
@@ -57,6 +57,7 @@ class Room(models.Model):
     floor = models.IntegerField(editable=False, choices=Floors.choices, default=Floors.PIT)
     num_occupants = models.IntegerField(choices=Sizes.choices, default=Sizes.SINGLE)
     floor_bathrooms = models.IntegerField(default=1)
+    multi_room = models.BooleanField(default=True)
     srd = models.BooleanField(default=False)
     internal_bathroom = models.BooleanField(default=False)
     kitchen = models.BooleanField(default=False)
@@ -72,8 +73,23 @@ class Room(models.Model):
             )
         ]
 
+    def display_room_number(self):
+        if self.building.name == "RENFROW":
+            # Get first digit 1=N, 2=S, 3=W
+            lead_digit = int(self.number / 1000)
+            remainder = self.number % 1000
+            if lead_digit == 1:
+                return f'N{remainder}'
+            elif lead_digit == 2:
+                return f'S{remainder}'
+            else:
+                return f'W{remainder}'
+        else:
+            return str(self.number)
+        
+
     def __str__ (self):
-        return "%s %d" % (self.building.name, self.number)
+        return "%s %s" % (self.building.name, self.display_room_number())
     
     def save(self, *args, **kwargs):
         # Check that the room number is 4 digits

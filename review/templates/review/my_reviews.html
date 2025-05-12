@@ -18,7 +18,7 @@
 {% if review_list %}
     {% for review in review_list %}
         <fieldset>
-            <legend><h3>Review for <a href="{% url 'browse:room_details' building_name=review.room.building.name room_number=review.room.number %}">{{ review.room.building.name }} {{ review.room.number }}</a></h3></legend>
+            <legend><h3>Review for <a href="{% url 'browse:room_details' building_name=review.room.building.name room_number=review.room.number %}">{{ review.room.building.name }} {{ review.room.display_room_number }}</a></h3></legend>
             <h4>Posted on {{ review.created_time.date }} at {{ review.created_time.time }}</h4>
             <div> <span class="star-rating" style="--rating: {{ review.rating }};"></span> </div> 
             <fieldset>

@@ -75,7 +75,7 @@
     <select name="room">
         {% if room_list %}
             {% for room in room_list %}
-                <option value="{{ room.number }}" {% if room.number == selected_room %} selected {% endif %}>{{ room.number }}</option>
+                <option value="{{ room.number }}" {% if room.number == selected_room %} selected {% endif %}>{{ room.display_room_number }}</option>
             {% endfor %}
         {% else %}
             <option value="none">No rooms to display</option> 
@@ -87,7 +87,7 @@
 <fieldset id="review" style={% if selected_room %} "display:block" {% else %} "display:none" {% endif %}>
     <form action="{% url 'review:add' building_name=selected_building room_number=selected_room %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <h2>You are reviewing room {{ selected_room }} of {{ selected_building }} Hall</h2>
+        <h2>You are reviewing room {{ selected_room_display }} of {{ selected_building }} Hall</h2>
         <h3>Rating</h3>
         <fieldset class="rating">
             <input type="radio" id="1star5" name="rating" value="5" required />
@@ -105,7 +105,7 @@
         <h3>Review</h3>
         <textarea name="review_text" id="review_text" required></textarea>
         <h3>Pictures</h3>
-        <input name="image" id="image" type="file" multiple>
+        <input name="image" id="image" type="file" multiple accept=".png, .jpg, .jpeg">
         <br>
         <button type="submit">Submit</button>
     </form>
@@ -137,6 +137,18 @@
 </div>  
 {% endif %}
 
+{% if invalid_image %}
+<!-- Modal for invalid image format -->
+ <div id="invalidImageModal" class="modal-overlay">
+    <div class="modal-content">
+        <h2>Invalid image format. Please upload only .png or .jpeg files.</h2>
+        <div class="modal-buttons">
+            <a href="/review/">Back to Review</a>
+        </div>
+    </div>
+ </div>
+{% endif %}
+
 <!-- Display the CORRECT modal on page load -->
 <script>
     window.onload = function () {
@@ -150,6 +162,12 @@
         const dupModal = document.getElementById('dupModal');
         if (dupModal) {
             dupModal.style.display = 'flex';
+        }
+
+        // Show invalid image modal if it exists
+        const invalidImageModal = document.getElementById('invalidImageModal');
+        if (invalidImageModal) {
+            invalidImageModal.style.display = 'flex';
         }
     };
 </script> 
