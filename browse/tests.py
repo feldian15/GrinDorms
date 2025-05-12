@@ -12,7 +12,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from django.contrib.auth.models import User
 from selenium.common.exceptions import NoSuchElementException
 import random
-from django.urls import reverse
 from django.core.management import call_command
 
 # Create your tests here.
