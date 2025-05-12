@@ -170,16 +170,6 @@ class RoomPageTest(StaticLiveServerTestCase):
 
         region.click()
 
-        # find the submit button
-        try:
-            submit = self.driver.find_element(By.ID, 'submit_filters')
-        except NoSuchElementException:
-            no_submit = False
-            # Fail the test
-            self.assertTrue(no_submit, 'no submit button')
-        
-        submit.click()
-
         WebDriverWait(self.driver, 10).until(
             EC.url_contains(f'region={random_region}')
         )
@@ -222,16 +212,6 @@ class RoomPageTest(StaticLiveServerTestCase):
             
         # Select the building
         random_building_filter.click()
-
-        # find the submit button CHANGE ONCE MERGED
-        try:
-            submit = self.driver.find_element(By.ID, 'submit_filters')
-        except NoSuchElementException:
-            no_submit = False
-            # Fail the test
-            self.assertTrue(no_submit, 'no submit button')
-        
-        submit.click()
 
         WebDriverWait(self.driver, 10).until(
             EC.url_contains(f'building={random_building_name}')
