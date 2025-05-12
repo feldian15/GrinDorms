@@ -33,7 +33,7 @@ def review(request):
     else:
         room_list = []
 
-    # if a room is selected, make sure its valid (make sure it isnt "none") and then store the room number
+    # if a room is selected, make sure it's valid
     selected_room = int(request.GET.get('room')) if request.GET.get('room') and request.GET.get('room') != 'none' else 0
 
     if selected_room:
@@ -41,10 +41,11 @@ def review(request):
         selected_room_display = room.display_room_number
     else:
         selected_room_display = 0
-        
 
+    # Handle modal triggers
     review_success = request.GET.get("review_success") == "1"
     review_dup = request.GET.get("review_dup") == "1"
+    invalid_image = request.GET.get("invalid_image") == "1"
 
     # pass in the lists and the previously selected options to display in the dropdowns
     context = {
@@ -58,10 +59,12 @@ def review(request):
         "selected_room": selected_room,
         "selected_room_display": selected_room_display,
         "review_success": review_success,
-        "review_dup": review_dup
+        "review_dup": review_dup,
+        "invalid_image": invalid_image
     }
 
     return render(request, "review/review.html", context)
+
 
 # view for viewing user specific reviews
 @login_required(login_url="login:my-login")
@@ -122,7 +125,14 @@ def add(request, building_name, room_number):
 
     # Handle image uploads
     image_list = request.FILES.getlist("image")
+    allowed_extensions = ['.jpg', '.jpeg', 'png']
+
     for image in image_list:
+        ext = os.path.splitext(image.name)[1].lower()
+        # 
+        if ext not in allowed_extensions:
+            return HttpResponseRedirect(reverse("review:review") + "?review_dup=1")
+
         new_image = Image(review=new_review, image_url=image)
         new_image.save()
 
