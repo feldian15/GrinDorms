@@ -22,10 +22,10 @@
     <form id="filters" action="{% url 'browse:browse' %}" method="get">
     {% if region_list %}
         {% for value, label in region_list %}
-            <label><input type="checkbox" name="region" value="{{ value }}" {% if value in selected_regions %} checked {% endif %}>{{ label }}</label>
+            <label><input type="checkbox" name="region" id="{{ value }}" value="{{ value }}" {% if value in selected_regions %} checked {% endif %}>{{ label }}</label>
         {% endfor %}
     {% else %}
-        <p value="none">No regions to display</p>
+        <p id="no_regions" value="none">No regions to display</p>
     {% endif %}
 
     <br>
@@ -33,10 +33,10 @@
     <p class="filter-section-title">Buildings</p>
     {% if building_list %}
         {% for building in building_list %}
-            <label><input type="checkbox" name="building" value="{{ building.name }}" {% if building.name in selected_buildings %} checked {% endif %}>{{ building.display_building_name }}</label> 
+            <label><input type="checkbox" id="{{ building.name }}" name="building" value="{{ building.name }}" {% if building.name in selected_buildings %} checked {% endif %}>{{ building.display_building_name }}</label> 
         {% endfor %}
     {% else %}
-        <p value="none">No buildings to display</p>
+        <p id="no_buildings" value="none">No buildings to display</p>
     {% endif %}
 
     <br>
@@ -47,7 +47,7 @@
             <label><input type="checkbox" name="floor" value="{{ value }}" {% if value in selected_floors %} checked {% endif %}>{{ label }}</label>
         {% endfor %}
     {% else %}
-        <p value="none">No floors to display</p>
+        <p id="no_floors" value="none">No floors to display</p>
     {% endif %}
 
     <br>
@@ -58,18 +58,19 @@
             <label><input type="checkbox" name="size" value="{{ value }}" {% if value in selected_sizes %} checked {% endif %}>{{ label }}</label>
         {% endfor %}
     {% else %}
-        <p value="none">No sizes to display</p>
+        <p id="no_sizes" value="none">No sizes to display</p>
     {% endif %}
 
     <br>
 
     <div id="additional_filters">
         <p class="filter-section-title">Additional Filters</p>
-        <label><input type="checkbox" name="sub_free" value="True" {% if sub_free %} checked {% endif %}>Building is sub free</label>
-        <label><input type="checkbox" name="elevator" value="True" {% if elevator %} checked {% endif %}>Building has elevator</label>
-        <label><input type="checkbox" name="women_only" value="True" {% if women_only %} checked {% endif %}>Building is for women only</label>
-        <label><input type="checkbox" name="srd" value="True" {% if srd %} checked {% endif %}>Special Room Draw</label>
-        <label><input type="checkbox" name="multi_room" value="True" {% if multi_room %} checked {% endif %}>Multiple rooms in dorm</label>
+        <label><input type="checkbox" id="sub_free" name="sub_free" value="True" {% if sub_free %} checked {% endif %}>Building is sub free</label>
+        <label><input type="checkbox" id="elevator" name="elevator" value="True" {% if elevator %} checked {% endif %}>Building has elevator</label>
+        <label><input type="checkbox" id="women_only" name="women_only" value="True" {% if women_only %} checked {% endif %}>Building is for women only</label>
+        <label><input type="checkbox" id="srd" name="srd" value="True" {% if srd %} checked {% endif %}>Special Room Draw</label>
+         <label><input type="checkbox" id="ca" name="ca" value="True" {% if ca %} checked {% endif %}>CA Room</label>
+        <label><input type="checkbox" id="multi_room" name="multi_room" value="True" {% if multi_room %} checked {% endif %}>Multiple rooms in dorm</label>
         <!-- <br>
         <p class="filter-section-title">Window Direction</p>
         {% if direction_list %}
@@ -135,7 +136,7 @@
 <h2>Available Rooms ({{ room_list.count }})</h2>
 
 {% if room_list %}
-    <ul>
+    <ul id="room_list">
     {% for room in room_list %}
     <li>
         <a href="/browse/{{ room.building.name }}/{{ room.number }}">{{ room.building.name }} {{ room.display_room_number }}</a>| <span class="star-rating" style="--rating: {{ room.avg_rating }};"></span>

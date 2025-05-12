@@ -7,8 +7,22 @@ import os
 class Command(BaseCommand):
     help = 'Imports buildings data from a CSV file'
 
-    def handle(self, *args, **kwargs):
-        file_path = os.path.join(os.path.dirname(__file__), '..', '..', 'data', 'Grinnell College Buildings.csv')
+    def add_arguments(self, parser):
+        parser.add_argument(
+            '--file',
+            type=str,
+            help='Path to the CSV file to import data from',
+            required=True
+        )
+
+    def handle(self, *args, **options):
+        file_name = options['file']
+
+        file_path = os.path.join(os.path.dirname(__file__), '..', '..', 'data', file_name)
+
+        if not os.path.exists(file_path):
+            self.stdout.write(self.style.ERROR(f"File not found: {file_path}"))
+            return
 
         with open(file_path, mode='r', encoding='utf-8-sig') as file:
             reader = csv.DictReader(file)
