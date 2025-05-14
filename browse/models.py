@@ -89,7 +89,7 @@ class Room(models.Model):
         
 
     def __str__ (self):
-        return "%s %s" % (self.building.name, self.display_room_number())
+        return "%s %s" % (self.building.name, self.number)
     
     def save(self, *args, **kwargs):
         # Check that the room number is 4 digits

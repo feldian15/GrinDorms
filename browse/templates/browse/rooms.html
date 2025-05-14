@@ -44,7 +44,7 @@
     <p class="filter-section-title">Floors</p>
     {% if floor_list %}
         {% for value, label in floor_list %}
-            <label><input type="checkbox" name="floor" value="{{ value }}" {% if value in selected_floors %} checked {% endif %}>{{ label }}</label>
+            <label><input type="checkbox" id="{{ value }}" name="floor" value="{{ value }}" {% if value in selected_floors %} checked {% endif %}>{{ label }}</label>
         {% endfor %}
     {% else %}
         <p id="no_floors" value="none">No floors to display</p>
@@ -138,9 +138,10 @@
 {% if room_list %}
     <ul id="room_list">
     {% for room in room_list %}
-    <li>
-        <a href="/browse/{{ room.building.name }}/{{ room.number }}">{{ room.building.name }} {{ room.display_room_number }}</a>| <span class="star-rating" style="--rating: {{ room.avg_rating }};"></span>
-        [{{ room.avg_rating }} from {{room.reviews.count}} review(s)] |{% if room.multi_room %} Multi-Room{% endif %} {{room.get_num_occupants_display}} {% if room.srd %}| Special Room Draw {% endif %} {% if room.ca %}| CA Room {% endif %}
+    <li id="{{ room }}">
+        <a href="/browse/{{ room.building.name }}/{{ room.number }}">{{ room.building.name }} {{ room.display_room_number }}</a>
+        <p>| <span class="star-rating" style="--rating: {{ room.avg_rating }};"></span>
+        [{{ room.avg_rating }} from {{room.reviews.count}} review(s)] |{% if room.multi_room %} Multi-Room{% endif %} {{room.get_num_occupants_display}} {% if room.srd %}| Special Room Draw {% endif %} {% if room.ca %}| CA Room {% endif %}</p>
     </li>
     {% endfor %}
     </ul>

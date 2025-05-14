@@ -19,11 +19,11 @@
 
 
     
-<h6>
+<h6 id="details_panel">
     Building: {{ room.building.display_building_name }} |
     Campus Region: {{ room.building.get_region_display }} |
     Floor in building: {% if room.floor %} {{ room.floor }} {% else %} Pit {% endif %} | 
-    Average Rating: <span class="star-rating" style="--rating: {{ room.avg_rating }};"></span> ({{ room.avg_rating }}) |
+    <p id="rating">Average Rating: <span class="star-rating" style="--rating: {{ room.avg_rating }};"></span> ({{ room.avg_rating }}) |</p>
 </h6>
 
 
@@ -33,12 +33,12 @@
 <legend><h2>Reviews ({{ review_list.count }})</h2></legend>
 {% if review_list %}
     {% for review in review_list %}
-        <fieldset>
+        <fieldset id="{{ review }}">
             <h4>Posted on {{ review.created_time.date }} at {{ review.created_time.time }}</h4>
             <div> <span class="star-rating" style="--rating: {{ review.rating }};"></span> </div>       
-            <fieldset>
+            <fieldset id="review_text">
                 <legend><strong>Comments</strong></legend>
-                {{ review.text }}
+                <p>{{ review.text }}</p>
             </fieldset>
         </fieldset>
         <br>

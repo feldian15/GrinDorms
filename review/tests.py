@@ -25,7 +25,7 @@ class ReviewPageTest(StaticLiveServerTestCase):
         super().setUpClass()
         chrome_options = Options()
         # Uncomment the next line to run tests headlessly (no GUI)
-        #chrome_options.add_argument("--headless=new")
+        chrome_options.add_argument("--headless=new")
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
 
@@ -716,5 +716,460 @@ class ReviewPageTest(StaticLiveServerTestCase):
             EC.visibility_of_element_located((By.ID, "successModal"))
         )
 
-        # Now test that submitting a duplicate review results in an error
+        # Now repeat the process to ensure we protect against duplicate reviews
+
+        # navigate to the review page
+        self.driver.get(self.live_server_url + '/review/')
+
+        WebDriverWait(self.driver, 10).until(
+                EC.url_to_be(self.live_server_url + "/review/")
+        )
+
+        # try to select that region and submit
+        try:
+            region_choice = self.driver.find_element(By.ID, rand_region)
+        except NoSuchElementException:
+            region_check = False
+        else:
+            region_check = True
+
+        self.assertTrue(region_check)
+
+        region_choice.click()
+
+        #submit
+        try:
+            region_submit = self.driver.find_element(By.ID, 'submit_region')
+        except NoSuchElementException:
+            region_check = False
+        else:
+            region_check = True
+
+        self.assertTrue(region_check)
+
+        region_submit.click()
+
+        # wait for next page to load
+        WebDriverWait(self.driver, 10).until(
+            EC.url_to_be(self.live_server_url + f'/review/?region={rand_region}')
+        )
+
+        self.assertIn(f'region={rand_region}', self.driver.current_url)
+
+        # try to select that region and submit
+        try:
+            building_choice = self.driver.find_element(By.ID, rand_building)
+        except NoSuchElementException:
+            building_check = False
+        else:
+            building_check = True
+
+        self.assertTrue(building_check)
+
+        building_choice.click()
+
+        #submit
+        try:
+            building_submit = self.driver.find_element(By.ID, 'submit_building')
+        except NoSuchElementException:
+            building_check = False
+        else:
+            building_check = True
+
+        self.assertTrue(building_check)
+
+        building_submit.click()
+
+        # wait for next page to load
+        WebDriverWait(self.driver, 10).until(
+            EC.url_to_be(self.live_server_url + f'/review/?region={rand_region}&building={rand_building}')
+        )
+
+        # Ensure we are on the correct page
+        self.assertEqual(self.driver.current_url, self.live_server_url + f'/review/?region={rand_region}&building={rand_building}')
+
+        # use a different floor in these cases, since there are no rooms on 1
+        if (rand_building == 'MAIN' or rand_building == 'RENFROW') and rand_floor == 1:
+            index = random.randint(1,num_floors - 1)
+            rand_floor = Building.objects.get(name=rand_building).get_floor_list()[index][0]
+
+        # try to select that floor and submit
+        try:
+            floor_choice = self.driver.find_element(By.ID, rand_floor)
+        except NoSuchElementException:
+            floor_check = False
+        else:
+            floor_check = True
+
+        self.assertTrue(floor_check)
+
+        floor_choice.click()
+
+        #submit
+        try:
+            floor_submit = self.driver.find_element(By.ID, 'submit_floors')
+        except NoSuchElementException:
+            floor_check = False
+        else:
+            floor_check = True
+
+        self.assertTrue(floor_check)
+
+        floor_submit.click()
+
+        # wait for next page to load
+        WebDriverWait(self.driver, 10).until(
+            EC.url_contains(f'floor={rand_floor}')
+        )
+
+        # Ensure we are on the correct page
+        self.assertIn(f'region={rand_region}', self.driver.current_url)
+        self.assertIn(f'building={rand_building}', self.driver.current_url)
+        self.assertIn(f'floor={rand_floor}', self.driver.current_url)
+
+        # try to select that region and submit
+        try:
+            room_choice = self.driver.find_element(By.ID, rand_room)
+        except NoSuchElementException:
+            room_check = False
+        else:
+            room_check = True
+
+        self.assertTrue(room_check)
+
+        room_choice.click()
+
+        #submit
+        try:
+            room_submit = self.driver.find_element(By.ID, 'submit_rooms')
+        except NoSuchElementException:
+            room_check = False
+        else:
+            room_check = True
+
+        self.assertTrue(room_check)
+
+        room_submit.click()
+
+        # wait for next page to load
+        WebDriverWait(self.driver, 10).until(
+            EC.url_contains(f'room={rand_room}')
+        )
+
+        # Ensure we are on the correct page
+        self.assertIn(f'region={rand_region}', self.driver.current_url)
+        self.assertIn(f'building={rand_building}', self.driver.current_url)
+        self.assertIn(f'floor={rand_floor}', self.driver.current_url)
+        self.assertIn(f'room={rand_room}', self.driver.current_url)
+
+        # Now leave the review
+        index_2 = random.randint(1,5)
+        rand_rating_2 = f'1star{index_2}'
+
+        try:
+            star = self.driver.find_element(By.CSS_SELECTOR, f"label[for='{rand_rating_2}']")
+        except NoSuchElementException:
+            star_check = False
+        else:
+            star_check = True
         
+        self.assertTrue(star_check)
+
+        star.click()
+
+        # find the text box
+        try:
+            text_field = self.driver.find_element(By.ID, 'review_text')
+        except NoSuchElementException:
+            text_check = False
+        else:
+            text_check = True
+        
+        self.assertTrue(text_check)
+
+        # Test review
+        review_text_2 = "This is a duplicate test review posted by a test user of the same test room. It should not show up in the my_reviews page."
+
+        text_field.send_keys(review_text_2)
+
+        # now submit
+        try:
+            review_submit = self.driver.find_element(By.ID, "submit_review")
+        except NoSuchElementException:
+            review_check = False
+        else:
+            review_check = True
+        
+        self.assertTrue(review_check)
+
+        # submit
+        review_submit.click()
+
+        WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located((By.ID, "dupModal"))
+        )
+
+        # Navigate to the my_reviews page to check which reviews show up
+        try:
+            my_reviews_link = self.driver.find_element(By.LINK_TEXT, "View Your Reviews")
+        except NoSuchElementException:
+            review_check = False
+        else:
+            review_check = True
+        
+        self.assertTrue(review_check)
+
+        my_reviews_link.click()
+
+        WebDriverWait(self.driver, 10).until(
+            EC.url_to_be(self.live_server_url + "/review/my_reviews/")
+        )
+        
+        # Find which reviews appear
+        try:
+            reviews = self.driver.find_elements(By.ID, f"{rand_building} {rand_room} review by {self.test_username}")
+        except NoSuchElementException:
+            review_check = False
+        else:
+            review_check = True
+
+        self.assertTrue(review_check)
+
+        # Make sure only one review is found
+        self.assertEqual(len(reviews), 1)
+
+        # Now check the review text
+        review = reviews[0]
+
+        text_field = review.find_element(By.ID, "review_text")
+        text = text_field.find_element(By.TAG_NAME, "p")
+
+        # ensure the review text is as expected
+        self.assertEqual(text.text, review_text)
+
+        self.assertNotEqual(text.text, review_text_2)
+
+        # Navigate to the room details page to ensure the review is displayed
+        room_details_link = review.find_element(By.ID, 'details_link')
+
+        room_details_link.click()
+
+        WebDriverWait(self.driver, 10).until(
+            EC.url_to_be(self.live_server_url + f"/browse/{rand_building}/{rand_room}/")
+        )
+
+        # Now check that the review exists on the details page
+        try:
+            reviews = self.driver.find_elements(By.ID, f"{rand_building} {rand_room} review by {self.test_username}")
+        except NoSuchElementException:
+            review_check = False
+        else:
+            review_check = True
+
+        self.assertTrue(review_check)
+
+        # Make sure only one review is found
+        self.assertEqual(len(reviews), 1)
+
+        # Now check the review text
+        review = reviews[0]
+
+        text_field = review.find_element(By.ID, "review_text")
+        text = text_field.find_element(By.TAG_NAME, "p")
+
+        # ensure the review text is as expected
+        self.assertEqual(text.text, review_text)
+
+        self.assertNotEqual(text.text, review_text_2)
+
+        #check that the correct avg rating is shown
+        try:
+            details = self.driver.find_element(By.ID, 'details_panel')
+        except NoSuchElementException:
+            room_details_check = False
+        else:
+            room_details_check = True
+
+        self.assertTrue(room_details_check)
+
+        details_rating = details.find_element(By.TAG_NAME, "p")
+
+        # Weird format I guess
+        self.assertEqual(details_rating.text, f'Average Rating:\n({index}.0) |')
+
+        # now check the browse page to make sure that the right rating is populated
+        self.driver.get(self.live_server_url + "/browse/")
+
+        WebDriverWait(self.driver, 10).until(
+            EC.url_to_be(self.live_server_url + "/browse/")
+        )
+
+        # Might as well test the filtering
+        try:
+            building_filter = self.driver.find_element(By.ID, rand_building)
+        except NoSuchElementException:
+            filter_check = False
+        else:
+            filter_check = True
+
+        self.assertTrue(filter_check)
+
+        building_filter.click()
+
+        # Wait for the building page to load
+        WebDriverWait(self.driver, 10).until(
+            EC.url_contains(f'building={rand_building}')
+        )
+
+        # floor_filtering
+        try:
+            floor_filter = self.driver.find_element(By.ID, rand_floor)
+        except NoSuchElementException:
+            filter_check = False
+        else:
+            filter_check = True
+
+        self.assertTrue(filter_check)
+
+        floor_filter.click()
+
+        # Wait for the building page to load
+        WebDriverWait(self.driver, 10).until(
+            EC.url_contains(f'floor={rand_floor}')
+        )
+
+        # find the room in the room list
+        try:
+            room_list = self.driver.find_element(By.ID, "room_list")
+        except NoSuchElementException:
+            room_check = False
+        else:
+            room_check = True
+
+        self.assertTrue(room_check)
+
+        try:
+            room = room_list.find_element(By.ID, f'{rand_building} {rand_room}')
+        except NoSuchElementException:
+            room_check = False
+        else:
+            room_check = True
+
+        self.assertTrue(room_check)
+
+        # now check the rooms rating
+        room_text = room.find_element(By.TAG_NAME, "p")
+
+        self.assertIn(f'{index}.0 from 1 review(s)', room_text.text)
+
+        # Finally, lets delete the review and make sure everything updates again
+        self.driver.get(self.live_server_url + "/review/my_reviews/")
+
+        WebDriverWait(self.driver, 10).until(
+            EC.url_to_be(self.live_server_url + "/review/my_reviews/")
+        )
+
+        # find the review
+        try:
+            review = self.driver.find_element(By.ID, f"{rand_building} {rand_room} review by {self.test_username}")
+        except NoSuchElementException:
+            review_check = False
+        else:
+            review_check = True
+        
+        self.assertTrue(review_check)
+
+        # find the delete button for this review
+        try:
+            delete = review.find_element(By.ID, "delete_review")
+        except NoSuchElementException:
+            review_check = False
+        else:
+            review_check = True
+        
+        self.assertTrue(review_check)
+
+        delete.click()
+
+        WebDriverWait(self.driver, 10).until(
+            EC.url_to_be(self.live_server_url + "/review/delete_success/")
+        )
+
+        # Go back to the reviews page
+        try:
+            my_reviews_link = self.driver.find_element(By.LINK_TEXT, "See all reviews")
+        except NoSuchElementException:
+            link_check = False
+        else:
+            link_check = True
+        
+        self.assertTrue(link_check)
+
+        my_reviews_link.click()
+
+        WebDriverWait(self.driver, 10).until(
+            EC.url_to_be(self.live_server_url + "/review/my_reviews/")
+        )
+
+        # Ensure the review is no longer there
+        try:
+            review = self.driver.find_element(By.ID, f"{rand_building} {rand_room} review by {self.test_username} 0")
+        except NoSuchElementException:
+            review_check = True
+        else:
+            review_check = False
+        
+        self.assertTrue(review_check)
+
+        self.driver.get(self.live_server_url + f"/browse/{rand_building}/{rand_room}/")
+
+        WebDriverWait(self.driver, 10).until(
+            EC.url_to_be(self.live_server_url + f"/browse/{rand_building}/{rand_room}/")
+        )
+
+        # Now check that the review no longer exists on the details page
+        try:
+            reviews = self.driver.find_elements(By.ID, f"{rand_building} {rand_room} review by {self.test_username}")
+        except NoSuchElementException:
+            review_check = False
+        else:
+            review_check = True
+
+        self.assertTrue(review_check)
+
+        # Make sure only one review is found
+        self.assertEqual(len(reviews), 0)
+
+        # Finally go to the browse page and make sure the rating is updated
+        self.driver.get(self.live_server_url + "/browse/")
+
+        WebDriverWait(self.driver, 10).until(
+            EC.url_to_be(self.live_server_url + "/browse/")
+        )
+
+        # find the room in the room list
+        try:
+            room_list = self.driver.find_element(By.ID, "room_list")
+        except NoSuchElementException:
+            room_check = False
+        else:
+            room_check = True
+
+        self.assertTrue(room_check)
+
+        try:
+            room = room_list.find_element(By.ID, f'{rand_building} {rand_room}')
+        except NoSuchElementException:
+            room_check = False
+        else:
+            room_check = True
+
+        self.assertTrue(room_check)
+
+        # now check the rooms rating
+        room_text = room.find_element(By.TAG_NAME, "p")
+
+        self.assertIn(f'0.0 from 0 review(s)', room_text.text)
+
+        # If everything passes until here, the site is functioning as expected
+
