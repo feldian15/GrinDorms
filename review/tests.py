@@ -25,7 +25,7 @@ class ReviewPageTest(StaticLiveServerTestCase):
         super().setUpClass()
         chrome_options = Options()
         # Uncomment the next line to run tests headlessly (no GUI)
-        chrome_options.add_argument("--headless=new")
+        #chrome_options.add_argument("--headless=new")
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
 
@@ -684,5 +684,37 @@ class ReviewPageTest(StaticLiveServerTestCase):
 
         star.click()
 
+        # find the text box
+        try:
+            text_field = self.driver.find_element(By.ID, 'review_text')
+        except NoSuchElementException:
+            text_check = False
+        else:
+            text_check = True
+        
+        self.assertTrue(text_check)
 
+        # Test review
+        review_text = "This is a test review posted by a test user of a test room"
 
+        text_field.send_keys(review_text)
+
+        # now submit
+        try:
+            review_submit = self.driver.find_element(By.ID, "submit_review")
+        except NoSuchElementException:
+            review_check = False
+        else:
+            review_check = True
+        
+        self.assertTrue(review_check)
+
+        # submit
+        review_submit.click()
+
+        WebDriverWait(self.driver, 10).until(
+            EC.visibility_of_element_located((By.ID, "successModal"))
+        )
+
+        # Now test that submitting a duplicate review results in an error
+        
